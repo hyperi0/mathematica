@@ -1,0 +1,258 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9302,        250]
+NotebookOptionsPosition[      6915,        201]
+NotebookOutlinePosition[      7310,        217]
+CellTagsIndexPosition[      7267,        214]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Universality in Multiway Cellular Automaton", "Title",
+ CellChangeTimes->{{3.834937832389735*^9, 
+  3.834937838491581*^9}},ExpressionUUID->"f306c384-b078-4138-a1af-\
+04833e9f175d"],
+
+Cell[CellGroupData[{
+
+Cell["Universality in regular CA\[CloseCurlyQuote]s", "Section",
+ CellChangeTimes->{{3.8349378432122746`*^9, 
+  3.834937854181717*^9}},ExpressionUUID->"106bb3ae-34e3-4f26-a4b3-\
+2a88b926b90f"],
+
+Cell["\<\
+Threshold for universality is two color, two neighbor (rule 110)\
+\>", "Item",
+ CellChangeTimes->{{3.8349392452773333`*^9, 3.834939253917088*^9}, {
+  3.8349395751221294`*^9, 
+  3.834939584227422*^9}},ExpressionUUID->"045c4672-171f-482e-9c39-\
+c6101e36981b"],
+
+Cell[CellGroupData[{
+
+Cell["Can emulate any Turing machine", "Item",
+ CellChangeTimes->{{3.8349392452773333`*^9, 3.834939253917088*^9}, {
+  3.8349395751221294`*^9, 
+  3.834939592611948*^9}},ExpressionUUID->"5e8ca135-812f-4db5-b37b-\
+dee23f626775"],
+
+Cell["Proved by explicit construction", "Subitem",
+ CellChangeTimes->{{3.8349392452773333`*^9, 3.834939253917088*^9}, {
+  3.8349395751221294`*^9, 
+  3.834939599797489*^9}},ExpressionUUID->"1ec12ea4-cd46-41eb-84df-\
+ed687aaff59b"]
+}, Open  ]],
+
+Cell["\<\
+Intuitively, universality requires localized structures but low repetition\
+\>", "Item",
+ CellChangeTimes->{{3.8349392452773333`*^9, 3.834939253917088*^9}, {
+  3.8349395751221294`*^9, 3.834939603225606*^9}, {3.834939663081164*^9, 
+  3.834939677843811*^9}},ExpressionUUID->"6eeda259-f908-443d-8926-\
+9831fffed598"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Universality in multiway systems", "Section",
+ CellChangeTimes->{{3.834939686601135*^9, 
+  3.8349397084736323`*^9}},ExpressionUUID->"609cbad4-7bf3-4d84-8ca2-\
+8a2f934967fd"],
+
+Cell["Must be able to emulate any computation", "Item",
+ CellChangeTimes->{{3.834939710378525*^9, 
+  3.834939721211419*^9}},ExpressionUUID->"36f8610e-86b4-4db2-b5fe-\
+15a11dfc5803"],
+
+Cell["\<\
+Computation may require a bounded amount of computation for encoding and \
+decoding\
+\>", "Item",
+ CellChangeTimes->{{3.834939710378525*^9, 
+  3.8349397362354145`*^9}},ExpressionUUID->"170c570a-79b7-46c9-9432-\
+c6dbefa3bc8b"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Possible definitions for universality of a class of multiway system:\
+\>", "Item",
+ CellChangeTimes->{{3.834939710378525*^9, 3.83493975653901*^9}, {
+  3.8349400184791903`*^9, 
+  3.834940025631948*^9}},ExpressionUUID->"bda17fff-c437-4105-a2f6-\
+64fbda907d9f"],
+
+Cell["\<\
+For any computation, there is a corresponding branch of the state evolution \
+for some multiway system with some initial condition\
+\>", "Subitem",
+ CellChangeTimes->{{3.834939710378525*^9, 
+  3.83493989319195*^9}},ExpressionUUID->"b56e56bb-71d5-4b85-ab39-\
+8274bb7598f2"],
+
+Cell["\<\
+There must be a multiway system that results in the same halting / looping \
+state as the result of any computation\
+\>", "Subitem",
+ CellChangeTimes->{{3.834939710378525*^9, 3.8349397986807675`*^9}, {
+  3.83493991385651*^9, 
+  3.8349399430264316`*^9}},ExpressionUUID->"c79db2fc-f4a1-49fb-a371-\
+f2141eb34d67"],
+
+Cell["\<\
+For any computation, a corresponding branch in the multiway graph can be \
+found in a bounded amount of computation\
+\>", "Subitem",
+ CellChangeTimes->{{3.834939710378525*^9, 3.8349397986807675`*^9}, {
+  3.83493991385651*^9, 
+  3.834939979322356*^9}},ExpressionUUID->"1d75cfb5-d6dd-489a-b539-\
+5ea899234d5b"],
+
+Cell["\<\
+There must be some event selection function and initial condition that \
+results in every possible computation\
+\>", "Subitem",
+ CellChangeTimes->{{3.834939710378525*^9, 3.8349397986807675`*^9}, {
+  3.83493991385651*^9, 
+  3.8349400837140183`*^9}},ExpressionUUID->"41fcc58c-735d-47d4-9cf6-\
+998401516fa7"],
+
+Cell["\<\
+There is always some such system with a causal graph isomorphic to that of \
+any other computation\
+\>", "Subitem",
+ CellChangeTimes->{{3.834939710378525*^9, 3.8349397986807675`*^9}, {
+  3.83493991385651*^9, 3.8349400575279818`*^9}, {3.834940091167845*^9, 
+  3.834940117631156*^9}, {3.834940211032113*^9, 
+  3.8349402110331135`*^9}},ExpressionUUID->"e354eb14-e869-4366-bf9b-\
+212ba15da57a"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Methods for finding universal multiway CA\[CloseCurlyQuote]s:", "Item",
+ CellChangeTimes->{{3.834939710378525*^9, 3.8349397986807675`*^9}, {
+  3.83493991385651*^9, 3.8349400575279818`*^9}, {3.834940091167845*^9, 
+  3.834940117631156*^9}, {3.8349402118303614`*^9, 
+  3.8349402238092365`*^9}},ExpressionUUID->"320c5760-9158-4986-b6e9-\
+fde95fe811a8"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Find a rule with one path through the states graph corresponding to a \
+universal singleway CA\
+\>", "Subitem",
+ CellChangeTimes->{{3.834939710378525*^9, 3.8349397986807675`*^9}, {
+  3.83493991385651*^9, 3.8349400575279818`*^9}, {3.834940091167845*^9, 
+  3.834940117631156*^9}, {3.8349402118303614`*^9, 
+  3.8349402563046455`*^9}},ExpressionUUID->"69ec9c81-c413-4715-8f91-\
+1f9f3fad4e11"],
+
+Cell["\<\
+Construct an event selection function that results in this evolution\
+\>", "Subsubitem",
+ CellChangeTimes->{{3.834939710378525*^9, 3.8349397986807675`*^9}, {
+  3.83493991385651*^9, 3.8349400575279818`*^9}, {3.834940091167845*^9, 
+  3.834940117631156*^9}, {3.8349402118303614`*^9, 3.8349402714547772`*^9}, {
+  3.8349403153506737`*^9, 
+  3.8349403231986036`*^9}},ExpressionUUID->"02059e9c-d7cb-4594-9a7e-\
+b0ef803b6425"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Construct the causal graph of every elementary multiway CA for some small \
+tape size and match with the corresponding causal graph of rule 110\
+\>", "Subitem",
+ CellChangeTimes->{{3.834939710378525*^9, 3.8349397986807675`*^9}, {
+  3.83493991385651*^9, 3.8349400575279818`*^9}, {3.834940091167845*^9, 
+  3.834940117631156*^9}, {3.8349402118303614`*^9, 3.8349402714547772`*^9}, {
+  3.8349403153506737`*^9, 
+  3.8349403759370184`*^9}},ExpressionUUID->"543bbbca-bbe7-42c3-86f2-\
+63e28500a8c7"],
+
+Cell["\<\
+Continue the evolution and see if the causal graph still matches\
+\>", "Subsubitem",
+ CellChangeTimes->{{3.834939710378525*^9, 3.8349397986807675`*^9}, {
+  3.83493991385651*^9, 3.8349400575279818`*^9}, {3.834940091167845*^9, 
+  3.834940117631156*^9}, {3.8349402118303614`*^9, 3.8349402714547772`*^9}, {
+  3.8349403153506737`*^9, 
+  3.8349403855901546`*^9}},ExpressionUUID->"894ed96e-5fa8-469d-b71c-\
+5a536a99421c"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{958, 988},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"12.3 for Microsoft Windows (64-bit) (May 11, 2021)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"81c6f490-8ffb-43ef-bd64-cadb5bcd01af"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 186, 3, 98, "Title",ExpressionUUID->"f306c384-b078-4138-a1af-04833e9f175d"],
+Cell[CellGroupData[{
+Cell[791, 29, 192, 3, 67, "Section",ExpressionUUID->"106bb3ae-34e3-4f26-a4b3-2a88b926b90f"],
+Cell[986, 34, 267, 6, 32, "Item",ExpressionUUID->"045c4672-171f-482e-9c39-c6101e36981b"],
+Cell[CellGroupData[{
+Cell[1278, 44, 225, 4, 32, "Item",ExpressionUUID->"5e8ca135-812f-4db5-b37b-dee23f626775"],
+Cell[1506, 50, 229, 4, 26, "Subitem",ExpressionUUID->"1ec12ea4-cd46-41eb-84df-ed687aaff59b"]
+}, Open  ]],
+Cell[1750, 57, 323, 6, 32, "Item",ExpressionUUID->"6eeda259-f908-443d-8926-9831fffed598"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2110, 68, 179, 3, 67, "Section",ExpressionUUID->"609cbad4-7bf3-4d84-8ca2-8a2f934967fd"],
+Cell[2292, 73, 181, 3, 32, "Item",ExpressionUUID->"36f8610e-86b4-4db2-b5fe-15a11dfc5803"],
+Cell[2476, 78, 235, 6, 32, "Item",ExpressionUUID->"170c570a-79b7-46c9-9432-c6dbefa3bc8b"],
+Cell[CellGroupData[{
+Cell[2736, 88, 268, 6, 32, "Item",ExpressionUUID->"bda17fff-c437-4105-a2f6-64fbda907d9f"],
+Cell[3007, 96, 282, 6, 26, "Subitem",ExpressionUUID->"b56e56bb-71d5-4b85-ab39-8274bb7598f2"],
+Cell[3292, 104, 320, 7, 26, "Subitem",ExpressionUUID->"c79db2fc-f4a1-49fb-a371-f2141eb34d67"],
+Cell[3615, 113, 318, 7, 26, "Subitem",ExpressionUUID->"1d75cfb5-d6dd-489a-b539-5ea899234d5b"],
+Cell[3936, 122, 315, 7, 26, "Subitem",ExpressionUUID->"41fcc58c-735d-47d4-9cf6-998401516fa7"],
+Cell[4254, 131, 400, 8, 26, "Subitem",ExpressionUUID->"e354eb14-e869-4366-bf9b-212ba15da57a"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4691, 144, 354, 5, 32, "Item",ExpressionUUID->"320c5760-9158-4986-b6e9-fde95fe811a8"],
+Cell[CellGroupData[{
+Cell[5070, 153, 398, 8, 26, "Subitem",ExpressionUUID->"69ec9c81-c413-4715-8f91-1f9f3fad4e11"],
+Cell[5471, 163, 428, 8, 25, "Subsubitem",ExpressionUUID->"02059e9c-d7cb-4594-9a7e-b0ef803b6425"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5936, 176, 500, 9, 45, "Subitem",ExpressionUUID->"543bbbca-bbe7-42c3-86f2-63e28500a8c7"],
+Cell[6439, 187, 424, 8, 25, "Subsubitem",ExpressionUUID->"894ed96e-5fa8-469d-b71c-5a536a99421c"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

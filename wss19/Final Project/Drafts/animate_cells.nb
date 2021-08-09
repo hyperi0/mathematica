@@ -1,0 +1,128 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5093,        118]
+NotebookOptionsPosition[      4775,        104]
+NotebookOutlinePosition[      5139,        120]
+CellTagsIndexPosition[      5096,        117]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`i$$ = 1, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`i$$], 1, 239, 1}}, Typeset`size$$ = {
+    1626., {156., 167.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = False, $CellContext`i$13857$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`i$$ = 1}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`i$$, $CellContext`i$13857$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Row[
+        Map[$CellContext`showCA, 
+         Part[$CellContext`rules, 
+          Span[$CellContext`i$$, $CellContext`i$$ + 4]]]], 
+      "Specifications" :> {{$CellContext`i$$, 1, 239, 1, DefaultDuration -> 
+         40, AppearanceElements -> {
+          "ProgressSlider", "PlayPauseButton", "FasterSlowerButtons", 
+           "DirectionButton"}}}, 
+      "Options" :> {
+       ControlType -> Animator, AppearanceElements -> None, DefaultBaseStyle -> 
+        "Animate", DefaultLabelStyle -> "AnimateLabel", SynchronousUpdating -> 
+        True, ShrinkingDelay -> 80.}, "DefaultOptions" :> {}],
+     ImageSizeCache->{1704., {291., 302.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`showCA[
+         Pattern[$CellContext`rule, 
+          Blank[]]] := Column[{
+          ArrayPlot[
+           $CellContext`cellGrid[$CellContext`rule], ImageSize -> 
+           Small]}], $CellContext`rule = 
+       7184337031312, $CellContext`cellGrid[
+         Pattern[$CellContext`rule, 
+          Blank[]]] := 
+       CellularAutomaton[{$CellContext`rule, $CellContext`colors, \
+$CellContext`radius}, $CellContext`initial, $CellContext`size - 
+         1], $CellContext`colors = 3, $CellContext`radius = 
+       1, $CellContext`initial = {0, 2, 2, 1, 0, 0, 0, 1, 2, 2, 2, 0, 1, 1, 2,
+         1, 0, 1, 0, 2, 0, 2, 0, 0, 0, 0, 0, 0, 0, 2, 1, 0, 2, 2, 0, 0, 0, 1, 
+        1, 2, 0, 1, 2, 2, 2, 0, 2, 2, 0, 1}, $CellContext`size = 
+       50, $CellContext`rules = CompressedData["
+1:eJxlmLuNZTcQRMeQqyA2A/afHYKAtRSCjAVkyVhlrgTU/a5zq9YZDA74rUtW
+F9+3v/7588d/X19fP3+bP9///vnvH7/PPyXXzbLMMw1JnnYiogKk3Z1ISJ03
+uaGVgsTckgnOvqRpHJcMJq1EVPpNWjSMiCmueUleICVx36SOdh8kduIakZTD
+xAqJmCiTTCD3dmCv23mxTR8DVT+E1tzH5a1Yid8yIHrqBJOy1y5CzrUoInGO
+MNH7JuKa72+xxGfsN9EjKc7EhUleJDoHiAmucEnTXHZKmXQTEU0geUpwnFS4
+BQ/xy6TiTWw6KezU6sK9+JAr2Guuk2OvexRVXVKghs9A6UhuNLVpRVWXdBAx
+BcW897IguYb6LME1LynYaUR0KpKEm/KQpl4FN+UhuK8hrq+TkOFz3dWYxC9t
+3idziUkok2oiepLIfEIi4BsPed/BIS1eyqSbSCjO1ap6mQSNrG2HSRST628S
+cUKFiV8mFUjGag8TVHWIHZpLGlWN0IOqLjH4glOZwJEe0kUkFeYac1ZUdYih
+qksC5xI5qPMS1HnJhS84lpWOI2cbKjbED/aqI6hPTfHMy6SDSKkiuYZqDHF1
+JiFIWlCNJajGkgvKj9eAQz7EnUnhXHeaJJMyIlNmkFxBDYcoarhE4SvPPquN
+yEWXuJ6Oqg4JVHWJ08ilqOoSVHWK8EjPJBtJBCq2pIRJXyQJzv+kOExWU+4N
+U9MSTE2b9LKAzFEVbNNbD95kc90pJgaJsUUKMtKSCxnpk9Bwrs1jguOUQpX5
+5DFw2idHQdL75CjDPDY5ypRJQK8p5eA/S9ox1y3BXLfkXXOfHIUpbsmlNnMS
+mwkmvSGBNXfzmCQTpzZz3YMJ5p8lmH+GdEHtnhQXGUxakZg29TJzSoNjdcYk
+MLPNMUxj0tRGDGcf4piIljjoY1NkrJlglpha7piIljSnOMGcuSnuYq95FDW1
+2UcRkMlsuMLNbHKYYCLaFIe7WIK7mIR2o5lcalOBax6SmDyXOCW0gCTzEAsk
+mQk+tpnkgI9tHcQsMVXvYE7YOmjQa321yP0c0vLHDw3rxRJFZxv3M3zrzSeN
+RKJ+wTN7fCLwFTnG3+Qtd15gfAvwpbCnTkDVPWP43tkzRklmskRx/YLT+zj/
+oRVK4Lt715z4Yh0XDXCkSaKQxz5+mOi0+2akRDQrpHf36GFUQbZC0MgFb+r9
+PcEuVaKRx3lfxk4Lr9GnWknyek7wTuOXFcb9HweD3no=
+        "]}; 
+     Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Animate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.771707214333083*^9},ExpressionUUID->"ad09ec2b-ded9-44f4-9865-\
+300b68dff495"]
+},
+WindowSize->{1920, 1012},
+WindowMargins->{{0, Automatic}, {1, Automatic}},
+Magnification:>1.8 Inherited,
+FrontEndVersion->"12.0 for Linux x86 (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 4213, 82, 626, "Output",ExpressionUUID->"ad09ec2b-ded9-44f4-9865-300b68dff495"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

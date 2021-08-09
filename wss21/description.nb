@@ -1,0 +1,57 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      1686,         49]
+NotebookOptionsPosition[      1341,         35]
+NotebookOutlinePosition[      1735,         51]
+CellTagsIndexPosition[      1692,         48]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+\tThis project is an investigation into confluence in multiway cellular \
+automata. In an elementary cellular automaton, successive rows of black and \
+white cells are built by looking at the colors of each cell and its neighbors \
+and applying a rule to it. A multiway CA is a modification of this system \
+where only one replacement from the rule is applied at one position per step. \
+A graph is confluent where for every node, every branch from the node can \
+always merge back into some other state. This project investigated the \
+behavior of different types of multiway cellular automata with a focus on \
+confluence. \
+\>", "Text",
+ CellChangeTimes->{{3.8352754605258636`*^9, 
+  3.8352756850494223`*^9}},ExpressionUUID->"6e1671cb-7573-4fc4-967d-\
+53c814ab6f65"]
+},
+WindowSize->{960, 1003},
+WindowMargins->{{0, Automatic}, {Automatic, 37}},
+FrontEndVersion->"12.2 for Linux x86 (64-bit) (December 12, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"ac417df1-d343-4e8c-999d-9096449d724a"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 779, 13, 127, "Text",ExpressionUUID->"6e1671cb-7573-4fc4-967d-53c814ab6f65"]
+}
+]
+*)
+

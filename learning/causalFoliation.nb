@@ -1,0 +1,3961 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    172479,       3953]
+NotebookOptionsPosition[    171910,       3935]
+NotebookOutlinePosition[    172299,       3951]
+CellTagsIndexPosition[    172256,       3948]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+https://www.wolframphysics.org/technical-introduction/the-updating-process-\
+for-string-substitution-systems/causal-foliations-and-causal-cones/index.html
+https://resources.wolframcloud.com/FunctionRepository/resources/\
+SubstitutionSystemCausalEvolution/?i=SubstitutionSystemCausalEvolution&\
+searchapi=https%3A%2F%2Fresources.wolframcloud.com%2FFunctionRepository%\
+2Fsearch\
+\>", "Text",
+ CellChangeTimes->{{3.8358056109542437`*^9, 
+  3.835805614056941*^9}},ExpressionUUID->"49b65821-05f2-4b69-85cf-\
+6a3f25e88751"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"CloudGet", "[", "\"\<https://wolfr.am/LhaceyND\>\"", "]"}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"evo", "=", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"SeedRandom", "[", "2424", "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+      "ResourceFunction", "[", "\"\<SubstitutionSystemCausalEvolution\>\"", 
+       "]"}], "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"\"\<BA\>\"", "\[Rule]", "\"\<AB\>\""}], "}"}], ",", 
+       "\"\<BBAAAABAABBABBBBBAAA\>\"", ",", "15", ",", 
+       RowBox[{"{", 
+        RowBox[{"\"\<Random\>\"", ",", "4"}], "}"}]}], "]"}]}], ")"}]}], 
+  ";"}], "\n", 
+ RowBox[{"With", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"evoSequential", "=", 
+     RowBox[{
+      RowBox[{
+      "ResourceFunction", "[", "\"\<SubstitutionSystemCausalEvolution\>\"", 
+       "]"}], "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"\"\<BA\>\"", "\[Rule]", "\"\<AB\>\""}], "}"}], ",", 
+       "\"\<BBAAAABAABBABBBBBAAA\>\"", ",", "12"}], "]"}]}], "}"}], ",", 
+   RowBox[{
+    RowBox[{
+    "ResourceFunction", "[", "\"\<SubstitutionSystemCausalPlot\>\"", "]"}], 
+    "[", 
+    RowBox[{"evo", ",", 
+     RowBox[{"EventLabels", "\[Rule]", "False"}], ",", 
+     RowBox[{"CellLabels", "\[Rule]", "False"}], ",", 
+     RowBox[{"CausalGraph", "\[Rule]", "True"}], ",", 
+     RowBox[{"SpaceSurfaceStyle", "\[Rule]", 
+      RowBox[{"Directive", "[", 
+       RowBox[{"Red", ",", "Thick"}], "]"}]}], ",", 
+     RowBox[{"PlotSpaceSurfaces", "\[Rule]", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"FoldList", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Join", "[", 
+             RowBox[{"#", ",", "#2"}], "]"}], "&"}], ",", 
+           RowBox[{"{", "}"}], ",", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"TakeList", "[", 
+              RowBox[{
+               RowBox[{"Range", "[", 
+                RowBox[{"Total", "[", "#", "]"}], "]"}], ",", "#"}], "]"}], 
+             "&"}], "@", 
+            RowBox[{"(", 
+             RowBox[{"Length", "/@", 
+              RowBox[{
+               RowBox[{"Rest", "[", "evoSequential", "]"}], "[", 
+               RowBox[{"[", 
+                RowBox[{"All", ",", "2"}], "]"}], "]"}]}], ")"}]}]}], "]"}], 
+         ")"}], "/.", " ", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"FindGraphIsomorphism", "@@", 
+           RowBox[{"causalGraph", "/@", 
+            RowBox[{"elementTransitionGraph", "/@", 
+             RowBox[{"{", 
+              RowBox[{"evoSequential", ",", "evo"}], "}"}]}]}]}], ")"}], "[", 
+         
+         RowBox[{"[", "1", "]"}], "]"}]}], ")"}]}]}], "]"}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.835805341841625*^9, 3.835805341855266*^9}, {
+  3.8358054755714417`*^9, 3.8358055093773613`*^9}, {3.835807486933834*^9, 
+  3.835807536383115*^9}},
+ CellLabel->"In[37]:=",ExpressionUUID->"3f423d23-90ab-44c2-b641-82019e2f4541"],
+
+Cell[BoxData[
+ GraphicsBox[{{{{{
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{1, -2}]}, 
+       {GrayLevel[1], LineBox[{{1, -2}, {1, -1}}], 
+        LineBox[{{2, -2}, {2, -1}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{2, -2}]}, 
+       {GrayLevel[1], LineBox[{{2, -2}, {2, -1}}], 
+        LineBox[{{3, -2}, {3, -1}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{3, -2}]}, 
+       {GrayLevel[1], LineBox[{{3, -2}, {3, -1}}], 
+        LineBox[{{4, -2}, {4, -1}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{4, -2}]}, 
+       {GrayLevel[1], LineBox[{{4, -2}, {4, -1}}], 
+        LineBox[{{5, -2}, {5, -1}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{5, -2}]}, 
+       {GrayLevel[1], LineBox[{{5, -2}, {5, -1}}], 
+        LineBox[{{6, -2}, {6, -1}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{6, -2}]}, 
+       {GrayLevel[1], LineBox[{{6, -2}, {6, -1}}], 
+        LineBox[{{7, -2}, {7, -1}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{7, -2}]}, 
+       {GrayLevel[1], LineBox[{{7, -2}, {7, -1}}], 
+        LineBox[{{8, -2}, {8, -1}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{8, -2}]}, 
+       {GrayLevel[1], LineBox[{{8, -2}, {8, -1}}], 
+        LineBox[{{9, -2}, {9, -1}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{9, -2}]}, 
+       {GrayLevel[1], LineBox[{{9, -2}, {9, -1}}], 
+        LineBox[{{10, -2}, {10, -1}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{10, -2}]}, 
+       {GrayLevel[1], LineBox[{{10, -2}, {10, -1}}], 
+        LineBox[{{11, -2}, {11, -1}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{11, -2}]}, 
+       {GrayLevel[1], LineBox[{{11, -2}, {11, -1}}], 
+        LineBox[{{12, -2}, {12, -1}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{12, -2}]}, 
+       {GrayLevel[1], LineBox[{{12, -2}, {12, -1}}], 
+        LineBox[{{13, -2}, {13, -1}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{13, -2}]}, 
+       {GrayLevel[1], LineBox[{{13, -2}, {13, -1}}], 
+        LineBox[{{14, -2}, {14, -1}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{14, -2}]}, 
+       {GrayLevel[1], LineBox[{{14, -2}, {14, -1}}], 
+        LineBox[{{15, -2}, {15, -1}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{15, -2}]}, 
+       {GrayLevel[1], LineBox[{{15, -2}, {15, -1}}], 
+        LineBox[{{16, -2}, {16, -1}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{16, -2}]}, 
+       {GrayLevel[1], LineBox[{{16, -2}, {16, -1}}], 
+        LineBox[{{17, -2}, {17, -1}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{17, -2}]}, 
+       {GrayLevel[1], LineBox[{{17, -2}, {17, -1}}], 
+        LineBox[{{18, -2}, {18, -1}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{18, -2}]}, 
+       {GrayLevel[1], LineBox[{{18, -2}, {18, -1}}], 
+        LineBox[{{19, -2}, {19, -1}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{19, -2}]}, 
+       {GrayLevel[1], LineBox[{{19, -2}, {19, -1}}], 
+        LineBox[{{20, -2}, {20, -1}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{20, -2}]}, 
+       {GrayLevel[1], LineBox[{{20, -2}, {20, -1}}], 
+        LineBox[{{21, -2}, {21, -1}}]}}}, {{
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{1, -4}]}, 
+       {GrayLevel[1], LineBox[{{1, -4}, {1, -3}}], 
+        LineBox[{{2, -4}, {2, -3}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{2, -4}]}, 
+       {GrayLevel[1], LineBox[{{2, -4}, {2, -3}}], 
+        LineBox[{{3, -4}, {3, -3}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{3, -4}]}, 
+       {GrayLevel[1], LineBox[{{3, -4}, {3, -3}}], 
+        LineBox[{{4, -4}, {4, -3}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{4, -4}]}, 
+       {GrayLevel[1], LineBox[{{4, -4}, {4, -3}}], 
+        LineBox[{{5, -4}, {5, -3}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{5, -4}]}, 
+       {GrayLevel[1], LineBox[{{5, -4}, {5, -3}}], 
+        LineBox[{{6, -4}, {6, -3}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{6, -4}]}, 
+       {GrayLevel[1], LineBox[{{6, -4}, {6, -3}}], 
+        LineBox[{{7, -4}, {7, -3}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{7, -4}]}, 
+       {GrayLevel[1], LineBox[{{7, -4}, {7, -3}}], 
+        LineBox[{{8, -4}, {8, -3}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{8, -4}]}, 
+       {GrayLevel[1], LineBox[{{8, -4}, {8, -3}}], 
+        LineBox[{{9, -4}, {9, -3}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{9, -4}]}, 
+       {GrayLevel[1], LineBox[{{9, -4}, {9, -3}}], 
+        LineBox[{{10, -4}, {10, -3}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{10, -4}]}, 
+       {GrayLevel[1], LineBox[{{10, -4}, {10, -3}}], 
+        LineBox[{{11, -4}, {11, -3}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{11, -4}]}, 
+       {GrayLevel[1], LineBox[{{11, -4}, {11, -3}}], 
+        LineBox[{{12, -4}, {12, -3}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{12, -4}]}, 
+       {GrayLevel[1], LineBox[{{12, -4}, {12, -3}}], 
+        LineBox[{{13, -4}, {13, -3}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{13, -4}]}, 
+       {GrayLevel[1], LineBox[{{13, -4}, {13, -3}}], 
+        LineBox[{{14, -4}, {14, -3}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{14, -4}]}, 
+       {GrayLevel[1], LineBox[{{14, -4}, {14, -3}}], 
+        LineBox[{{15, -4}, {15, -3}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{15, -4}]}, 
+       {GrayLevel[1], LineBox[{{15, -4}, {15, -3}}], 
+        LineBox[{{16, -4}, {16, -3}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{16, -4}]}, 
+       {GrayLevel[1], LineBox[{{16, -4}, {16, -3}}], 
+        LineBox[{{17, -4}, {17, -3}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{17, -4}]}, 
+       {GrayLevel[1], LineBox[{{17, -4}, {17, -3}}], 
+        LineBox[{{18, -4}, {18, -3}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{18, -4}]}, 
+       {GrayLevel[1], LineBox[{{18, -4}, {18, -3}}], 
+        LineBox[{{19, -4}, {19, -3}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{19, -4}]}, 
+       {GrayLevel[1], LineBox[{{19, -4}, {19, -3}}], 
+        LineBox[{{20, -4}, {20, -3}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{20, -4}]}, 
+       {GrayLevel[1], LineBox[{{20, -4}, {20, -3}}], 
+        LineBox[{{21, -4}, {21, -3}}]}}}, {{
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{1, -6}]}, 
+       {GrayLevel[1], LineBox[{{1, -6}, {1, -5}}], 
+        LineBox[{{2, -6}, {2, -5}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{2, -6}]}, 
+       {GrayLevel[1], LineBox[{{2, -6}, {2, -5}}], 
+        LineBox[{{3, -6}, {3, -5}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{3, -6}]}, 
+       {GrayLevel[1], LineBox[{{3, -6}, {3, -5}}], 
+        LineBox[{{4, -6}, {4, -5}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{4, -6}]}, 
+       {GrayLevel[1], LineBox[{{4, -6}, {4, -5}}], 
+        LineBox[{{5, -6}, {5, -5}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{5, -6}]}, 
+       {GrayLevel[1], LineBox[{{5, -6}, {5, -5}}], 
+        LineBox[{{6, -6}, {6, -5}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{6, -6}]}, 
+       {GrayLevel[1], LineBox[{{6, -6}, {6, -5}}], 
+        LineBox[{{7, -6}, {7, -5}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{7, -6}]}, 
+       {GrayLevel[1], LineBox[{{7, -6}, {7, -5}}], 
+        LineBox[{{8, -6}, {8, -5}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{8, -6}]}, 
+       {GrayLevel[1], LineBox[{{8, -6}, {8, -5}}], 
+        LineBox[{{9, -6}, {9, -5}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{9, -6}]}, 
+       {GrayLevel[1], LineBox[{{9, -6}, {9, -5}}], 
+        LineBox[{{10, -6}, {10, -5}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{10, -6}]}, 
+       {GrayLevel[1], LineBox[{{10, -6}, {10, -5}}], 
+        LineBox[{{11, -6}, {11, -5}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{11, -6}]}, 
+       {GrayLevel[1], LineBox[{{11, -6}, {11, -5}}], 
+        LineBox[{{12, -6}, {12, -5}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{12, -6}]}, 
+       {GrayLevel[1], LineBox[{{12, -6}, {12, -5}}], 
+        LineBox[{{13, -6}, {13, -5}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{13, -6}]}, 
+       {GrayLevel[1], LineBox[{{13, -6}, {13, -5}}], 
+        LineBox[{{14, -6}, {14, -5}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{14, -6}]}, 
+       {GrayLevel[1], LineBox[{{14, -6}, {14, -5}}], 
+        LineBox[{{15, -6}, {15, -5}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{15, -6}]}, 
+       {GrayLevel[1], LineBox[{{15, -6}, {15, -5}}], 
+        LineBox[{{16, -6}, {16, -5}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{16, -6}]}, 
+       {GrayLevel[1], LineBox[{{16, -6}, {16, -5}}], 
+        LineBox[{{17, -6}, {17, -5}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{17, -6}]}, 
+       {GrayLevel[1], LineBox[{{17, -6}, {17, -5}}], 
+        LineBox[{{18, -6}, {18, -5}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{18, -6}]}, 
+       {GrayLevel[1], LineBox[{{18, -6}, {18, -5}}], 
+        LineBox[{{19, -6}, {19, -5}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{19, -6}]}, 
+       {GrayLevel[1], LineBox[{{19, -6}, {19, -5}}], 
+        LineBox[{{20, -6}, {20, -5}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{20, -6}]}, 
+       {GrayLevel[1], LineBox[{{20, -6}, {20, -5}}], 
+        LineBox[{{21, -6}, {21, -5}}]}}}, {{
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{1, -8}]}, 
+       {GrayLevel[1], LineBox[{{1, -8}, {1, -7}}], 
+        LineBox[{{2, -8}, {2, -7}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{2, -8}]}, 
+       {GrayLevel[1], LineBox[{{2, -8}, {2, -7}}], 
+        LineBox[{{3, -8}, {3, -7}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{3, -8}]}, 
+       {GrayLevel[1], LineBox[{{3, -8}, {3, -7}}], 
+        LineBox[{{4, -8}, {4, -7}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{4, -8}]}, 
+       {GrayLevel[1], LineBox[{{4, -8}, {4, -7}}], 
+        LineBox[{{5, -8}, {5, -7}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{5, -8}]}, 
+       {GrayLevel[1], LineBox[{{5, -8}, {5, -7}}], 
+        LineBox[{{6, -8}, {6, -7}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{6, -8}]}, 
+       {GrayLevel[1], LineBox[{{6, -8}, {6, -7}}], 
+        LineBox[{{7, -8}, {7, -7}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{7, -8}]}, 
+       {GrayLevel[1], LineBox[{{7, -8}, {7, -7}}], 
+        LineBox[{{8, -8}, {8, -7}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{8, -8}]}, 
+       {GrayLevel[1], LineBox[{{8, -8}, {8, -7}}], 
+        LineBox[{{9, -8}, {9, -7}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{9, -8}]}, 
+       {GrayLevel[1], LineBox[{{9, -8}, {9, -7}}], 
+        LineBox[{{10, -8}, {10, -7}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{10, -8}]}, 
+       {GrayLevel[1], LineBox[{{10, -8}, {10, -7}}], 
+        LineBox[{{11, -8}, {11, -7}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{11, -8}]}, 
+       {GrayLevel[1], LineBox[{{11, -8}, {11, -7}}], 
+        LineBox[{{12, -8}, {12, -7}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{12, -8}]}, 
+       {GrayLevel[1], LineBox[{{12, -8}, {12, -7}}], 
+        LineBox[{{13, -8}, {13, -7}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{13, -8}]}, 
+       {GrayLevel[1], LineBox[{{13, -8}, {13, -7}}], 
+        LineBox[{{14, -8}, {14, -7}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{14, -8}]}, 
+       {GrayLevel[1], LineBox[{{14, -8}, {14, -7}}], 
+        LineBox[{{15, -8}, {15, -7}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{15, -8}]}, 
+       {GrayLevel[1], LineBox[{{15, -8}, {15, -7}}], 
+        LineBox[{{16, -8}, {16, -7}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{16, -8}]}, 
+       {GrayLevel[1], LineBox[{{16, -8}, {16, -7}}], 
+        LineBox[{{17, -8}, {17, -7}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{17, -8}]}, 
+       {GrayLevel[1], LineBox[{{17, -8}, {17, -7}}], 
+        LineBox[{{18, -8}, {18, -7}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{18, -8}]}, 
+       {GrayLevel[1], LineBox[{{18, -8}, {18, -7}}], 
+        LineBox[{{19, -8}, {19, -7}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{19, -8}]}, 
+       {GrayLevel[1], LineBox[{{19, -8}, {19, -7}}], 
+        LineBox[{{20, -8}, {20, -7}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{20, -8}]}, 
+       {GrayLevel[1], LineBox[{{20, -8}, {20, -7}}], 
+        LineBox[{{21, -8}, {21, -7}}]}}}, {{
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{1, -10}]}, 
+       {GrayLevel[1], LineBox[{{1, -10}, {1, -9}}], 
+        LineBox[{{2, -10}, {2, -9}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{2, -10}]}, 
+       {GrayLevel[1], LineBox[{{2, -10}, {2, -9}}], 
+        LineBox[{{3, -10}, {3, -9}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{3, -10}]}, 
+       {GrayLevel[1], LineBox[{{3, -10}, {3, -9}}], 
+        LineBox[{{4, -10}, {4, -9}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{4, -10}]}, 
+       {GrayLevel[1], LineBox[{{4, -10}, {4, -9}}], 
+        LineBox[{{5, -10}, {5, -9}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{5, -10}]}, 
+       {GrayLevel[1], LineBox[{{5, -10}, {5, -9}}], 
+        LineBox[{{6, -10}, {6, -9}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{6, -10}]}, 
+       {GrayLevel[1], LineBox[{{6, -10}, {6, -9}}], 
+        LineBox[{{7, -10}, {7, -9}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{7, -10}]}, 
+       {GrayLevel[1], LineBox[{{7, -10}, {7, -9}}], 
+        LineBox[{{8, -10}, {8, -9}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{8, -10}]}, 
+       {GrayLevel[1], LineBox[{{8, -10}, {8, -9}}], 
+        LineBox[{{9, -10}, {9, -9}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{9, -10}]}, 
+       {GrayLevel[1], LineBox[{{9, -10}, {9, -9}}], 
+        LineBox[{{10, -10}, {10, -9}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{10, -10}]}, 
+       {GrayLevel[1], LineBox[{{10, -10}, {10, -9}}], 
+        LineBox[{{11, -10}, {11, -9}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{11, -10}]}, 
+       {GrayLevel[1], LineBox[{{11, -10}, {11, -9}}], 
+        LineBox[{{12, -10}, {12, -9}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{12, -10}]}, 
+       {GrayLevel[1], LineBox[{{12, -10}, {12, -9}}], 
+        LineBox[{{13, -10}, {13, -9}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{13, -10}]}, 
+       {GrayLevel[1], LineBox[{{13, -10}, {13, -9}}], 
+        LineBox[{{14, -10}, {14, -9}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{14, -10}]}, 
+       {GrayLevel[1], LineBox[{{14, -10}, {14, -9}}], 
+        LineBox[{{15, -10}, {15, -9}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{15, -10}]}, 
+       {GrayLevel[1], LineBox[{{15, -10}, {15, -9}}], 
+        LineBox[{{16, -10}, {16, -9}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{16, -10}]}, 
+       {GrayLevel[1], LineBox[{{16, -10}, {16, -9}}], 
+        LineBox[{{17, -10}, {17, -9}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{17, -10}]}, 
+       {GrayLevel[1], LineBox[{{17, -10}, {17, -9}}], 
+        LineBox[{{18, -10}, {18, -9}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{18, -10}]}, 
+       {GrayLevel[1], LineBox[{{18, -10}, {18, -9}}], 
+        LineBox[{{19, -10}, {19, -9}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{19, -10}]}, 
+       {GrayLevel[1], LineBox[{{19, -10}, {19, -9}}], 
+        LineBox[{{20, -10}, {20, -9}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{20, -10}]}, 
+       {GrayLevel[1], LineBox[{{20, -10}, {20, -9}}], 
+        LineBox[{{21, -10}, {21, -9}}]}}}, {{
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{1, -12}]}, 
+       {GrayLevel[1], LineBox[{{1, -12}, {1, -11}}], 
+        LineBox[{{2, -12}, {2, -11}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{2, -12}]}, 
+       {GrayLevel[1], LineBox[{{2, -12}, {2, -11}}], 
+        LineBox[{{3, -12}, {3, -11}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{3, -12}]}, 
+       {GrayLevel[1], LineBox[{{3, -12}, {3, -11}}], 
+        LineBox[{{4, -12}, {4, -11}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{4, -12}]}, 
+       {GrayLevel[1], LineBox[{{4, -12}, {4, -11}}], 
+        LineBox[{{5, -12}, {5, -11}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{5, -12}]}, 
+       {GrayLevel[1], LineBox[{{5, -12}, {5, -11}}], 
+        LineBox[{{6, -12}, {6, -11}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{6, -12}]}, 
+       {GrayLevel[1], LineBox[{{6, -12}, {6, -11}}], 
+        LineBox[{{7, -12}, {7, -11}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{7, -12}]}, 
+       {GrayLevel[1], LineBox[{{7, -12}, {7, -11}}], 
+        LineBox[{{8, -12}, {8, -11}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{8, -12}]}, 
+       {GrayLevel[1], LineBox[{{8, -12}, {8, -11}}], 
+        LineBox[{{9, -12}, {9, -11}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{9, -12}]}, 
+       {GrayLevel[1], LineBox[{{9, -12}, {9, -11}}], 
+        LineBox[{{10, -12}, {10, -11}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{10, -12}]}, 
+       {GrayLevel[1], LineBox[{{10, -12}, {10, -11}}], 
+        LineBox[{{11, -12}, {11, -11}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{11, -12}]}, 
+       {GrayLevel[1], LineBox[{{11, -12}, {11, -11}}], 
+        LineBox[{{12, -12}, {12, -11}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{12, -12}]}, 
+       {GrayLevel[1], LineBox[{{12, -12}, {12, -11}}], 
+        LineBox[{{13, -12}, {13, -11}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{13, -12}]}, 
+       {GrayLevel[1], LineBox[{{13, -12}, {13, -11}}], 
+        LineBox[{{14, -12}, {14, -11}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{14, -12}]}, 
+       {GrayLevel[1], LineBox[{{14, -12}, {14, -11}}], 
+        LineBox[{{15, -12}, {15, -11}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{15, -12}]}, 
+       {GrayLevel[1], LineBox[{{15, -12}, {15, -11}}], 
+        LineBox[{{16, -12}, {16, -11}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{16, -12}]}, 
+       {GrayLevel[1], LineBox[{{16, -12}, {16, -11}}], 
+        LineBox[{{17, -12}, {17, -11}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{17, -12}]}, 
+       {GrayLevel[1], LineBox[{{17, -12}, {17, -11}}], 
+        LineBox[{{18, -12}, {18, -11}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{18, -12}]}, 
+       {GrayLevel[1], LineBox[{{18, -12}, {18, -11}}], 
+        LineBox[{{19, -12}, {19, -11}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{19, -12}]}, 
+       {GrayLevel[1], LineBox[{{19, -12}, {19, -11}}], 
+        LineBox[{{20, -12}, {20, -11}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{20, -12}]}, 
+       {GrayLevel[1], LineBox[{{20, -12}, {20, -11}}], 
+        LineBox[{{21, -12}, {21, -11}}]}}}, {{
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{1, -14}]}, 
+       {GrayLevel[1], LineBox[{{1, -14}, {1, -13}}], 
+        LineBox[{{2, -14}, {2, -13}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{2, -14}]}, 
+       {GrayLevel[1], LineBox[{{2, -14}, {2, -13}}], 
+        LineBox[{{3, -14}, {3, -13}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{3, -14}]}, 
+       {GrayLevel[1], LineBox[{{3, -14}, {3, -13}}], 
+        LineBox[{{4, -14}, {4, -13}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{4, -14}]}, 
+       {GrayLevel[1], LineBox[{{4, -14}, {4, -13}}], 
+        LineBox[{{5, -14}, {5, -13}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{5, -14}]}, 
+       {GrayLevel[1], LineBox[{{5, -14}, {5, -13}}], 
+        LineBox[{{6, -14}, {6, -13}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{6, -14}]}, 
+       {GrayLevel[1], LineBox[{{6, -14}, {6, -13}}], 
+        LineBox[{{7, -14}, {7, -13}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{7, -14}]}, 
+       {GrayLevel[1], LineBox[{{7, -14}, {7, -13}}], 
+        LineBox[{{8, -14}, {8, -13}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{8, -14}]}, 
+       {GrayLevel[1], LineBox[{{8, -14}, {8, -13}}], 
+        LineBox[{{9, -14}, {9, -13}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{9, -14}]}, 
+       {GrayLevel[1], LineBox[{{9, -14}, {9, -13}}], 
+        LineBox[{{10, -14}, {10, -13}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{10, -14}]}, 
+       {GrayLevel[1], LineBox[{{10, -14}, {10, -13}}], 
+        LineBox[{{11, -14}, {11, -13}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{11, -14}]}, 
+       {GrayLevel[1], LineBox[{{11, -14}, {11, -13}}], 
+        LineBox[{{12, -14}, {12, -13}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{12, -14}]}, 
+       {GrayLevel[1], LineBox[{{12, -14}, {12, -13}}], 
+        LineBox[{{13, -14}, {13, -13}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{13, -14}]}, 
+       {GrayLevel[1], LineBox[{{13, -14}, {13, -13}}], 
+        LineBox[{{14, -14}, {14, -13}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{14, -14}]}, 
+       {GrayLevel[1], LineBox[{{14, -14}, {14, -13}}], 
+        LineBox[{{15, -14}, {15, -13}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{15, -14}]}, 
+       {GrayLevel[1], LineBox[{{15, -14}, {15, -13}}], 
+        LineBox[{{16, -14}, {16, -13}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{16, -14}]}, 
+       {GrayLevel[1], LineBox[{{16, -14}, {16, -13}}], 
+        LineBox[{{17, -14}, {17, -13}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{17, -14}]}, 
+       {GrayLevel[1], LineBox[{{17, -14}, {17, -13}}], 
+        LineBox[{{18, -14}, {18, -13}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{18, -14}]}, 
+       {GrayLevel[1], LineBox[{{18, -14}, {18, -13}}], 
+        LineBox[{{19, -14}, {19, -13}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{19, -14}]}, 
+       {GrayLevel[1], LineBox[{{19, -14}, {19, -13}}], 
+        LineBox[{{20, -14}, {20, -13}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{20, -14}]}, 
+       {GrayLevel[1], LineBox[{{20, -14}, {20, -13}}], 
+        LineBox[{{21, -14}, {21, -13}}]}}}, {{
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{1, -16}]}, 
+       {GrayLevel[1], LineBox[{{1, -16}, {1, -15}}], 
+        LineBox[{{2, -16}, {2, -15}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{2, -16}]}, 
+       {GrayLevel[1], LineBox[{{2, -16}, {2, -15}}], 
+        LineBox[{{3, -16}, {3, -15}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{3, -16}]}, 
+       {GrayLevel[1], LineBox[{{3, -16}, {3, -15}}], 
+        LineBox[{{4, -16}, {4, -15}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{4, -16}]}, 
+       {GrayLevel[1], LineBox[{{4, -16}, {4, -15}}], 
+        LineBox[{{5, -16}, {5, -15}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{5, -16}]}, 
+       {GrayLevel[1], LineBox[{{5, -16}, {5, -15}}], 
+        LineBox[{{6, -16}, {6, -15}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{6, -16}]}, 
+       {GrayLevel[1], LineBox[{{6, -16}, {6, -15}}], 
+        LineBox[{{7, -16}, {7, -15}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{7, -16}]}, 
+       {GrayLevel[1], LineBox[{{7, -16}, {7, -15}}], 
+        LineBox[{{8, -16}, {8, -15}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{8, -16}]}, 
+       {GrayLevel[1], LineBox[{{8, -16}, {8, -15}}], 
+        LineBox[{{9, -16}, {9, -15}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{9, -16}]}, 
+       {GrayLevel[1], LineBox[{{9, -16}, {9, -15}}], 
+        LineBox[{{10, -16}, {10, -15}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{10, -16}]}, 
+       {GrayLevel[1], LineBox[{{10, -16}, {10, -15}}], 
+        LineBox[{{11, -16}, {11, -15}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{11, -16}]}, 
+       {GrayLevel[1], LineBox[{{11, -16}, {11, -15}}], 
+        LineBox[{{12, -16}, {12, -15}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{12, -16}]}, 
+       {GrayLevel[1], LineBox[{{12, -16}, {12, -15}}], 
+        LineBox[{{13, -16}, {13, -15}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{13, -16}]}, 
+       {GrayLevel[1], LineBox[{{13, -16}, {13, -15}}], 
+        LineBox[{{14, -16}, {14, -15}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{14, -16}]}, 
+       {GrayLevel[1], LineBox[{{14, -16}, {14, -15}}], 
+        LineBox[{{15, -16}, {15, -15}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{15, -16}]}, 
+       {GrayLevel[1], LineBox[{{15, -16}, {15, -15}}], 
+        LineBox[{{16, -16}, {16, -15}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{16, -16}]}, 
+       {GrayLevel[1], LineBox[{{16, -16}, {16, -15}}], 
+        LineBox[{{17, -16}, {17, -15}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{17, -16}]}, 
+       {GrayLevel[1], LineBox[{{17, -16}, {17, -15}}], 
+        LineBox[{{18, -16}, {18, -15}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{18, -16}]}, 
+       {GrayLevel[1], LineBox[{{18, -16}, {18, -15}}], 
+        LineBox[{{19, -16}, {19, -15}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{19, -16}]}, 
+       {GrayLevel[1], LineBox[{{19, -16}, {19, -15}}], 
+        LineBox[{{20, -16}, {20, -15}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{20, -16}]}, 
+       {GrayLevel[1], LineBox[{{20, -16}, {20, -15}}], 
+        LineBox[{{21, -16}, {21, -15}}]}}}, {{
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{1, -18}]}, 
+       {GrayLevel[1], LineBox[{{1, -18}, {1, -17}}], 
+        LineBox[{{2, -18}, {2, -17}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{2, -18}]}, 
+       {GrayLevel[1], LineBox[{{2, -18}, {2, -17}}], 
+        LineBox[{{3, -18}, {3, -17}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{3, -18}]}, 
+       {GrayLevel[1], LineBox[{{3, -18}, {3, -17}}], 
+        LineBox[{{4, -18}, {4, -17}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{4, -18}]}, 
+       {GrayLevel[1], LineBox[{{4, -18}, {4, -17}}], 
+        LineBox[{{5, -18}, {5, -17}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{5, -18}]}, 
+       {GrayLevel[1], LineBox[{{5, -18}, {5, -17}}], 
+        LineBox[{{6, -18}, {6, -17}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{6, -18}]}, 
+       {GrayLevel[1], LineBox[{{6, -18}, {6, -17}}], 
+        LineBox[{{7, -18}, {7, -17}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{7, -18}]}, 
+       {GrayLevel[1], LineBox[{{7, -18}, {7, -17}}], 
+        LineBox[{{8, -18}, {8, -17}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{8, -18}]}, 
+       {GrayLevel[1], LineBox[{{8, -18}, {8, -17}}], 
+        LineBox[{{9, -18}, {9, -17}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{9, -18}]}, 
+       {GrayLevel[1], LineBox[{{9, -18}, {9, -17}}], 
+        LineBox[{{10, -18}, {10, -17}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{10, -18}]}, 
+       {GrayLevel[1], LineBox[{{10, -18}, {10, -17}}], 
+        LineBox[{{11, -18}, {11, -17}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{11, -18}]}, 
+       {GrayLevel[1], LineBox[{{11, -18}, {11, -17}}], 
+        LineBox[{{12, -18}, {12, -17}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{12, -18}]}, 
+       {GrayLevel[1], LineBox[{{12, -18}, {12, -17}}], 
+        LineBox[{{13, -18}, {13, -17}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{13, -18}]}, 
+       {GrayLevel[1], LineBox[{{13, -18}, {13, -17}}], 
+        LineBox[{{14, -18}, {14, -17}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{14, -18}]}, 
+       {GrayLevel[1], LineBox[{{14, -18}, {14, -17}}], 
+        LineBox[{{15, -18}, {15, -17}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{15, -18}]}, 
+       {GrayLevel[1], LineBox[{{15, -18}, {15, -17}}], 
+        LineBox[{{16, -18}, {16, -17}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{16, -18}]}, 
+       {GrayLevel[1], LineBox[{{16, -18}, {16, -17}}], 
+        LineBox[{{17, -18}, {17, -17}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{17, -18}]}, 
+       {GrayLevel[1], LineBox[{{17, -18}, {17, -17}}], 
+        LineBox[{{18, -18}, {18, -17}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{18, -18}]}, 
+       {GrayLevel[1], LineBox[{{18, -18}, {18, -17}}], 
+        LineBox[{{19, -18}, {19, -17}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{19, -18}]}, 
+       {GrayLevel[1], LineBox[{{19, -18}, {19, -17}}], 
+        LineBox[{{20, -18}, {20, -17}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{20, -18}]}, 
+       {GrayLevel[1], LineBox[{{20, -18}, {20, -17}}], 
+        LineBox[{{21, -18}, {21, -17}}]}}}, {{
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{1, -20}]}, 
+       {GrayLevel[1], LineBox[{{1, -20}, {1, -19}}], 
+        LineBox[{{2, -20}, {2, -19}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{2, -20}]}, 
+       {GrayLevel[1], LineBox[{{2, -20}, {2, -19}}], 
+        LineBox[{{3, -20}, {3, -19}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{3, -20}]}, 
+       {GrayLevel[1], LineBox[{{3, -20}, {3, -19}}], 
+        LineBox[{{4, -20}, {4, -19}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{4, -20}]}, 
+       {GrayLevel[1], LineBox[{{4, -20}, {4, -19}}], 
+        LineBox[{{5, -20}, {5, -19}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{5, -20}]}, 
+       {GrayLevel[1], LineBox[{{5, -20}, {5, -19}}], 
+        LineBox[{{6, -20}, {6, -19}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{6, -20}]}, 
+       {GrayLevel[1], LineBox[{{6, -20}, {6, -19}}], 
+        LineBox[{{7, -20}, {7, -19}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{7, -20}]}, 
+       {GrayLevel[1], LineBox[{{7, -20}, {7, -19}}], 
+        LineBox[{{8, -20}, {8, -19}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{8, -20}]}, 
+       {GrayLevel[1], LineBox[{{8, -20}, {8, -19}}], 
+        LineBox[{{9, -20}, {9, -19}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{9, -20}]}, 
+       {GrayLevel[1], LineBox[{{9, -20}, {9, -19}}], 
+        LineBox[{{10, -20}, {10, -19}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{10, -20}]}, 
+       {GrayLevel[1], LineBox[{{10, -20}, {10, -19}}], 
+        LineBox[{{11, -20}, {11, -19}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{11, -20}]}, 
+       {GrayLevel[1], LineBox[{{11, -20}, {11, -19}}], 
+        LineBox[{{12, -20}, {12, -19}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{12, -20}]}, 
+       {GrayLevel[1], LineBox[{{12, -20}, {12, -19}}], 
+        LineBox[{{13, -20}, {13, -19}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{13, -20}]}, 
+       {GrayLevel[1], LineBox[{{13, -20}, {13, -19}}], 
+        LineBox[{{14, -20}, {14, -19}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{14, -20}]}, 
+       {GrayLevel[1], LineBox[{{14, -20}, {14, -19}}], 
+        LineBox[{{15, -20}, {15, -19}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{15, -20}]}, 
+       {GrayLevel[1], LineBox[{{15, -20}, {15, -19}}], 
+        LineBox[{{16, -20}, {16, -19}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{16, -20}]}, 
+       {GrayLevel[1], LineBox[{{16, -20}, {16, -19}}], 
+        LineBox[{{17, -20}, {17, -19}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{17, -20}]}, 
+       {GrayLevel[1], LineBox[{{17, -20}, {17, -19}}], 
+        LineBox[{{18, -20}, {18, -19}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{18, -20}]}, 
+       {GrayLevel[1], LineBox[{{18, -20}, {18, -19}}], 
+        LineBox[{{19, -20}, {19, -19}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{19, -20}]}, 
+       {GrayLevel[1], LineBox[{{19, -20}, {19, -19}}], 
+        LineBox[{{20, -20}, {20, -19}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{20, -20}]}, 
+       {GrayLevel[1], LineBox[{{20, -20}, {20, -19}}], 
+        LineBox[{{21, -20}, {21, -19}}]}}}, {{
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{1, -22}]}, 
+       {GrayLevel[1], LineBox[{{1, -22}, {1, -21}}], 
+        LineBox[{{2, -22}, {2, -21}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{2, -22}]}, 
+       {GrayLevel[1], LineBox[{{2, -22}, {2, -21}}], 
+        LineBox[{{3, -22}, {3, -21}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{3, -22}]}, 
+       {GrayLevel[1], LineBox[{{3, -22}, {3, -21}}], 
+        LineBox[{{4, -22}, {4, -21}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{4, -22}]}, 
+       {GrayLevel[1], LineBox[{{4, -22}, {4, -21}}], 
+        LineBox[{{5, -22}, {5, -21}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{5, -22}]}, 
+       {GrayLevel[1], LineBox[{{5, -22}, {5, -21}}], 
+        LineBox[{{6, -22}, {6, -21}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{6, -22}]}, 
+       {GrayLevel[1], LineBox[{{6, -22}, {6, -21}}], 
+        LineBox[{{7, -22}, {7, -21}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{7, -22}]}, 
+       {GrayLevel[1], LineBox[{{7, -22}, {7, -21}}], 
+        LineBox[{{8, -22}, {8, -21}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{8, -22}]}, 
+       {GrayLevel[1], LineBox[{{8, -22}, {8, -21}}], 
+        LineBox[{{9, -22}, {9, -21}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{9, -22}]}, 
+       {GrayLevel[1], LineBox[{{9, -22}, {9, -21}}], 
+        LineBox[{{10, -22}, {10, -21}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{10, -22}]}, 
+       {GrayLevel[1], LineBox[{{10, -22}, {10, -21}}], 
+        LineBox[{{11, -22}, {11, -21}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{11, -22}]}, 
+       {GrayLevel[1], LineBox[{{11, -22}, {11, -21}}], 
+        LineBox[{{12, -22}, {12, -21}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{12, -22}]}, 
+       {GrayLevel[1], LineBox[{{12, -22}, {12, -21}}], 
+        LineBox[{{13, -22}, {13, -21}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{13, -22}]}, 
+       {GrayLevel[1], LineBox[{{13, -22}, {13, -21}}], 
+        LineBox[{{14, -22}, {14, -21}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{14, -22}]}, 
+       {GrayLevel[1], LineBox[{{14, -22}, {14, -21}}], 
+        LineBox[{{15, -22}, {15, -21}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{15, -22}]}, 
+       {GrayLevel[1], LineBox[{{15, -22}, {15, -21}}], 
+        LineBox[{{16, -22}, {16, -21}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{16, -22}]}, 
+       {GrayLevel[1], LineBox[{{16, -22}, {16, -21}}], 
+        LineBox[{{17, -22}, {17, -21}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{17, -22}]}, 
+       {GrayLevel[1], LineBox[{{17, -22}, {17, -21}}], 
+        LineBox[{{18, -22}, {18, -21}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{18, -22}]}, 
+       {GrayLevel[1], LineBox[{{18, -22}, {18, -21}}], 
+        LineBox[{{19, -22}, {19, -21}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{19, -22}]}, 
+       {GrayLevel[1], LineBox[{{19, -22}, {19, -21}}], 
+        LineBox[{{20, -22}, {20, -21}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{20, -22}]}, 
+       {GrayLevel[1], LineBox[{{20, -22}, {20, -21}}], 
+        LineBox[{{21, -22}, {21, -21}}]}}}, {{
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{1, -24}]}, 
+       {GrayLevel[1], LineBox[{{1, -24}, {1, -23}}], 
+        LineBox[{{2, -24}, {2, -23}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{2, -24}]}, 
+       {GrayLevel[1], LineBox[{{2, -24}, {2, -23}}], 
+        LineBox[{{3, -24}, {3, -23}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{3, -24}]}, 
+       {GrayLevel[1], LineBox[{{3, -24}, {3, -23}}], 
+        LineBox[{{4, -24}, {4, -23}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{4, -24}]}, 
+       {GrayLevel[1], LineBox[{{4, -24}, {4, -23}}], 
+        LineBox[{{5, -24}, {5, -23}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{5, -24}]}, 
+       {GrayLevel[1], LineBox[{{5, -24}, {5, -23}}], 
+        LineBox[{{6, -24}, {6, -23}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{6, -24}]}, 
+       {GrayLevel[1], LineBox[{{6, -24}, {6, -23}}], 
+        LineBox[{{7, -24}, {7, -23}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{7, -24}]}, 
+       {GrayLevel[1], LineBox[{{7, -24}, {7, -23}}], 
+        LineBox[{{8, -24}, {8, -23}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{8, -24}]}, 
+       {GrayLevel[1], LineBox[{{8, -24}, {8, -23}}], 
+        LineBox[{{9, -24}, {9, -23}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{9, -24}]}, 
+       {GrayLevel[1], LineBox[{{9, -24}, {9, -23}}], 
+        LineBox[{{10, -24}, {10, -23}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{10, -24}]}, 
+       {GrayLevel[1], LineBox[{{10, -24}, {10, -23}}], 
+        LineBox[{{11, -24}, {11, -23}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{11, -24}]}, 
+       {GrayLevel[1], LineBox[{{11, -24}, {11, -23}}], 
+        LineBox[{{12, -24}, {12, -23}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{12, -24}]}, 
+       {GrayLevel[1], LineBox[{{12, -24}, {12, -23}}], 
+        LineBox[{{13, -24}, {13, -23}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{13, -24}]}, 
+       {GrayLevel[1], LineBox[{{13, -24}, {13, -23}}], 
+        LineBox[{{14, -24}, {14, -23}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{14, -24}]}, 
+       {GrayLevel[1], LineBox[{{14, -24}, {14, -23}}], 
+        LineBox[{{15, -24}, {15, -23}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{15, -24}]}, 
+       {GrayLevel[1], LineBox[{{15, -24}, {15, -23}}], 
+        LineBox[{{16, -24}, {16, -23}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{16, -24}]}, 
+       {GrayLevel[1], LineBox[{{16, -24}, {16, -23}}], 
+        LineBox[{{17, -24}, {17, -23}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{17, -24}]}, 
+       {GrayLevel[1], LineBox[{{17, -24}, {17, -23}}], 
+        LineBox[{{18, -24}, {18, -23}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{18, -24}]}, 
+       {GrayLevel[1], LineBox[{{18, -24}, {18, -23}}], 
+        LineBox[{{19, -24}, {19, -23}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{19, -24}]}, 
+       {GrayLevel[1], LineBox[{{19, -24}, {19, -23}}], 
+        LineBox[{{20, -24}, {20, -23}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{20, -24}]}, 
+       {GrayLevel[1], LineBox[{{20, -24}, {20, -23}}], 
+        LineBox[{{21, -24}, {21, -23}}]}}}, {{
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{1, -26}]}, 
+       {GrayLevel[1], LineBox[{{1, -26}, {1, -25}}], 
+        LineBox[{{2, -26}, {2, -25}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{2, -26}]}, 
+       {GrayLevel[1], LineBox[{{2, -26}, {2, -25}}], 
+        LineBox[{{3, -26}, {3, -25}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{3, -26}]}, 
+       {GrayLevel[1], LineBox[{{3, -26}, {3, -25}}], 
+        LineBox[{{4, -26}, {4, -25}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{4, -26}]}, 
+       {GrayLevel[1], LineBox[{{4, -26}, {4, -25}}], 
+        LineBox[{{5, -26}, {5, -25}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{5, -26}]}, 
+       {GrayLevel[1], LineBox[{{5, -26}, {5, -25}}], 
+        LineBox[{{6, -26}, {6, -25}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{6, -26}]}, 
+       {GrayLevel[1], LineBox[{{6, -26}, {6, -25}}], 
+        LineBox[{{7, -26}, {7, -25}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{7, -26}]}, 
+       {GrayLevel[1], LineBox[{{7, -26}, {7, -25}}], 
+        LineBox[{{8, -26}, {8, -25}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{8, -26}]}, 
+       {GrayLevel[1], LineBox[{{8, -26}, {8, -25}}], 
+        LineBox[{{9, -26}, {9, -25}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{9, -26}]}, 
+       {GrayLevel[1], LineBox[{{9, -26}, {9, -25}}], 
+        LineBox[{{10, -26}, {10, -25}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{10, -26}]}, 
+       {GrayLevel[1], LineBox[{{10, -26}, {10, -25}}], 
+        LineBox[{{11, -26}, {11, -25}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{11, -26}]}, 
+       {GrayLevel[1], LineBox[{{11, -26}, {11, -25}}], 
+        LineBox[{{12, -26}, {12, -25}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{12, -26}]}, 
+       {GrayLevel[1], LineBox[{{12, -26}, {12, -25}}], 
+        LineBox[{{13, -26}, {13, -25}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{13, -26}]}, 
+       {GrayLevel[1], LineBox[{{13, -26}, {13, -25}}], 
+        LineBox[{{14, -26}, {14, -25}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{14, -26}]}, 
+       {GrayLevel[1], LineBox[{{14, -26}, {14, -25}}], 
+        LineBox[{{15, -26}, {15, -25}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{15, -26}]}, 
+       {GrayLevel[1], LineBox[{{15, -26}, {15, -25}}], 
+        LineBox[{{16, -26}, {16, -25}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{16, -26}]}, 
+       {GrayLevel[1], LineBox[{{16, -26}, {16, -25}}], 
+        LineBox[{{17, -26}, {17, -25}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{17, -26}]}, 
+       {GrayLevel[1], LineBox[{{17, -26}, {17, -25}}], 
+        LineBox[{{18, -26}, {18, -25}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{18, -26}]}, 
+       {GrayLevel[1], LineBox[{{18, -26}, {18, -25}}], 
+        LineBox[{{19, -26}, {19, -25}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{19, -26}]}, 
+       {GrayLevel[1], LineBox[{{19, -26}, {19, -25}}], 
+        LineBox[{{20, -26}, {20, -25}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{20, -26}]}, 
+       {GrayLevel[1], LineBox[{{20, -26}, {20, -25}}], 
+        LineBox[{{21, -26}, {21, -25}}]}}}, {{
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{1, -28}]}, 
+       {GrayLevel[1], LineBox[{{1, -28}, {1, -27}}], 
+        LineBox[{{2, -28}, {2, -27}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{2, -28}]}, 
+       {GrayLevel[1], LineBox[{{2, -28}, {2, -27}}], 
+        LineBox[{{3, -28}, {3, -27}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{3, -28}]}, 
+       {GrayLevel[1], LineBox[{{3, -28}, {3, -27}}], 
+        LineBox[{{4, -28}, {4, -27}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{4, -28}]}, 
+       {GrayLevel[1], LineBox[{{4, -28}, {4, -27}}], 
+        LineBox[{{5, -28}, {5, -27}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{5, -28}]}, 
+       {GrayLevel[1], LineBox[{{5, -28}, {5, -27}}], 
+        LineBox[{{6, -28}, {6, -27}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{6, -28}]}, 
+       {GrayLevel[1], LineBox[{{6, -28}, {6, -27}}], 
+        LineBox[{{7, -28}, {7, -27}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{7, -28}]}, 
+       {GrayLevel[1], LineBox[{{7, -28}, {7, -27}}], 
+        LineBox[{{8, -28}, {8, -27}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{8, -28}]}, 
+       {GrayLevel[1], LineBox[{{8, -28}, {8, -27}}], 
+        LineBox[{{9, -28}, {9, -27}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{9, -28}]}, 
+       {GrayLevel[1], LineBox[{{9, -28}, {9, -27}}], 
+        LineBox[{{10, -28}, {10, -27}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{10, -28}]}, 
+       {GrayLevel[1], LineBox[{{10, -28}, {10, -27}}], 
+        LineBox[{{11, -28}, {11, -27}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{11, -28}]}, 
+       {GrayLevel[1], LineBox[{{11, -28}, {11, -27}}], 
+        LineBox[{{12, -28}, {12, -27}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{12, -28}]}, 
+       {GrayLevel[1], LineBox[{{12, -28}, {12, -27}}], 
+        LineBox[{{13, -28}, {13, -27}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{13, -28}]}, 
+       {GrayLevel[1], LineBox[{{13, -28}, {13, -27}}], 
+        LineBox[{{14, -28}, {14, -27}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{14, -28}]}, 
+       {GrayLevel[1], LineBox[{{14, -28}, {14, -27}}], 
+        LineBox[{{15, -28}, {15, -27}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{15, -28}]}, 
+       {GrayLevel[1], LineBox[{{15, -28}, {15, -27}}], 
+        LineBox[{{16, -28}, {16, -27}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{16, -28}]}, 
+       {GrayLevel[1], LineBox[{{16, -28}, {16, -27}}], 
+        LineBox[{{17, -28}, {17, -27}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{17, -28}]}, 
+       {GrayLevel[1], LineBox[{{17, -28}, {17, -27}}], 
+        LineBox[{{18, -28}, {18, -27}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{18, -28}]}, 
+       {GrayLevel[1], LineBox[{{18, -28}, {18, -27}}], 
+        LineBox[{{19, -28}, {19, -27}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{19, -28}]}, 
+       {GrayLevel[1], LineBox[{{19, -28}, {19, -27}}], 
+        LineBox[{{20, -28}, {20, -27}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{20, -28}]}, 
+       {GrayLevel[1], LineBox[{{20, -28}, {20, -27}}], 
+        LineBox[{{21, -28}, {21, -27}}]}}}, {{
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{1, -30}]}, 
+       {GrayLevel[1], LineBox[{{1, -30}, {1, -29}}], 
+        LineBox[{{2, -30}, {2, -29}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{2, -30}]}, 
+       {GrayLevel[1], LineBox[{{2, -30}, {2, -29}}], 
+        LineBox[{{3, -30}, {3, -29}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{3, -30}]}, 
+       {GrayLevel[1], LineBox[{{3, -30}, {3, -29}}], 
+        LineBox[{{4, -30}, {4, -29}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{4, -30}]}, 
+       {GrayLevel[1], LineBox[{{4, -30}, {4, -29}}], 
+        LineBox[{{5, -30}, {5, -29}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{5, -30}]}, 
+       {GrayLevel[1], LineBox[{{5, -30}, {5, -29}}], 
+        LineBox[{{6, -30}, {6, -29}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{6, -30}]}, 
+       {GrayLevel[1], LineBox[{{6, -30}, {6, -29}}], 
+        LineBox[{{7, -30}, {7, -29}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{7, -30}]}, 
+       {GrayLevel[1], LineBox[{{7, -30}, {7, -29}}], 
+        LineBox[{{8, -30}, {8, -29}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{8, -30}]}, 
+       {GrayLevel[1], LineBox[{{8, -30}, {8, -29}}], 
+        LineBox[{{9, -30}, {9, -29}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{9, -30}]}, 
+       {GrayLevel[1], LineBox[{{9, -30}, {9, -29}}], 
+        LineBox[{{10, -30}, {10, -29}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{10, -30}]}, 
+       {GrayLevel[1], LineBox[{{10, -30}, {10, -29}}], 
+        LineBox[{{11, -30}, {11, -29}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{11, -30}]}, 
+       {GrayLevel[1], LineBox[{{11, -30}, {11, -29}}], 
+        LineBox[{{12, -30}, {12, -29}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{12, -30}]}, 
+       {GrayLevel[1], LineBox[{{12, -30}, {12, -29}}], 
+        LineBox[{{13, -30}, {13, -29}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{13, -30}]}, 
+       {GrayLevel[1], LineBox[{{13, -30}, {13, -29}}], 
+        LineBox[{{14, -30}, {14, -29}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{14, -30}]}, 
+       {GrayLevel[1], LineBox[{{14, -30}, {14, -29}}], 
+        LineBox[{{15, -30}, {15, -29}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{15, -30}]}, 
+       {GrayLevel[1], LineBox[{{15, -30}, {15, -29}}], 
+        LineBox[{{16, -30}, {16, -29}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{16, -30}]}, 
+       {GrayLevel[1], LineBox[{{16, -30}, {16, -29}}], 
+        LineBox[{{17, -30}, {17, -29}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{17, -30}]}, 
+       {GrayLevel[1], LineBox[{{17, -30}, {17, -29}}], 
+        LineBox[{{18, -30}, {18, -29}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{18, -30}]}, 
+       {GrayLevel[1], LineBox[{{18, -30}, {18, -29}}], 
+        LineBox[{{19, -30}, {19, -29}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{19, -30}]}, 
+       {GrayLevel[1], LineBox[{{19, -30}, {19, -29}}], 
+        LineBox[{{20, -30}, {20, -29}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{20, -30}]}, 
+       {GrayLevel[1], LineBox[{{20, -30}, {20, -29}}], 
+        LineBox[{{21, -30}, {21, -29}}]}}}, {{
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{1, -32}]}, 
+       {GrayLevel[1], LineBox[{{1, -32}, {1, -31}}], 
+        LineBox[{{2, -32}, {2, -31}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{2, -32}]}, 
+       {GrayLevel[1], LineBox[{{2, -32}, {2, -31}}], 
+        LineBox[{{3, -32}, {3, -31}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{3, -32}]}, 
+       {GrayLevel[1], LineBox[{{3, -32}, {3, -31}}], 
+        LineBox[{{4, -32}, {4, -31}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{4, -32}]}, 
+       {GrayLevel[1], LineBox[{{4, -32}, {4, -31}}], 
+        LineBox[{{5, -32}, {5, -31}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{5, -32}]}, 
+       {GrayLevel[1], LineBox[{{5, -32}, {5, -31}}], 
+        LineBox[{{6, -32}, {6, -31}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{6, -32}]}, 
+       {GrayLevel[1], LineBox[{{6, -32}, {6, -31}}], 
+        LineBox[{{7, -32}, {7, -31}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{7, -32}]}, 
+       {GrayLevel[1], LineBox[{{7, -32}, {7, -31}}], 
+        LineBox[{{8, -32}, {8, -31}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{8, -32}]}, 
+       {GrayLevel[1], LineBox[{{8, -32}, {8, -31}}], 
+        LineBox[{{9, -32}, {9, -31}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{9, -32}]}, 
+       {GrayLevel[1], LineBox[{{9, -32}, {9, -31}}], 
+        LineBox[{{10, -32}, {10, -31}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], RectangleBox[{10, -32}]}, 
+       {GrayLevel[1], LineBox[{{10, -32}, {10, -31}}], 
+        LineBox[{{11, -32}, {11, -31}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{11, -32}]}, 
+       {GrayLevel[1], LineBox[{{11, -32}, {11, -31}}], 
+        LineBox[{{12, -32}, {12, -31}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{12, -32}]}, 
+       {GrayLevel[1], LineBox[{{12, -32}, {12, -31}}], 
+        LineBox[{{13, -32}, {13, -31}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{13, -32}]}, 
+       {GrayLevel[1], LineBox[{{13, -32}, {13, -31}}], 
+        LineBox[{{14, -32}, {14, -31}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{14, -32}]}, 
+       {GrayLevel[1], LineBox[{{14, -32}, {14, -31}}], 
+        LineBox[{{15, -32}, {15, -31}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{15, -32}]}, 
+       {GrayLevel[1], LineBox[{{15, -32}, {15, -31}}], 
+        LineBox[{{16, -32}, {16, -31}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{16, -32}]}, 
+       {GrayLevel[1], LineBox[{{16, -32}, {16, -31}}], 
+        LineBox[{{17, -32}, {17, -31}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{17, -32}]}, 
+       {GrayLevel[1], LineBox[{{17, -32}, {17, -31}}], 
+        LineBox[{{18, -32}, {18, -31}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{18, -32}]}, 
+       {GrayLevel[1], LineBox[{{18, -32}, {18, -31}}], 
+        LineBox[{{19, -32}, {19, -31}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{19, -32}]}, 
+       {GrayLevel[1], LineBox[{{19, -32}, {19, -31}}], 
+        LineBox[{{20, -32}, {20, -31}}]}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], RectangleBox[{20, -32}]}, 
+       {GrayLevel[1], LineBox[{{20, -32}, {20, -31}}], 
+        LineBox[{{21, -32}, {21, -31}}]}}}}, {{
+      {GrayLevel[
+        NCache[
+         Rational[4, 5], 0.8]], 
+       PolygonBox[{{1, -2}, {2, -2}, {2, -3}, {1, -3}}], 
+       {GrayLevel[1], LineBox[{{1, -2}, {1, -3}}], 
+        LineBox[{{2, -2}, {2, -3}}]}, {}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{4, -2}, {5, -2}, {5, -3}, {4, -3}}], 
+        {GrayLevel[1], LineBox[{{4, -2}, {4, -3}}], 
+         LineBox[{{5, -2}, {5, -3}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{5, -2}, {6, -2}, {6, -3}, {5, -3}}], 
+        {GrayLevel[1], LineBox[{{5, -2}, {5, -3}}], 
+         LineBox[{{6, -2}, {6, -3}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{6, -2}, {7, -2}, {7, -3}, {6, -3}}], 
+        {GrayLevel[1], LineBox[{{6, -2}, {6, -3}}], 
+         LineBox[{{7, -2}, {7, -3}}]}, {}}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{9, -2}, {10, -2}, {10, -3}, {9, -3}}], 
+        {GrayLevel[1], LineBox[{{9, -2}, {9, -3}}], 
+         LineBox[{{10, -2}, {10, -3}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{10, -2}, {11, -2}, {11, -3}, {10, -3}}], 
+        {GrayLevel[1], LineBox[{{10, -2}, {10, -3}}], 
+         LineBox[{{11, -2}, {11, -3}}]}, {}}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{13, -2}, {14, -2}, {14, -3}, {13, -3}}], 
+        {GrayLevel[1], LineBox[{{13, -2}, {13, -3}}], 
+         LineBox[{{14, -2}, {14, -3}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{14, -2}, {15, -2}, {15, -3}, {14, -3}}], 
+        {GrayLevel[1], LineBox[{{14, -2}, {14, -3}}], 
+         LineBox[{{15, -2}, {15, -3}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{15, -2}, {16, -2}, {16, -3}, {15, -3}}], 
+        {GrayLevel[1], LineBox[{{15, -2}, {15, -3}}], 
+         LineBox[{{16, -2}, {16, -3}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{16, -2}, {17, -2}, {17, -3}, {16, -3}}], 
+        {GrayLevel[1], LineBox[{{16, -2}, {16, -3}}], 
+         LineBox[{{17, -2}, {17, -3}}]}, {}}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{19, -2}, {20, -2}, {20, -3}, {19, -3}}], 
+        {GrayLevel[1], LineBox[{{19, -2}, {19, -3}}], 
+         LineBox[{{20, -2}, {20, -3}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{20, -2}, {21, -2}, {21, -3}, {20, -3}}], 
+        {GrayLevel[1], LineBox[{{20, -2}, {20, -3}}], 
+         LineBox[{{21, -2}, {21, -3}}]}, {}}}}, {{
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{3, -4}, {4, -4}, {4, -5}, {3, -5}}], 
+        {GrayLevel[1], LineBox[{{3, -4}, {3, -5}}], 
+         LineBox[{{4, -4}, {4, -5}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{4, -4}, {5, -4}, {5, -5}, {4, -5}}], 
+        {GrayLevel[1], LineBox[{{4, -4}, {4, -5}}], 
+         LineBox[{{5, -4}, {5, -5}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{5, -4}, {6, -4}, {6, -5}, {5, -5}}], 
+        {GrayLevel[1], LineBox[{{5, -4}, {5, -5}}], 
+         LineBox[{{6, -4}, {6, -5}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{6, -4}, {7, -4}, {7, -5}, {6, -5}}], 
+        {GrayLevel[1], LineBox[{{6, -4}, {6, -5}}], 
+         LineBox[{{7, -4}, {7, -5}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{7, -4}, {8, -4}, {8, -5}, {7, -5}}], 
+        {GrayLevel[1], LineBox[{{7, -4}, {7, -5}}], 
+         LineBox[{{8, -4}, {8, -5}}]}, {}}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{12, -4}, {13, -4}, {13, -5}, {12, -5}}], 
+        {GrayLevel[1], LineBox[{{12, -4}, {12, -5}}], 
+         LineBox[{{13, -4}, {13, -5}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{13, -4}, {14, -4}, {14, -5}, {13, -5}}], 
+        {GrayLevel[1], LineBox[{{13, -4}, {13, -5}}], 
+         LineBox[{{14, -4}, {14, -5}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{14, -4}, {15, -4}, {15, -5}, {14, -5}}], 
+        {GrayLevel[1], LineBox[{{14, -4}, {14, -5}}], 
+         LineBox[{{15, -4}, {15, -5}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{15, -4}, {16, -4}, {16, -5}, {15, -5}}], 
+        {GrayLevel[1], LineBox[{{15, -4}, {15, -5}}], 
+         LineBox[{{16, -4}, {16, -5}}]}, {}}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{18, -4}, {19, -4}, {19, -5}, {18, -5}}], 
+        {GrayLevel[1], LineBox[{{18, -4}, {18, -5}}], 
+         LineBox[{{19, -4}, {19, -5}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{19, -4}, {20, -4}, {20, -5}, {19, -5}}], 
+        {GrayLevel[1], LineBox[{{19, -4}, {19, -5}}], 
+         LineBox[{{20, -4}, {20, -5}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{20, -4}, {21, -4}, {21, -5}, {20, -5}}], 
+        {GrayLevel[1], LineBox[{{20, -4}, {20, -5}}], 
+         LineBox[{{21, -4}, {21, -5}}]}, {}}}}, {{
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{1, -6}, {2, -6}, {2, -7}, {1, -7}}], 
+        {GrayLevel[1], LineBox[{{1, -6}, {1, -7}}], 
+         LineBox[{{2, -6}, {2, -7}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{2, -6}, {3, -6}, {3, -7}, {2, -7}}], 
+        {GrayLevel[1], LineBox[{{2, -6}, {2, -7}}], 
+         LineBox[{{3, -6}, {3, -7}}]}, {}}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{5, -6}, {6, -6}, {6, -7}, {5, -7}}], 
+        {GrayLevel[1], LineBox[{{5, -6}, {5, -7}}], 
+         LineBox[{{6, -6}, {6, -7}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{6, -6}, {7, -6}, {7, -7}, {6, -7}}], 
+        {GrayLevel[1], LineBox[{{6, -6}, {6, -7}}], 
+         LineBox[{{7, -6}, {7, -7}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{7, -6}, {8, -6}, {8, -7}, {7, -7}}], 
+        {GrayLevel[1], LineBox[{{7, -6}, {7, -7}}], 
+         LineBox[{{8, -6}, {8, -7}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{8, -6}, {9, -6}, {9, -7}, {8, -7}}], 
+        {GrayLevel[1], LineBox[{{8, -6}, {8, -7}}], 
+         LineBox[{{9, -6}, {9, -7}}]}, {}}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{11, -6}, {12, -6}, {12, -7}, {11, -7}}], 
+        {GrayLevel[1], LineBox[{{11, -6}, {11, -7}}], 
+         LineBox[{{12, -6}, {12, -7}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{12, -6}, {13, -6}, {13, -7}, {12, -7}}], 
+        {GrayLevel[1], LineBox[{{12, -6}, {12, -7}}], 
+         LineBox[{{13, -6}, {13, -7}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{13, -6}, {14, -6}, {14, -7}, {13, -7}}], 
+        {GrayLevel[1], LineBox[{{13, -6}, {13, -7}}], 
+         LineBox[{{14, -6}, {14, -7}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{14, -6}, {15, -6}, {15, -7}, {14, -7}}], 
+        {GrayLevel[1], LineBox[{{14, -6}, {14, -7}}], 
+         LineBox[{{15, -6}, {15, -7}}]}, {}}}, 
+      {GrayLevel[
+        NCache[
+         Rational[4, 5], 0.8]], 
+       PolygonBox[{{17, -6}, {18, -6}, {18, -7}, {17, -7}}], 
+       {GrayLevel[1], LineBox[{{17, -6}, {17, -7}}], 
+        LineBox[{{18, -6}, {18, -7}}]}, {}}, 
+      {GrayLevel[
+        NCache[
+         Rational[9, 10], 0.9]], 
+       PolygonBox[{{20, -6}, {21, -6}, {21, -7}, {20, -7}}], 
+       {GrayLevel[1], LineBox[{{20, -6}, {20, -7}}], 
+        LineBox[{{21, -6}, {21, -7}}]}, {}}}, {
+      {GrayLevel[
+        NCache[
+         Rational[9, 10], 0.9]], 
+       PolygonBox[{{1, -8}, {2, -8}, {2, -9}, {1, -9}}], 
+       {GrayLevel[1], LineBox[{{1, -8}, {1, -9}}], 
+        LineBox[{{2, -8}, {2, -9}}]}, {}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{4, -8}, {5, -8}, {5, -9}, {4, -9}}], 
+        {GrayLevel[1], LineBox[{{4, -8}, {4, -9}}], 
+         LineBox[{{5, -8}, {5, -9}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{5, -8}, {6, -8}, {6, -9}, {5, -9}}], 
+        {GrayLevel[1], LineBox[{{5, -8}, {5, -9}}], 
+         LineBox[{{6, -8}, {6, -9}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{6, -8}, {7, -8}, {7, -9}, {6, -9}}], 
+        {GrayLevel[1], LineBox[{{6, -8}, {6, -9}}], 
+         LineBox[{{7, -8}, {7, -9}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{7, -8}, {8, -8}, {8, -9}, {7, -9}}], 
+        {GrayLevel[1], LineBox[{{7, -8}, {7, -9}}], 
+         LineBox[{{8, -8}, {8, -9}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{8, -8}, {9, -8}, {9, -9}, {8, -9}}], 
+        {GrayLevel[1], LineBox[{{8, -8}, {8, -9}}], 
+         LineBox[{{9, -8}, {9, -9}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{9, -8}, {10, -8}, {10, -9}, {9, -9}}], 
+        {GrayLevel[1], LineBox[{{9, -8}, {9, -9}}], 
+         LineBox[{{10, -8}, {10, -9}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{10, -8}, {11, -8}, {11, -9}, {10, -9}}], 
+        {GrayLevel[1], LineBox[{{10, -8}, {10, -9}}], 
+         LineBox[{{11, -8}, {11, -9}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{11, -8}, {12, -8}, {12, -9}, {11, -9}}], 
+        {GrayLevel[1], LineBox[{{11, -8}, {11, -9}}], 
+         LineBox[{{12, -8}, {12, -9}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{12, -8}, {13, -8}, {13, -9}, {12, -9}}], 
+        {GrayLevel[1], LineBox[{{12, -8}, {12, -9}}], 
+         LineBox[{{13, -8}, {13, -9}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{13, -8}, {14, -8}, {14, -9}, {13, -9}}], 
+        {GrayLevel[1], LineBox[{{13, -8}, {13, -9}}], 
+         LineBox[{{14, -8}, {14, -9}}]}, {}}}, 
+      {GrayLevel[
+        NCache[
+         Rational[4, 5], 0.8]], 
+       PolygonBox[{{16, -8}, {17, -8}, {17, -9}, {16, -9}}], 
+       {GrayLevel[1], LineBox[{{16, -8}, {16, -9}}], 
+        LineBox[{{17, -8}, {17, -9}}]}, {}}}, {{
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{1, -10}, {2, -10}, {2, -11}, {1, -11}}], 
+        {GrayLevel[1], LineBox[{{1, -10}, {1, -11}}], 
+         LineBox[{{2, -10}, {2, -11}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{2, -10}, {3, -10}, {3, -11}, {2, -11}}], 
+        {GrayLevel[1], LineBox[{{2, -10}, {2, -11}}], 
+         LineBox[{{3, -10}, {3, -11}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{3, -10}, {4, -10}, {4, -11}, {3, -11}}], 
+        {GrayLevel[1], LineBox[{{3, -10}, {3, -11}}], 
+         LineBox[{{4, -10}, {4, -11}}]}, {}}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{6, -10}, {7, -10}, {7, -11}, {6, -11}}], 
+        {GrayLevel[1], LineBox[{{6, -10}, {6, -11}}], 
+         LineBox[{{7, -10}, {7, -11}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{7, -10}, {8, -10}, {8, -11}, {7, -11}}], 
+        {GrayLevel[1], LineBox[{{7, -10}, {7, -11}}], 
+         LineBox[{{8, -10}, {8, -11}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{8, -10}, {9, -10}, {9, -11}, {8, -11}}], 
+        {GrayLevel[1], LineBox[{{8, -10}, {8, -11}}], 
+         LineBox[{{9, -10}, {9, -11}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{9, -10}, {10, -10}, {10, -11}, {9, -11}}], 
+        {GrayLevel[1], LineBox[{{9, -10}, {9, -11}}], 
+         LineBox[{{10, -10}, {10, -11}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{10, -10}, {11, -10}, {11, -11}, {10, -11}}], 
+        {GrayLevel[1], LineBox[{{10, -10}, {10, -11}}], 
+         LineBox[{{11, -10}, {11, -11}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{11, -10}, {12, -10}, {12, -11}, {11, -11}}], 
+        {GrayLevel[1], LineBox[{{11, -10}, {11, -11}}], 
+         LineBox[{{12, -10}, {12, -11}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{12, -10}, {13, -10}, {13, -11}, {12, -11}}], 
+        {GrayLevel[1], LineBox[{{12, -10}, {12, -11}}], 
+         LineBox[{{13, -10}, {13, -11}}]}, {}}}, 
+      {GrayLevel[
+        NCache[
+         Rational[4, 5], 0.8]], 
+       PolygonBox[{{15, -10}, {16, -10}, {16, -11}, {15, -11}}], 
+       {GrayLevel[1], LineBox[{{15, -10}, {15, -11}}], 
+        LineBox[{{16, -10}, {16, -11}}]}, {}}, 
+      {GrayLevel[
+        NCache[
+         Rational[4, 5], 0.8]], 
+       PolygonBox[{{20, -10}, {21, -10}, {21, -11}, {20, -11}}], 
+       {GrayLevel[1], LineBox[{{20, -10}, {20, -11}}], 
+        LineBox[{{21, -10}, {21, -11}}]}, {}}}, {{
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{1, -12}, {2, -12}, {2, -13}, {1, -13}}], 
+        {GrayLevel[1], LineBox[{{1, -12}, {1, -13}}], 
+         LineBox[{{2, -12}, {2, -13}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{2, -12}, {3, -12}, {3, -13}, {2, -13}}], 
+        {GrayLevel[1], LineBox[{{2, -12}, {2, -13}}], 
+         LineBox[{{3, -12}, {3, -13}}]}, {}}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{7, -12}, {8, -12}, {8, -13}, {7, -13}}], 
+        {GrayLevel[1], LineBox[{{7, -12}, {7, -13}}], 
+         LineBox[{{8, -12}, {8, -13}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{8, -12}, {9, -12}, {9, -13}, {8, -13}}], 
+        {GrayLevel[1], LineBox[{{8, -12}, {8, -13}}], 
+         LineBox[{{9, -12}, {9, -13}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{9, -12}, {10, -12}, {10, -13}, {9, -13}}], 
+        {GrayLevel[1], LineBox[{{9, -12}, {9, -13}}], 
+         LineBox[{{10, -12}, {10, -13}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{10, -12}, {11, -12}, {11, -13}, {10, -13}}], 
+        {GrayLevel[1], LineBox[{{10, -12}, {10, -13}}], 
+         LineBox[{{11, -12}, {11, -13}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{11, -12}, {12, -12}, {12, -13}, {11, -13}}], 
+        {GrayLevel[1], LineBox[{{11, -12}, {11, -13}}], 
+         LineBox[{{12, -12}, {12, -13}}]}, {}}}, 
+      {GrayLevel[
+        NCache[
+         Rational[4, 5], 0.8]], 
+       PolygonBox[{{14, -12}, {15, -12}, {15, -13}, {14, -13}}], 
+       {GrayLevel[1], LineBox[{{14, -12}, {14, -13}}], 
+        LineBox[{{15, -12}, {15, -13}}]}, {}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{17, -12}, {18, -12}, {18, -13}, {17, -13}}], 
+        {GrayLevel[1], LineBox[{{17, -12}, {17, -13}}], 
+         LineBox[{{18, -12}, {18, -13}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{18, -12}, {19, -12}, {19, -13}, {18, -13}}], 
+        {GrayLevel[1], LineBox[{{18, -12}, {18, -13}}], 
+         LineBox[{{19, -12}, {19, -13}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{19, -12}, {20, -12}, {20, -13}, {19, -13}}], 
+        {GrayLevel[1], LineBox[{{19, -12}, {19, -13}}], 
+         LineBox[{{20, -12}, {20, -13}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{20, -12}, {21, -12}, {21, -13}, {20, -13}}], 
+        {GrayLevel[1], LineBox[{{20, -12}, {20, -13}}], 
+         LineBox[{{21, -12}, {21, -13}}]}, {}}}}, {{
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{1, -14}, {2, -14}, {2, -15}, {1, -15}}], 
+        {GrayLevel[1], LineBox[{{1, -14}, {1, -15}}], 
+         LineBox[{{2, -14}, {2, -15}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{2, -14}, {3, -14}, {3, -15}, {2, -15}}], 
+        {GrayLevel[1], LineBox[{{2, -14}, {2, -15}}], 
+         LineBox[{{3, -14}, {3, -15}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{3, -14}, {4, -14}, {4, -15}, {3, -15}}], 
+        {GrayLevel[1], LineBox[{{3, -14}, {3, -15}}], 
+         LineBox[{{4, -14}, {4, -15}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{4, -14}, {5, -14}, {5, -15}, {4, -15}}], 
+        {GrayLevel[1], LineBox[{{4, -14}, {4, -15}}], 
+         LineBox[{{5, -14}, {5, -15}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{5, -14}, {6, -14}, {6, -15}, {5, -15}}], 
+        {GrayLevel[1], LineBox[{{5, -14}, {5, -15}}], 
+         LineBox[{{6, -14}, {6, -15}}]}, {}}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{8, -14}, {9, -14}, {9, -15}, {8, -15}}], 
+        {GrayLevel[1], LineBox[{{8, -14}, {8, -15}}], 
+         LineBox[{{9, -14}, {9, -15}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{9, -14}, {10, -14}, {10, -15}, {9, -15}}], 
+        {GrayLevel[1], LineBox[{{9, -14}, {9, -15}}], 
+         LineBox[{{10, -14}, {10, -15}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{10, -14}, {11, -14}, {11, -15}, {10, -15}}], 
+        {GrayLevel[1], LineBox[{{10, -14}, {10, -15}}], 
+         LineBox[{{11, -14}, {11, -15}}]}, {}}}, 
+      {GrayLevel[
+        NCache[
+         Rational[4, 5], 0.8]], 
+       PolygonBox[{{13, -14}, {14, -14}, {14, -15}, {13, -15}}], 
+       {GrayLevel[1], LineBox[{{13, -14}, {13, -15}}], 
+        LineBox[{{14, -14}, {14, -15}}]}, {}}, 
+      {GrayLevel[
+        NCache[
+         Rational[4, 5], 0.8]], 
+       PolygonBox[{{16, -14}, {17, -14}, {17, -15}, {16, -15}}], 
+       {GrayLevel[1], LineBox[{{16, -14}, {16, -15}}], 
+        LineBox[{{17, -14}, {17, -15}}]}, {}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{19, -14}, {20, -14}, {20, -15}, {19, -15}}], 
+        {GrayLevel[1], LineBox[{{19, -14}, {19, -15}}], 
+         LineBox[{{20, -14}, {20, -15}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{20, -14}, {21, -14}, {21, -15}, {20, -15}}], 
+        {GrayLevel[1], LineBox[{{20, -14}, {20, -15}}], 
+         LineBox[{{21, -14}, {21, -15}}]}, {}}}}, {{
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{1, -16}, {2, -16}, {2, -17}, {1, -17}}], 
+        {GrayLevel[1], LineBox[{{1, -16}, {1, -17}}], 
+         LineBox[{{2, -16}, {2, -17}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{2, -16}, {3, -16}, {3, -17}, {2, -17}}], 
+        {GrayLevel[1], LineBox[{{2, -16}, {2, -17}}], 
+         LineBox[{{3, -16}, {3, -17}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{3, -16}, {4, -16}, {4, -17}, {3, -17}}], 
+        {GrayLevel[1], LineBox[{{3, -16}, {3, -17}}], 
+         LineBox[{{4, -16}, {4, -17}}]}, {}}}, 
+      {GrayLevel[
+        NCache[
+         Rational[9, 10], 0.9]], 
+       PolygonBox[{{6, -16}, {7, -16}, {7, -17}, {6, -17}}], 
+       {GrayLevel[1], LineBox[{{6, -16}, {6, -17}}], 
+        LineBox[{{7, -16}, {7, -17}}]}, {}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{9, -16}, {10, -16}, {10, -17}, {9, -17}}], 
+        {GrayLevel[1], LineBox[{{9, -16}, {9, -17}}], 
+         LineBox[{{10, -16}, {10, -17}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{10, -16}, {11, -16}, {11, -17}, {10, -17}}], 
+        {GrayLevel[1], LineBox[{{10, -16}, {10, -17}}], 
+         LineBox[{{11, -16}, {11, -17}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{11, -16}, {12, -16}, {12, -17}, {11, -17}}], 
+        {GrayLevel[1], LineBox[{{11, -16}, {11, -17}}], 
+         LineBox[{{12, -16}, {12, -17}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{12, -16}, {13, -16}, {13, -17}, {12, -17}}], 
+        {GrayLevel[1], LineBox[{{12, -16}, {12, -17}}], 
+         LineBox[{{13, -16}, {13, -17}}]}, {}}}, 
+      {GrayLevel[
+        NCache[
+         Rational[4, 5], 0.8]], 
+       PolygonBox[{{15, -16}, {16, -16}, {16, -17}, {15, -17}}], 
+       {GrayLevel[1], LineBox[{{15, -16}, {15, -17}}], 
+        LineBox[{{16, -16}, {16, -17}}]}, {}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{18, -16}, {19, -16}, {19, -17}, {18, -17}}], 
+        {GrayLevel[1], LineBox[{{18, -16}, {18, -17}}], 
+         LineBox[{{19, -16}, {19, -17}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{19, -16}, {20, -16}, {20, -17}, {19, -17}}], 
+        {GrayLevel[1], LineBox[{{19, -16}, {19, -17}}], 
+         LineBox[{{20, -16}, {20, -17}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{20, -16}, {21, -16}, {21, -17}, {20, -17}}], 
+        {GrayLevel[1], LineBox[{{20, -16}, {20, -17}}], 
+         LineBox[{{21, -16}, {21, -17}}]}, {}}}}, {{
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{1, -18}, {2, -18}, {2, -19}, {1, -19}}], 
+        {GrayLevel[1], LineBox[{{1, -18}, {1, -19}}], 
+         LineBox[{{2, -18}, {2, -19}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{2, -18}, {3, -18}, {3, -19}, {2, -19}}], 
+        {GrayLevel[1], LineBox[{{2, -18}, {2, -19}}], 
+         LineBox[{{3, -18}, {3, -19}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{3, -18}, {4, -18}, {4, -19}, {3, -19}}], 
+        {GrayLevel[1], LineBox[{{3, -18}, {3, -19}}], 
+         LineBox[{{4, -18}, {4, -19}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{4, -18}, {5, -18}, {5, -19}, {4, -19}}], 
+        {GrayLevel[1], LineBox[{{4, -18}, {4, -19}}], 
+         LineBox[{{5, -18}, {5, -19}}]}, {}}}, 
+      {GrayLevel[
+        NCache[
+         Rational[9, 10], 0.9]], 
+       PolygonBox[{{7, -18}, {8, -18}, {8, -19}, {7, -19}}], 
+       {GrayLevel[1], LineBox[{{7, -18}, {7, -19}}], 
+        LineBox[{{8, -18}, {8, -19}}]}, {}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{14, -18}, {15, -18}, {15, -19}, {14, -19}}], 
+        {GrayLevel[1], LineBox[{{14, -18}, {14, -19}}], 
+         LineBox[{{15, -18}, {15, -19}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{15, -18}, {16, -18}, {16, -19}, {15, -19}}], 
+        {GrayLevel[1], LineBox[{{15, -18}, {15, -19}}], 
+         LineBox[{{16, -18}, {16, -19}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{16, -18}, {17, -18}, {17, -19}, {16, -19}}], 
+        {GrayLevel[1], LineBox[{{16, -18}, {16, -19}}], 
+         LineBox[{{17, -18}, {17, -19}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{17, -18}, {18, -18}, {18, -19}, {17, -19}}], 
+        {GrayLevel[1], LineBox[{{17, -18}, {17, -19}}], 
+         LineBox[{{18, -18}, {18, -19}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{18, -18}, {19, -18}, {19, -19}, {18, -19}}], 
+        {GrayLevel[1], LineBox[{{18, -18}, {18, -19}}], 
+         LineBox[{{19, -18}, {19, -19}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{19, -18}, {20, -18}, {20, -19}, {19, -19}}], 
+        {GrayLevel[1], LineBox[{{19, -18}, {19, -19}}], 
+         LineBox[{{20, -18}, {20, -19}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{20, -18}, {21, -18}, {21, -19}, {20, -19}}], 
+        {GrayLevel[1], LineBox[{{20, -18}, {20, -19}}], 
+         LineBox[{{21, -18}, {21, -19}}]}, {}}}}, {{
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{1, -20}, {2, -20}, {2, -21}, {1, -21}}], 
+        {GrayLevel[1], LineBox[{{1, -20}, {1, -21}}], 
+         LineBox[{{2, -20}, {2, -21}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{2, -20}, {3, -20}, {3, -21}, {2, -21}}], 
+        {GrayLevel[1], LineBox[{{2, -20}, {2, -21}}], 
+         LineBox[{{3, -20}, {3, -21}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{3, -20}, {4, -20}, {4, -21}, {3, -21}}], 
+        {GrayLevel[1], LineBox[{{3, -20}, {3, -21}}], 
+         LineBox[{{4, -20}, {4, -21}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{4, -20}, {5, -20}, {5, -21}, {4, -21}}], 
+        {GrayLevel[1], LineBox[{{4, -20}, {4, -21}}], 
+         LineBox[{{5, -20}, {5, -21}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{5, -20}, {6, -20}, {6, -21}, {5, -21}}], 
+        {GrayLevel[1], LineBox[{{5, -20}, {5, -21}}], 
+         LineBox[{{6, -20}, {6, -21}}]}, {}}}, 
+      {GrayLevel[
+        NCache[
+         Rational[9, 10], 0.9]], 
+       PolygonBox[{{8, -20}, {9, -20}, {9, -21}, {8, -21}}], 
+       {GrayLevel[1], LineBox[{{8, -20}, {8, -21}}], 
+        LineBox[{{9, -20}, {9, -21}}]}, {}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{13, -20}, {14, -20}, {14, -21}, {13, -21}}], 
+        {GrayLevel[1], LineBox[{{13, -20}, {13, -21}}], 
+         LineBox[{{14, -20}, {14, -21}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{14, -20}, {15, -20}, {15, -21}, {14, -21}}], 
+        {GrayLevel[1], LineBox[{{14, -20}, {14, -21}}], 
+         LineBox[{{15, -20}, {15, -21}}]}, {}}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{17, -20}, {18, -20}, {18, -21}, {17, -21}}], 
+        {GrayLevel[1], LineBox[{{17, -20}, {17, -21}}], 
+         LineBox[{{18, -20}, {18, -21}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{18, -20}, {19, -20}, {19, -21}, {18, -21}}], 
+        {GrayLevel[1], LineBox[{{18, -20}, {18, -21}}], 
+         LineBox[{{19, -20}, {19, -21}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{19, -20}, {20, -20}, {20, -21}, {19, -21}}], 
+        {GrayLevel[1], LineBox[{{19, -20}, {19, -21}}], 
+         LineBox[{{20, -20}, {20, -21}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{20, -20}, {21, -20}, {21, -21}, {20, -21}}], 
+        {GrayLevel[1], LineBox[{{20, -20}, {20, -21}}], 
+         LineBox[{{21, -20}, {21, -21}}]}, {}}}}, {{
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{1, -22}, {2, -22}, {2, -23}, {1, -23}}], 
+        {GrayLevel[1], LineBox[{{1, -22}, {1, -23}}], 
+         LineBox[{{2, -22}, {2, -23}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{2, -22}, {3, -22}, {3, -23}, {2, -23}}], 
+        {GrayLevel[1], LineBox[{{2, -22}, {2, -23}}], 
+         LineBox[{{3, -22}, {3, -23}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{3, -22}, {4, -22}, {4, -23}, {3, -23}}], 
+        {GrayLevel[1], LineBox[{{3, -22}, {3, -23}}], 
+         LineBox[{{4, -22}, {4, -23}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{4, -22}, {5, -22}, {5, -23}, {4, -23}}], 
+        {GrayLevel[1], LineBox[{{4, -22}, {4, -23}}], 
+         LineBox[{{5, -22}, {5, -23}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{5, -22}, {6, -22}, {6, -23}, {5, -23}}], 
+        {GrayLevel[1], LineBox[{{5, -22}, {5, -23}}], 
+         LineBox[{{6, -22}, {6, -23}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{6, -22}, {7, -22}, {7, -23}, {6, -23}}], 
+        {GrayLevel[1], LineBox[{{6, -22}, {6, -23}}], 
+         LineBox[{{7, -22}, {7, -23}}]}, {}}}, 
+      {GrayLevel[
+        NCache[
+         Rational[9, 10], 0.9]], 
+       PolygonBox[{{9, -22}, {10, -22}, {10, -23}, {9, -23}}], 
+       {GrayLevel[1], LineBox[{{9, -22}, {9, -23}}], 
+        LineBox[{{10, -22}, {10, -23}}]}, {}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{12, -22}, {13, -22}, {13, -23}, {12, -23}}], 
+        {GrayLevel[1], LineBox[{{12, -22}, {12, -23}}], 
+         LineBox[{{13, -22}, {13, -23}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{13, -22}, {14, -22}, {14, -23}, {13, -23}}], 
+        {GrayLevel[1], LineBox[{{13, -22}, {13, -23}}], 
+         LineBox[{{14, -22}, {14, -23}}]}, {}}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{16, -22}, {17, -22}, {17, -23}, {16, -23}}], 
+        {GrayLevel[1], LineBox[{{16, -22}, {16, -23}}], 
+         LineBox[{{17, -22}, {17, -23}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{17, -22}, {18, -22}, {18, -23}, {17, -23}}], 
+        {GrayLevel[1], LineBox[{{17, -22}, {17, -23}}], 
+         LineBox[{{18, -22}, {18, -23}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{18, -22}, {19, -22}, {19, -23}, {18, -23}}], 
+        {GrayLevel[1], LineBox[{{18, -22}, {18, -23}}], 
+         LineBox[{{19, -22}, {19, -23}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{19, -22}, {20, -22}, {20, -23}, {19, -23}}], 
+        {GrayLevel[1], LineBox[{{19, -22}, {19, -23}}], 
+         LineBox[{{20, -22}, {20, -23}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{20, -22}, {21, -22}, {21, -23}, {20, -23}}], 
+        {GrayLevel[1], LineBox[{{20, -22}, {20, -23}}], 
+         LineBox[{{21, -22}, {21, -23}}]}, {}}}}, {{
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{1, -24}, {2, -24}, {2, -25}, {1, -25}}], 
+        {GrayLevel[1], LineBox[{{1, -24}, {1, -25}}], 
+         LineBox[{{2, -24}, {2, -25}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{2, -24}, {3, -24}, {3, -25}, {2, -25}}], 
+        {GrayLevel[1], LineBox[{{2, -24}, {2, -25}}], 
+         LineBox[{{3, -24}, {3, -25}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{3, -24}, {4, -24}, {4, -25}, {3, -25}}], 
+        {GrayLevel[1], LineBox[{{3, -24}, {3, -25}}], 
+         LineBox[{{4, -24}, {4, -25}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{4, -24}, {5, -24}, {5, -25}, {4, -25}}], 
+        {GrayLevel[1], LineBox[{{4, -24}, {4, -25}}], 
+         LineBox[{{5, -24}, {5, -25}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{5, -24}, {6, -24}, {6, -25}, {5, -25}}], 
+        {GrayLevel[1], LineBox[{{5, -24}, {5, -25}}], 
+         LineBox[{{6, -24}, {6, -25}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{6, -24}, {7, -24}, {7, -25}, {6, -25}}], 
+        {GrayLevel[1], LineBox[{{6, -24}, {6, -25}}], 
+         LineBox[{{7, -24}, {7, -25}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{7, -24}, {8, -24}, {8, -25}, {7, -25}}], 
+        {GrayLevel[1], LineBox[{{7, -24}, {7, -25}}], 
+         LineBox[{{8, -24}, {8, -25}}]}, {}}}, {
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{10, -24}, {11, -24}, {11, -25}, {10, -25}}], 
+        {GrayLevel[1], LineBox[{{10, -24}, {10, -25}}], 
+         LineBox[{{11, -24}, {11, -25}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{11, -24}, {12, -24}, {12, -25}, {11, -25}}], 
+        {GrayLevel[1], LineBox[{{11, -24}, {11, -25}}], 
+         LineBox[{{12, -24}, {12, -25}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{12, -24}, {13, -24}, {13, -25}, {12, -25}}], 
+        {GrayLevel[1], LineBox[{{12, -24}, {12, -25}}], 
+         LineBox[{{13, -24}, {13, -25}}]}, {}}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{15, -24}, {16, -24}, {16, -25}, {15, -25}}], 
+        {GrayLevel[1], LineBox[{{15, -24}, {15, -25}}], 
+         LineBox[{{16, -24}, {16, -25}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{16, -24}, {17, -24}, {17, -25}, {16, -25}}], 
+        {GrayLevel[1], LineBox[{{16, -24}, {16, -25}}], 
+         LineBox[{{17, -24}, {17, -25}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{17, -24}, {18, -24}, {18, -25}, {17, -25}}], 
+        {GrayLevel[1], LineBox[{{17, -24}, {17, -25}}], 
+         LineBox[{{18, -24}, {18, -25}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{18, -24}, {19, -24}, {19, -25}, {18, -25}}], 
+        {GrayLevel[1], LineBox[{{18, -24}, {18, -25}}], 
+         LineBox[{{19, -24}, {19, -25}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{19, -24}, {20, -24}, {20, -25}, {19, -25}}], 
+        {GrayLevel[1], LineBox[{{19, -24}, {19, -25}}], 
+         LineBox[{{20, -24}, {20, -25}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{20, -24}, {21, -24}, {21, -25}, {20, -25}}], 
+        {GrayLevel[1], LineBox[{{20, -24}, {20, -25}}], 
+         LineBox[{{21, -24}, {21, -25}}]}, {}}}}, {{
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{1, -26}, {2, -26}, {2, -27}, {1, -27}}], 
+        {GrayLevel[1], LineBox[{{1, -26}, {1, -27}}], 
+         LineBox[{{2, -26}, {2, -27}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{2, -26}, {3, -26}, {3, -27}, {2, -27}}], 
+        {GrayLevel[1], LineBox[{{2, -26}, {2, -27}}], 
+         LineBox[{{3, -26}, {3, -27}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{3, -26}, {4, -26}, {4, -27}, {3, -27}}], 
+        {GrayLevel[1], LineBox[{{3, -26}, {3, -27}}], 
+         LineBox[{{4, -26}, {4, -27}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{4, -26}, {5, -26}, {5, -27}, {4, -27}}], 
+        {GrayLevel[1], LineBox[{{4, -26}, {4, -27}}], 
+         LineBox[{{5, -26}, {5, -27}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{5, -26}, {6, -26}, {6, -27}, {5, -27}}], 
+        {GrayLevel[1], LineBox[{{5, -26}, {5, -27}}], 
+         LineBox[{{6, -26}, {6, -27}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{6, -26}, {7, -26}, {7, -27}, {6, -27}}], 
+        {GrayLevel[1], LineBox[{{6, -26}, {6, -27}}], 
+         LineBox[{{7, -26}, {7, -27}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{7, -26}, {8, -26}, {8, -27}, {7, -27}}], 
+        {GrayLevel[1], LineBox[{{7, -26}, {7, -27}}], 
+         LineBox[{{8, -26}, {8, -27}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{8, -26}, {9, -26}, {9, -27}, {8, -27}}], 
+        {GrayLevel[1], LineBox[{{8, -26}, {8, -27}}], 
+         LineBox[{{9, -26}, {9, -27}}]}, {}}}, 
+      {GrayLevel[
+        NCache[
+         Rational[4, 5], 0.8]], 
+       PolygonBox[{{11, -26}, {12, -26}, {12, -27}, {11, -27}}], 
+       {GrayLevel[1], LineBox[{{11, -26}, {11, -27}}], 
+        LineBox[{{12, -26}, {12, -27}}]}, {}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{14, -26}, {15, -26}, {15, -27}, {14, -27}}], 
+        {GrayLevel[1], LineBox[{{14, -26}, {14, -27}}], 
+         LineBox[{{15, -26}, {15, -27}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{15, -26}, {16, -26}, {16, -27}, {15, -27}}], 
+        {GrayLevel[1], LineBox[{{15, -26}, {15, -27}}], 
+         LineBox[{{16, -26}, {16, -27}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{16, -26}, {17, -26}, {17, -27}, {16, -27}}], 
+        {GrayLevel[1], LineBox[{{16, -26}, {16, -27}}], 
+         LineBox[{{17, -26}, {17, -27}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{17, -26}, {18, -26}, {18, -27}, {17, -27}}], 
+        {GrayLevel[1], LineBox[{{17, -26}, {17, -27}}], 
+         LineBox[{{18, -26}, {18, -27}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{18, -26}, {19, -26}, {19, -27}, {18, -27}}], 
+        {GrayLevel[1], LineBox[{{18, -26}, {18, -27}}], 
+         LineBox[{{19, -26}, {19, -27}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{19, -26}, {20, -26}, {20, -27}, {19, -27}}], 
+        {GrayLevel[1], LineBox[{{19, -26}, {19, -27}}], 
+         LineBox[{{20, -26}, {20, -27}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{20, -26}, {21, -26}, {21, -27}, {20, -27}}], 
+        {GrayLevel[1], LineBox[{{20, -26}, {20, -27}}], 
+         LineBox[{{21, -26}, {21, -27}}]}, {}}}}, {{
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{1, -28}, {2, -28}, {2, -29}, {1, -29}}], 
+        {GrayLevel[1], LineBox[{{1, -28}, {1, -29}}], 
+         LineBox[{{2, -28}, {2, -29}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{2, -28}, {3, -28}, {3, -29}, {2, -29}}], 
+        {GrayLevel[1], LineBox[{{2, -28}, {2, -29}}], 
+         LineBox[{{3, -28}, {3, -29}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{3, -28}, {4, -28}, {4, -29}, {3, -29}}], 
+        {GrayLevel[1], LineBox[{{3, -28}, {3, -29}}], 
+         LineBox[{{4, -28}, {4, -29}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{4, -28}, {5, -28}, {5, -29}, {4, -29}}], 
+        {GrayLevel[1], LineBox[{{4, -28}, {4, -29}}], 
+         LineBox[{{5, -28}, {5, -29}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{5, -28}, {6, -28}, {6, -29}, {5, -29}}], 
+        {GrayLevel[1], LineBox[{{5, -28}, {5, -29}}], 
+         LineBox[{{6, -28}, {6, -29}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{6, -28}, {7, -28}, {7, -29}, {6, -29}}], 
+        {GrayLevel[1], LineBox[{{6, -28}, {6, -29}}], 
+         LineBox[{{7, -28}, {7, -29}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{7, -28}, {8, -28}, {8, -29}, {7, -29}}], 
+        {GrayLevel[1], LineBox[{{7, -28}, {7, -29}}], 
+         LineBox[{{8, -28}, {8, -29}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{8, -28}, {9, -28}, {9, -29}, {8, -29}}], 
+        {GrayLevel[1], LineBox[{{8, -28}, {8, -29}}], 
+         LineBox[{{9, -28}, {9, -29}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{9, -28}, {10, -28}, {10, -29}, {9, -29}}], 
+        {GrayLevel[1], LineBox[{{9, -28}, {9, -29}}], 
+         LineBox[{{10, -28}, {10, -29}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{10, -28}, {11, -28}, {11, -29}, {10, -29}}], 
+        {GrayLevel[1], LineBox[{{10, -28}, {10, -29}}], 
+         LineBox[{{11, -28}, {11, -29}}]}, {}}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{13, -28}, {14, -28}, {14, -29}, {13, -29}}], 
+        {GrayLevel[1], LineBox[{{13, -28}, {13, -29}}], 
+         LineBox[{{14, -28}, {14, -29}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{14, -28}, {15, -28}, {15, -29}, {14, -29}}], 
+        {GrayLevel[1], LineBox[{{14, -28}, {14, -29}}], 
+         LineBox[{{15, -28}, {15, -29}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{15, -28}, {16, -28}, {16, -29}, {15, -29}}], 
+        {GrayLevel[1], LineBox[{{15, -28}, {15, -29}}], 
+         LineBox[{{16, -28}, {16, -29}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{16, -28}, {17, -28}, {17, -29}, {16, -29}}], 
+        {GrayLevel[1], LineBox[{{16, -28}, {16, -29}}], 
+         LineBox[{{17, -28}, {17, -29}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{17, -28}, {18, -28}, {18, -29}, {17, -29}}], 
+        {GrayLevel[1], LineBox[{{17, -28}, {17, -29}}], 
+         LineBox[{{18, -28}, {18, -29}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{18, -28}, {19, -28}, {19, -29}, {18, -29}}], 
+        {GrayLevel[1], LineBox[{{18, -28}, {18, -29}}], 
+         LineBox[{{19, -28}, {19, -29}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{19, -28}, {20, -28}, {20, -29}, {19, -29}}], 
+        {GrayLevel[1], LineBox[{{19, -28}, {19, -29}}], 
+         LineBox[{{20, -28}, {20, -29}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{20, -28}, {21, -28}, {21, -29}, {20, -29}}], 
+        {GrayLevel[1], LineBox[{{20, -28}, {20, -29}}], 
+         LineBox[{{21, -28}, {21, -29}}]}, {}}}}, {{
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{1, -30}, {2, -30}, {2, -31}, {1, -31}}], 
+        {GrayLevel[1], LineBox[{{1, -30}, {1, -31}}], 
+         LineBox[{{2, -30}, {2, -31}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{2, -30}, {3, -30}, {3, -31}, {2, -31}}], 
+        {GrayLevel[1], LineBox[{{2, -30}, {2, -31}}], 
+         LineBox[{{3, -30}, {3, -31}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{3, -30}, {4, -30}, {4, -31}, {3, -31}}], 
+        {GrayLevel[1], LineBox[{{3, -30}, {3, -31}}], 
+         LineBox[{{4, -30}, {4, -31}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{4, -30}, {5, -30}, {5, -31}, {4, -31}}], 
+        {GrayLevel[1], LineBox[{{4, -30}, {4, -31}}], 
+         LineBox[{{5, -30}, {5, -31}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{5, -30}, {6, -30}, {6, -31}, {5, -31}}], 
+        {GrayLevel[1], LineBox[{{5, -30}, {5, -31}}], 
+         LineBox[{{6, -30}, {6, -31}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{6, -30}, {7, -30}, {7, -31}, {6, -31}}], 
+        {GrayLevel[1], LineBox[{{6, -30}, {6, -31}}], 
+         LineBox[{{7, -30}, {7, -31}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{7, -30}, {8, -30}, {8, -31}, {7, -31}}], 
+        {GrayLevel[1], LineBox[{{7, -30}, {7, -31}}], 
+         LineBox[{{8, -30}, {8, -31}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{8, -30}, {9, -30}, {9, -31}, {8, -31}}], 
+        {GrayLevel[1], LineBox[{{8, -30}, {8, -31}}], 
+         LineBox[{{9, -30}, {9, -31}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[9, 10], 0.9]], 
+        PolygonBox[{{9, -30}, {10, -30}, {10, -31}, {9, -31}}], 
+        {GrayLevel[1], LineBox[{{9, -30}, {9, -31}}], 
+         LineBox[{{10, -30}, {10, -31}}]}, {}}}, {
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{12, -30}, {13, -30}, {13, -31}, {12, -31}}], 
+        {GrayLevel[1], LineBox[{{12, -30}, {12, -31}}], 
+         LineBox[{{13, -30}, {13, -31}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{13, -30}, {14, -30}, {14, -31}, {13, -31}}], 
+        {GrayLevel[1], LineBox[{{13, -30}, {13, -31}}], 
+         LineBox[{{14, -30}, {14, -31}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{14, -30}, {15, -30}, {15, -31}, {14, -31}}], 
+        {GrayLevel[1], LineBox[{{14, -30}, {14, -31}}], 
+         LineBox[{{15, -30}, {15, -31}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{15, -30}, {16, -30}, {16, -31}, {15, -31}}], 
+        {GrayLevel[1], LineBox[{{15, -30}, {15, -31}}], 
+         LineBox[{{16, -30}, {16, -31}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{16, -30}, {17, -30}, {17, -31}, {16, -31}}], 
+        {GrayLevel[1], LineBox[{{16, -30}, {16, -31}}], 
+         LineBox[{{17, -30}, {17, -31}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{17, -30}, {18, -30}, {18, -31}, {17, -31}}], 
+        {GrayLevel[1], LineBox[{{17, -30}, {17, -31}}], 
+         LineBox[{{18, -30}, {18, -31}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{18, -30}, {19, -30}, {19, -31}, {18, -31}}], 
+        {GrayLevel[1], LineBox[{{18, -30}, {18, -31}}], 
+         LineBox[{{19, -30}, {19, -31}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{19, -30}, {20, -30}, {20, -31}, {19, -31}}], 
+        {GrayLevel[1], LineBox[{{19, -30}, {19, -31}}], 
+         LineBox[{{20, -30}, {20, -31}}]}, {}}, 
+       {GrayLevel[
+         NCache[
+          Rational[4, 5], 0.8]], 
+        PolygonBox[{{20, -30}, {21, -30}, {21, -31}, {20, -31}}], 
+        {GrayLevel[1], LineBox[{{20, -30}, {20, -31}}], 
+         LineBox[{{21, -30}, {21, -31}}]}, {}}}}}, {
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{3., Rational[-5, 2]}, {2., Rational[-9, 2]}}, {{
+        3., -2.5}, {2., -4.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{3., Rational[-5, 2]}, {4., Rational[-13, 2]}}, {{
+        3., -2.5}, {4., -6.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{8., Rational[-5, 2]}, {9., Rational[-9, 2]}}, {{
+        8., -2.5}, {9., -4.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{8., Rational[-5, 2]}, {7., Rational[-29, 2]}}, {{
+        8., -2.5}, {7., -14.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{12., Rational[-5, 2]}, {11., Rational[-9, 2]}}, {{
+        12., -2.5}, {11., -4.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{12., Rational[-5, 2]}, {13., Rational[-25, 2]}}, {{
+        12., -2.5}, {13., -12.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{18., Rational[-5, 2]}, {17., Rational[-9, 2]}}, {{
+        18., -2.5}, {17., -4.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{18., Rational[-5, 2]}, {19., Rational[-13, 2]}}, {{
+        18., -2.5}, {19., -6.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{2., Rational[-9, 2]}, {3., Rational[-17, 2]}}, {{
+        2., -4.5}, {3., -8.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{9., Rational[-9, 2]}, {10., Rational[-13, 2]}}, {{
+        9., -4.5}, {10., -6.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{9., Rational[-9, 2]}, {8., Rational[-33, 2]}}, {{
+        9., -4.5}, {8., -16.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{11., Rational[-9, 2]}, {10., Rational[-13, 2]}}, {{
+        11., -4.5}, {10., -6.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{11., Rational[-9, 2]}, {12., Rational[-29, 2]}}, {{
+        11., -4.5}, {12., -14.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{17., Rational[-9, 2]}, {16., Rational[-13, 2]}}, {{
+        17., -4.5}, {16., -6.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{17., Rational[-9, 2]}, {18., Rational[-17, 2]}}, {{
+        17., -4.5}, {18., -8.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{4., Rational[-13, 2]}, {3., Rational[-17, 2]}}, {{
+        4., -6.5}, {3., -8.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{4., Rational[-13, 2]}, {5., Rational[-21, 2]}}, {{
+        4., -6.5}, {5., -10.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{10., Rational[-13, 2]}, {9., Rational[-37, 2]}}, {{
+        10., -6.5}, {9., -18.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{10., Rational[-13, 2]}, {11., Rational[-37, 2]}}, {{
+        10., -6.5}, {11., -18.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[
+       NCache[{{16., Rational[-13, 2]}, {15., Rational[-17, 2]}}, {{
+        16., -6.5}, {15., -8.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{16., Rational[-13, 2]}, {17., Rational[-21, 2]}}, {{
+        16., -6.5}, {17., -10.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{19., Rational[-13, 2]}, {18., Rational[-17, 2]}}, {{
+        19., -6.5}, {18., -8.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{19., Rational[-13, 2]}, {20., Rational[-17, 2]}}, {{
+        19., -6.5}, {20., -8.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{3., Rational[-17, 2]}, {4., Rational[-25, 2]}}, {{
+        3., -8.5}, {4., -12.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{15., Rational[-17, 2]}, {14., Rational[-21, 2]}}, {{
+        15., -8.5}, {14., -10.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{15., Rational[-17, 2]}, {16., Rational[-25, 2]}}, {{
+        15., -8.5}, {16., -12.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{18., Rational[-17, 2]}, {17., Rational[-21, 2]}}, {{
+        18., -8.5}, {17., -10.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{18., Rational[-17, 2]}, {19., Rational[-21, 2]}}, {{
+        18., -8.5}, {19., -10.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{20., Rational[-17, 2]}, {19., Rational[-21, 2]}}, {{
+        20., -8.5}, {19., -10.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{5., Rational[-21, 2]}, {4., Rational[-25, 2]}}, {{
+        5., -10.5}, {4., -12.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{5., Rational[-21, 2]}, {6., Rational[-25, 2]}}, {{
+        5., -10.5}, {6., -12.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{14., Rational[-21, 2]}, {13., Rational[-25, 2]}}, {{
+        14., -10.5}, {13., -12.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{14., Rational[-21, 2]}, {15., Rational[-29, 2]}}, {{
+        14., -10.5}, {15., -14.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{17., Rational[-21, 2]}, {16., Rational[-25, 2]}}, {{
+        17., -10.5}, {16., -12.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{17., Rational[-21, 2]}, {18., Rational[-29, 2]}}, {{
+        17., -10.5}, {18., -14.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{19., Rational[-21, 2]}, {18., Rational[-29, 2]}}, {{
+        19., -10.5}, {18., -14.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{4., Rational[-25, 2]}, {5., Rational[-33, 2]}}, {{
+        4., -12.5}, {5., -16.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{6., Rational[-25, 2]}, {7., Rational[-29, 2]}}, {{
+        6., -12.5}, {7., -14.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{6., Rational[-25, 2]}, {5., Rational[-33, 2]}}, {{
+        6., -12.5}, {5., -16.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{13., Rational[-25, 2]}, {12., Rational[-29, 2]}}, {{
+        13., -12.5}, {12., -14.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{13., Rational[-25, 2]}, {14., Rational[-33, 2]}}, {{
+        13., -12.5}, {14., -16.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{16., Rational[-25, 2]}, {15., Rational[-29, 2]}}, {{
+        16., -12.5}, {15., -14.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[
+       NCache[{{16., Rational[-25, 2]}, {17., Rational[-33, 2]}}, {{
+        16., -12.5}, {17., -16.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{7., Rational[-29, 2]}, {8., Rational[-33, 2]}}, {{
+        7., -14.5}, {8., -16.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{7., Rational[-29, 2]}, {6., Rational[-37, 2]}}, {{
+        7., -14.5}, {6., -18.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{12., Rational[-29, 2]}, {11., Rational[-37, 2]}}, {{
+        12., -14.5}, {11., -18.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{12., Rational[-29, 2]}, {13., Rational[-37, 2]}}, {{
+        12., -14.5}, {13., -18.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{15., Rational[-29, 2]}, {14., Rational[-33, 2]}}, {{
+        15., -14.5}, {14., -16.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{15., Rational[-29, 2]}, {16., Rational[-41, 2]}}, {{
+        15., -14.5}, {16., -20.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{18., Rational[-29, 2]}, {17., Rational[-33, 2]}}, {{
+        18., -14.5}, {17., -16.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{5., Rational[-33, 2]}, {6., Rational[-37, 2]}}, {{
+        5., -16.5}, {6., -18.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{8., Rational[-33, 2]}, {9., Rational[-37, 2]}}, {{
+        8., -16.5}, {9., -18.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{8., Rational[-33, 2]}, {7., Rational[-41, 2]}}, {{
+        8., -16.5}, {7., -20.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{14., Rational[-33, 2]}, {13., Rational[-37, 2]}}, {{
+        14., -16.5}, {13., -18.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{14., Rational[-33, 2]}, {15., Rational[-45, 2]}}, {{
+        14., -16.5}, {15., -22.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{17., Rational[-33, 2]}, {16., Rational[-41, 2]}}, {{
+        17., -16.5}, {16., -20.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{6., Rational[-37, 2]}, {7., Rational[-41, 2]}}, {{
+        6., -18.5}, {7., -20.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{9., Rational[-37, 2]}, {10., Rational[-41, 2]}}, {{
+        9., -18.5}, {10., -20.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{9., Rational[-37, 2]}, {8., Rational[-45, 2]}}, {{
+        9., -18.5}, {8., -22.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{11., Rational[-37, 2]}, {10., Rational[-41, 2]}}, {{
+        11., -18.5}, {10., -20.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{11., Rational[-37, 2]}, {12., Rational[-41, 2]}}, {{
+        11., -18.5}, {12., -20.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{13., Rational[-37, 2]}, {12., Rational[-41, 2]}}, {{
+        13., -18.5}, {12., -20.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{13., Rational[-37, 2]}, {14., Rational[-49, 2]}}, {{
+        13., -18.5}, {14., -24.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{7., Rational[-41, 2]}, {8., Rational[-45, 2]}}, {{
+        7., -20.5}, {8., -22.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{10., Rational[-41, 2]}, {11., Rational[-45, 2]}}, {{
+        10., -20.5}, {11., -22.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[
+       NCache[{{10., Rational[-41, 2]}, {9., Rational[-49, 2]}}, {{
+        10., -20.5}, {9., -24.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{12., Rational[-41, 2]}, {11., Rational[-45, 2]}}, {{
+        12., -20.5}, {11., -22.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{12., Rational[-41, 2]}, {13., Rational[-53, 2]}}, {{
+        12., -20.5}, {13., -26.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{16., Rational[-41, 2]}, {15., Rational[-45, 2]}}, {{
+        16., -20.5}, {15., -22.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{8., Rational[-45, 2]}, {9., Rational[-49, 2]}}, {{
+        8., -22.5}, {9., -24.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{11., Rational[-45, 2]}, {10., Rational[-53, 2]}}, {{
+        11., -22.5}, {10., -26.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{11., Rational[-45, 2]}, {12., Rational[-57, 2]}}, {{
+        11., -22.5}, {12., -28.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{15., Rational[-45, 2]}, {14., Rational[-49, 2]}}, {{
+        15., -22.5}, {14., -24.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{9., Rational[-49, 2]}, {10., Rational[-53, 2]}}, {{
+        9., -24.5}, {10., -26.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{14., Rational[-49, 2]}, {13., Rational[-53, 2]}}, {{
+        14., -24.5}, {13., -26.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{10., Rational[-53, 2]}, {11., Rational[-61, 2]}}, {{
+        10., -26.5}, {11., -30.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{13., Rational[-53, 2]}, {12., Rational[-57, 2]}}, {{
+        13., -26.5}, {12., -28.5}}]]}, 
+     {Hue[0, 0.7, 0.76], AbsoluteThickness[1.5], Dashing[{}], 
+      ArrowBox[NCache[{{12., Rational[-57, 2]}, {11., Rational[-61, 2]}}, {{
+        12., -28.5}, {11., -30.5}}]]}}, {{{
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{2, -2}, {4, -2}, {4, -3}, {2, -3}, {2, -2}}]}, {}}, {
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{7, -2}, {9, -2}, {9, -3}, {7, -3}, {7, -2}}]}, {}}, {
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{11, -2}, {13, -2}, {13, -3}, {11, -3}, {11, -2}}]}, {}}, {
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{17, -2}, {19, -2}, {19, -3}, {17, -3}, {
+         17, -2}}]}, {}}}, {{
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{1, -4}, {3, -4}, {3, -5}, {1, -5}, {1, -4}}]}, {}}, {
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{8, -4}, {10, -4}, {10, -5}, {8, -5}, {8, -4}}]}, {}}, {
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{10, -4}, {12, -4}, {12, -5}, {10, -5}, {10, -4}}]}, {}}, {
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{16, -4}, {18, -4}, {18, -5}, {16, -5}, {
+         16, -4}}]}, {}}}, {{
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{3, -6}, {5, -6}, {5, -7}, {3, -7}, {3, -6}}]}, {}}, {
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{9, -6}, {11, -6}, {11, -7}, {9, -7}, {9, -6}}]}, {}}, {
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{15, -6}, {17, -6}, {17, -7}, {15, -7}, {15, -6}}]}, {}}, {
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{18, -6}, {20, -6}, {20, -7}, {18, -7}, {
+         18, -6}}]}, {}}}, {{
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{2, -8}, {4, -8}, {4, -9}, {2, -9}, {2, -8}}]}, {}}, {
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{14, -8}, {16, -8}, {16, -9}, {14, -9}, {14, -8}}]}, {}}, {
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{17, -8}, {19, -8}, {19, -9}, {17, -9}, {17, -8}}]}, {}}, {
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{19, -8}, {21, -8}, {21, -9}, {19, -9}, {
+         19, -8}}]}, {}}}, {{
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{4, -10}, {6, -10}, {6, -11}, {4, -11}, {4, -10}}]}, {}}, {
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{13, -10}, {15, -10}, {15, -11}, {13, -11}, {
+         13, -10}}]}, {}}, {
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{16, -10}, {18, -10}, {18, -11}, {16, -11}, {
+         16, -10}}]}, {}}, {
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{18, -10}, {20, -10}, {20, -11}, {18, -11}, {
+         18, -10}}]}, {}}}, {{
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{3, -12}, {5, -12}, {5, -13}, {3, -13}, {3, -12}}]}, {}}, {
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{5, -12}, {7, -12}, {7, -13}, {5, -13}, {5, -12}}]}, {}}, {
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{12, -12}, {14, -12}, {14, -13}, {12, -13}, {
+         12, -12}}]}, {}}, {
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{15, -12}, {17, -12}, {17, -13}, {15, -13}, {
+         15, -12}}]}, {}}}, {{
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{6, -14}, {8, -14}, {8, -15}, {6, -15}, {6, -14}}]}, {}}, {
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{11, -14}, {13, -14}, {13, -15}, {11, -15}, {
+         11, -14}}]}, {}}, {
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{14, -14}, {16, -14}, {16, -15}, {14, -15}, {
+         14, -14}}]}, {}}, {
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{17, -14}, {19, -14}, {19, -15}, {17, -15}, {
+         17, -14}}]}, {}}}, {{
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{4, -16}, {6, -16}, {6, -17}, {4, -17}, {4, -16}}]}, {}}, {
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{7, -16}, {9, -16}, {9, -17}, {7, -17}, {7, -16}}]}, {}}, {
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{13, -16}, {15, -16}, {15, -17}, {13, -17}, {
+         13, -16}}]}, {}}, {
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{16, -16}, {18, -16}, {18, -17}, {16, -17}, {
+         16, -16}}]}, {}}}, {{
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{5, -18}, {7, -18}, {7, -19}, {5, -19}, {5, -18}}]}, {}}, {
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{8, -18}, {10, -18}, {10, -19}, {8, -19}, {
+         8, -18}}]}, {}}, {
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{10, -18}, {12, -18}, {12, -19}, {10, -19}, {
+         10, -18}}]}, {}}, {
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{12, -18}, {14, -18}, {14, -19}, {12, -19}, {
+         12, -18}}]}, {}}}, {{
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{6, -20}, {8, -20}, {8, -21}, {6, -21}, {6, -20}}]}, {}}, {
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{9, -20}, {11, -20}, {11, -21}, {9, -21}, {
+         9, -20}}]}, {}}, {
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{11, -20}, {13, -20}, {13, -21}, {11, -21}, {
+         11, -20}}]}, {}}, {
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{15, -20}, {17, -20}, {17, -21}, {15, -21}, {
+         15, -20}}]}, {}}}, {{
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{7, -22}, {9, -22}, {9, -23}, {7, -23}, {7, -22}}]}, {}}, {
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{10, -22}, {12, -22}, {12, -23}, {10, -23}, {
+         10, -22}}]}, {}}, {
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{14, -22}, {16, -22}, {16, -23}, {14, -23}, {
+         14, -22}}]}, {}}}, {{
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{8, -24}, {10, -24}, {10, -25}, {8, -25}, {
+         8, -24}}]}, {}}, {
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{13, -24}, {15, -24}, {15, -25}, {13, -25}, {
+         13, -24}}]}, {}}}, {{
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{9, -26}, {11, -26}, {11, -27}, {9, -27}, {
+         9, -26}}]}, {}}, {
+       {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+        Opacity[0.4]}], 
+        PolygonBox[{{12, -26}, {14, -26}, {14, -27}, {12, -27}, {
+         12, -26}}]}, {}}}, {
+      {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+       Opacity[0.4]}], 
+       PolygonBox[{{11, -28}, {13, -28}, {13, -29}, {11, -29}, {
+        11, -28}}]}, {}}, {
+      {Hue[0.14, 0.34, 1.], Opacity[0.7], EdgeForm[{Hue[0.09, 1., 0.91], 
+       Opacity[0.4]}], 
+       PolygonBox[{{10, -30}, {12, -30}, {12, -31}, {10, -31}, {
+        10, -30}}]}, {}}}}, 
+   {RGBColor[1, 0, 0], Thickness[
+    Large], {LineBox[{{0.5, -1.5}, {1., -1.5}, {1., -1.5}, {1.5, -1.5}}], 
+     LineBox[{{1.5, -1.5}, {2., -1.5}, {2., -1.5}, {2.5, -1.5}}], 
+     LineBox[{{2.5, -1.5}, {3., -1.5}, {3., -1.5}, {3.5, -1.5}}], 
+     LineBox[{{3.5, -1.5}, {4., -1.5}, {4., -1.5}, {4.5, -1.5}}], 
+     LineBox[{{4.5, -1.5}, {5., -1.5}, {5., -1.5}, {5.5, -1.5}}], 
+     LineBox[{{5.5, -1.5}, {6., -1.5}, {6., -1.5}, {6.5, -1.5}}], 
+     LineBox[{{6.5, -1.5}, {7., -1.5}, {7., -1.5}, {7.5, -1.5}}], 
+     LineBox[{{7.5, -1.5}, {8., -1.5}, {8., -1.5}, {8.5, -1.5}}], 
+     LineBox[{{8.5, -1.5}, {9., -1.5}, {9., -1.5}, {9.5, -1.5}}], 
+     LineBox[{{9.5, -1.5}, {10., -1.5}, {10., -1.5}, {10.5, -1.5}}], 
+     LineBox[{{10.5, -1.5}, {11., -1.5}, {11., -1.5}, {11.5, -1.5}}], 
+     LineBox[{{11.5, -1.5}, {12., -1.5}, {12., -1.5}, {12.5, -1.5}}], 
+     LineBox[{{12.5, -1.5}, {13., -1.5}, {13., -1.5}, {13.5, -1.5}}], 
+     LineBox[{{13.5, -1.5}, {14., -1.5}, {14., -1.5}, {14.5, -1.5}}], 
+     LineBox[{{14.5, -1.5}, {15., -1.5}, {15., -1.5}, {15.5, -1.5}}], 
+     LineBox[{{15.5, -1.5}, {16., -1.5}, {16., -1.5}, {16.5, -1.5}}], 
+     LineBox[{{16.5, -1.5}, {17., -1.5}, {17., -1.5}, {17.5, -1.5}}], 
+     LineBox[{{17.5, -1.5}, {18., -1.5}, {18., -1.5}, {18.5, -1.5}}], 
+     LineBox[{{18.5, -1.5}, {19., -1.5}, {19., -1.5}, {19.5, -1.5}}], 
+     LineBox[{{19.5, -1.5}, {20., -1.5}, {20., -1.5}, {20.5, -1.5}}], 
+     LineBox[{{20.5, -1.5}, {21., -1.5}, {21., -1.5}, {21.5, -1.5}}]}, {
+     LineBox[{{0.5, -3.5}, {1., -3.5}, {1., -3.5}, {1.5, -3.5}}], 
+     LineBox[{{1.5, -3.5}, {2., -3.5}, {2., -3.5}, {2.5, -3.5}}], 
+     LineBox[{{2.5, -3.5}, {3., -3.5}, {3., -3.5}, {3.5, -3.5}}], 
+     LineBox[{{3.5, -3.5}, {4., -3.5}, {4., -3.5}, {4.5, -3.5}}], 
+     LineBox[{{4.5, -3.5}, {5., -3.5}, {5., -3.5}, {5.5, -3.5}}], 
+     LineBox[{{5.5, -3.5}, {6., -3.5}, {6., -3.5}, {6.5, -3.5}}], 
+     LineBox[{{6.5, -3.5}, {7., -3.5}, {7., -3.5}, {7.5, -3.5}}], 
+     LineBox[{{7.5, -3.5}, {8., -3.5}, {8., -3.5}, {8.5, -3.5}}], 
+     LineBox[{{8.5, -3.5}, {9., -3.5}, {9., -3.5}, {9.5, -3.5}}], 
+     LineBox[{{9.5, -3.5}, {10., -3.5}, {10., -3.5}, {10.5, -3.5}}], 
+     LineBox[{{10.5, -3.5}, {11., -3.5}, {11., -3.5}, {11.5, -3.5}}], 
+     LineBox[{{11.5, -3.5}, {12., -3.5}, {12., -3.5}, {12.5, -3.5}}], 
+     LineBox[{{12.5, -3.5}, {13., -3.5}, {13., -3.5}, {13.5, -3.5}}], 
+     LineBox[{{13.5, -3.5}, {14., -3.5}, {14., -3.5}, {14.5, -3.5}}], 
+     LineBox[{{14.5, -3.5}, {15., -3.5}, {15., -3.5}, {15.5, -3.5}}], 
+     LineBox[{{15.5, -3.5}, {16., -3.5}, {16., -3.5}, {16.5, -3.5}}], 
+     LineBox[{{16.5, -3.5}, {17., -3.5}, {17., -3.5}, {17.5, -3.5}}], 
+     LineBox[{{17.5, -3.5}, {18., -3.5}, {18., -3.5}, {18.5, -3.5}}], 
+     LineBox[{{18.5, -3.5}, {19., -3.5}, {19., -3.5}, {19.5, -3.5}}], 
+     LineBox[{{19.5, -3.5}, {20., -3.5}, {20., -3.5}, {20.5, -3.5}}], 
+     LineBox[{{20.5, -3.5}, {21., -3.5}, {21., -3.5}, {21.5, -3.5}}]}, {
+     LineBox[{{0.5, -7.5}, {1., -7.5}, {1., -7.5}, {1.5, -7.5}}], 
+     LineBox[{{1.5, -7.5}, {2., -7.5}, {2., -7.5}, {2.5, -7.5}}], 
+     LineBox[{{2.5, -7.5}, {3., -7.5}, {3., -7.5}, {3.5, -7.5}}], 
+     LineBox[{{3.5, -7.5}, {4., -7.5}, {4., -7.5}, {4.5, -7.5}}], {
+      LineBox[{{4.5, -7.5}, {4.75, -7.5}}], 
+      CircleBox[{4.75, -7.25}, 0.25, 
+       NCache[{Rational[3, 2] Pi, 2 Pi}, {4.71238898038469, 
+        6.283185307179586}]], LineBox[{{5., -7.25}, {5., -7.25}}], 
+      CircleBox[{5.25, -7.25}, 0.25, 
+       NCache[{Rational[1, 2] Pi, Pi}, {1.5707963267948966`, 
+        3.141592653589793}]], LineBox[{{5.25, -7.}, {5.5, -7.}}]}, {
+      LineBox[{{5.5, -7.}, {5.75, -7.}}], 
+      CircleBox[{5.75, -6.75}, 0.25, 
+       NCache[{Rational[3, 2] Pi, 2 Pi}, {4.71238898038469, 
+        6.283185307179586}]], LineBox[{{6., -6.75}, {6., -6.75}}], 
+      CircleBox[{6.25, -6.75}, 0.25, 
+       NCache[{Rational[1, 2] Pi, Pi}, {1.5707963267948966`, 
+        3.141592653589793}]], LineBox[{{6.25, -6.5}, {6.5, -6.5}}]}, 
+     LineBox[{{6.5, -6.5}, {7., -6.5}, {7., -6.5}, {7.5, -6.5}}], {
+      LineBox[{{7.5, -6.5}, {7.75, -6.5}}], 
+      CircleBox[{7.75, -6.25}, 0.25, 
+       NCache[{Rational[3, 2] Pi, 2 Pi}, {4.71238898038469, 
+        6.283185307179586}]], LineBox[{{8., -6.25}, {8., -6.25}}], 
+      CircleBox[{8.25, -6.25}, 0.25, 
+       NCache[{Rational[1, 2] Pi, Pi}, {1.5707963267948966`, 
+        3.141592653589793}]], LineBox[{{8.25, -6.}, {8.5, -6.}}]}, {
+      LineBox[{{8.5, -6.}, {8.75, -6.}}], 
+      CircleBox[{8.75, -5.75}, 0.25, 
+       NCache[{Rational[3, 2] Pi, 2 Pi}, {4.71238898038469, 
+        6.283185307179586}]], LineBox[{{9., -5.75}, {9., -5.75}}], 
+      CircleBox[{9.25, -5.75}, 0.25, 
+       NCache[{Rational[1, 2] Pi, Pi}, {1.5707963267948966`, 
+        3.141592653589793}]], LineBox[{{9.25, -5.5}, {9.5, -5.5}}]}, 
+     LineBox[{{9.5, -5.5}, {10., -5.5}, {10., -5.5}, {10.5, -5.5}}], 
+     LineBox[{{10.5, -5.5}, {11., -5.5}, {11., -5.5}, {11.5, -5.5}}], 
+     LineBox[{{11.5, -5.5}, {12., -5.5}, {12., -5.5}, {12.5, -5.5}}], 
+     LineBox[{{12.5, -5.5}, {13., -5.5}, {13., -5.5}, {13.5, -5.5}}], 
+     LineBox[{{13.5, -5.5}, {14., -5.5}, {14., -5.5}, {14.5, -5.5}}], 
+     LineBox[{{14.5, -5.5}, {15., -5.5}, {15., -5.5}, {15.5, -5.5}}], 
+     LineBox[{{15.5, -5.5}, {16., -5.5}, {16., -5.5}, {16.5, -5.5}}], {
+      CircleBox[{16.5, -6.}, 0.5, 
+       NCache[{0, Rational[1, 2] Pi}, {0, 1.5707963267948966`}]], 
+      LineBox[{{17., -6.}, {17., -6.}}], 
+      CircleBox[{17.5, -6.}, 0.5, 
+       NCache[{Pi, Rational[3, 2] Pi}, {3.141592653589793, 
+        4.71238898038469}]]}, {
+      CircleBox[{17.5, -7.}, 0.5, 
+       NCache[{0, Rational[1, 2] Pi}, {0, 1.5707963267948966`}]], 
+      LineBox[{{18., -7.}, {18., -7.}}], 
+      CircleBox[{18.5, -7.}, 0.5, 
+       NCache[{Pi, Rational[3, 2] Pi}, {3.141592653589793, 
+        4.71238898038469}]]}, 
+     LineBox[{{18.5, -7.5}, {19., -7.5}, {19., -7.5}, {19.5, -7.5}}], 
+     LineBox[{{19.5, -7.5}, {20., -7.5}, {20., -7.5}, {20.5, -7.5}}], 
+     LineBox[{{20.5, -7.5}, {21., -7.5}, {21., -7.5}, {21.5, -7.5}}]}, {
+     LineBox[{{0.5, -11.5}, {1., -11.5}, {1., -11.5}, {1.5, -11.5}}], 
+     LineBox[{{1.5, -11.5}, {2., -11.5}, {2., -11.5}, {2.5, -11.5}}], 
+     LineBox[{{2.5, -11.5}, {3., -11.5}, {3., -11.5}, {3.5, -11.5}}], 
+     LineBox[{{3.5, -11.5}, {4., -11.5}, {4., -11.5}, {4.5, -11.5}}], 
+     LineBox[{{4.5, -11.5}, {5., -11.5}, {5., -11.5}, {5.5, -11.5}}], {
+      LineBox[{{5.5, -11.5}, {5.75, -11.5}}], 
+      CircleBox[{5.75, -11.25}, 0.25, 
+       NCache[{Rational[3, 2] Pi, 2 Pi}, {4.71238898038469, 
+        6.283185307179586}]], LineBox[{{6., -11.25}, {6., -11.25}}], 
+      CircleBox[{6.25, -11.25}, 0.25, 
+       NCache[{Rational[1, 2] Pi, Pi}, {1.5707963267948966`, 
+        3.141592653589793}]], LineBox[{{6.25, -11.}, {6.5, -11.}}]}, {
+      LineBox[{{6.5, -11.}, {6.75, -11.}}], 
+      CircleBox[{6.75, -10.75}, 0.25, 
+       NCache[{Rational[3, 2] Pi, 2 Pi}, {4.71238898038469, 
+        6.283185307179586}]], LineBox[{{7., -10.75}, {7., -10.75}}], 
+      CircleBox[{7.25, -10.75}, 0.25, 
+       NCache[{Rational[1, 2] Pi, Pi}, {1.5707963267948966`, 
+        3.141592653589793}]], LineBox[{{7.25, -10.5}, {7.5, -10.5}}]}, {
+      LineBox[{{7.5, -10.5}, {7.75, -10.5}}], 
+      CircleBox[{7.75, -10.25}, 0.25, 
+       NCache[{Rational[3, 2] Pi, 2 Pi}, {4.71238898038469, 
+        6.283185307179586}]], LineBox[{{8., -10.25}, {8., -10.25}}], 
+      CircleBox[{8.25, -10.25}, 0.25, 
+       NCache[{Rational[1, 2] Pi, Pi}, {1.5707963267948966`, 
+        3.141592653589793}]], LineBox[{{8.25, -10.}, {8.5, -10.}}]}, {
+      LineBox[{{8.5, -10.}, {8.75, -10.}}], 
+      CircleBox[{8.75, -9.75}, 0.25, 
+       NCache[{Rational[3, 2] Pi, 2 Pi}, {4.71238898038469, 
+        6.283185307179586}]], LineBox[{{9., -9.75}, {9., -9.75}}], 
+      CircleBox[{9.25, -9.75}, 0.25, 
+       NCache[{Rational[1, 2] Pi, Pi}, {1.5707963267948966`, 
+        3.141592653589793}]], LineBox[{{9.25, -9.5}, {9.5, -9.5}}]}, 
+     LineBox[{{9.5, -9.5}, {10., -9.5}, {10., -9.5}, {10.5, -9.5}}], {
+      LineBox[{{10.5, -9.5}, {10.75, -9.5}}], 
+      CircleBox[{10.75, -9.25}, 0.25, 
+       NCache[{Rational[3, 2] Pi, 2 Pi}, {4.71238898038469, 
+        6.283185307179586}]], LineBox[{{11., -9.25}, {11., -9.25}}], 
+      CircleBox[{11.25, -9.25}, 0.25, 
+       NCache[{Rational[1, 2] Pi, Pi}, {1.5707963267948966`, 
+        3.141592653589793}]], LineBox[{{11.25, -9.}, {11.5, -9.}}]}, {
+      LineBox[{{11.5, -9.}, {11.75, -9.}}], 
+      CircleBox[{11.75, -8.75}, 0.25, 
+       NCache[{Rational[3, 2] Pi, 2 Pi}, {4.71238898038469, 
+        6.283185307179586}]], LineBox[{{12., -8.75}, {12., -8.75}}], 
+      CircleBox[{12.25, -8.75}, 0.25, 
+       NCache[{Rational[1, 2] Pi, Pi}, {1.5707963267948966`, 
+        3.141592653589793}]], LineBox[{{12.25, -8.5}, {12.5, -8.5}}]}, {
+      LineBox[{{12.5, -8.5}, {12.75, -8.5}}], 
+      CircleBox[{12.75, -8.25}, 0.25, 
+       NCache[{Rational[3, 2] Pi, 2 Pi}, {4.71238898038469, 
+        6.283185307179586}]], LineBox[{{13., -8.25}, {13., -8.25}}], 
+      CircleBox[{13.25, -8.25}, 0.25, 
+       NCache[{Rational[1, 2] Pi, Pi}, {1.5707963267948966`, 
+        3.141592653589793}]], LineBox[{{13.25, -8.}, {13.5, -8.}}]}, {
+      LineBox[{{13.5, -8.}, {13.75, -8.}}], 
+      CircleBox[{13.75, -7.75}, 0.25, 
+       NCache[{Rational[3, 2] Pi, 2 Pi}, {4.71238898038469, 
+        6.283185307179586}]], LineBox[{{14., -7.75}, {14., -7.75}}], 
+      CircleBox[{14.25, -7.75}, 0.25, 
+       NCache[{Rational[1, 2] Pi, Pi}, {1.5707963267948966`, 
+        3.141592653589793}]], LineBox[{{14.25, -7.5}, {14.5, -7.5}}]}, 
+     LineBox[{{14.5, -7.5}, {15., -7.5}, {15., -7.5}, {15.5, -7.5}}], {
+      CircleBox[{15.5, -8.}, 0.5, 
+       NCache[{0, Rational[1, 2] Pi}, {0, 1.5707963267948966`}]], 
+      LineBox[{{16., -8.}, {16., -8.}}], 
+      CircleBox[{16.5, -8.}, 0.5, 
+       NCache[{Pi, Rational[3, 2] Pi}, {3.141592653589793, 
+        4.71238898038469}]]}, {
+      CircleBox[{16.5, -9.}, 0.5, 
+       NCache[{0, Rational[1, 2] Pi}, {0, 1.5707963267948966`}]], 
+      LineBox[{{17., -9.}, {17., -9.}}], 
+      CircleBox[{17.5, -9.}, 0.5, 
+       NCache[{Pi, Rational[3, 2] Pi}, {3.141592653589793, 
+        4.71238898038469}]]}, 
+     LineBox[{{17.5, -9.5}, {18., -9.5}, {18., -9.5}, {18.5, -9.5}}], 
+     LineBox[{{18.5, -9.5}, {19., -9.5}, {19., -9.5}, {19.5, -9.5}}], 
+     LineBox[{{19.5, -9.5}, {20., -9.5}, {20., -9.5}, {20.5, -9.5}}], 
+     LineBox[{{20.5, -9.5}, {21., -9.5}, {21., -9.5}, {21.5, -9.5}}]}, {
+     LineBox[{{0.5, -13.5}, {1., -13.5}, {1., -13.5}, {1.5, -13.5}}], 
+     LineBox[{{1.5, -13.5}, {2., -13.5}, {2., -13.5}, {2.5, -13.5}}], 
+     LineBox[{{2.5, -13.5}, {3., -13.5}, {3., -13.5}, {3.5, -13.5}}], 
+     LineBox[{{3.5, -13.5}, {4., -13.5}, {4., -13.5}, {4.5, -13.5}}], 
+     LineBox[{{4.5, -13.5}, {5., -13.5}, {5., -13.5}, {5.5, -13.5}}], 
+     LineBox[{{5.5, -13.5}, {6., -13.5}, {6., -13.5}, {6.5, -13.5}}], {
+      LineBox[{{6.5, -13.5}, {6.75, -13.5}}], 
+      CircleBox[{6.75, -13.25}, 0.25, 
+       NCache[{Rational[3, 2] Pi, 2 Pi}, {4.71238898038469, 
+        6.283185307179586}]], LineBox[{{7., -13.25}, {7., -13.25}}], 
+      CircleBox[{7.25, -13.25}, 0.25, 
+       NCache[{Rational[1, 2] Pi, Pi}, {1.5707963267948966`, 
+        3.141592653589793}]], LineBox[{{7.25, -13.}, {7.5, -13.}}]}, {
+      LineBox[{{7.5, -13.}, {7.75, -13.}}], 
+      CircleBox[{7.75, -12.75}, 0.25, 
+       NCache[{Rational[3, 2] Pi, 2 Pi}, {4.71238898038469, 
+        6.283185307179586}]], LineBox[{{8., -12.75}, {8., -12.75}}], 
+      CircleBox[{8.25, -12.75}, 0.25, 
+       NCache[{Rational[1, 2] Pi, Pi}, {1.5707963267948966`, 
+        3.141592653589793}]], LineBox[{{8.25, -12.5}, {8.5, -12.5}}]}, {
+      LineBox[{{8.5, -12.5}, {8.75, -12.5}}], 
+      CircleBox[{8.75, -12.25}, 0.25, 
+       NCache[{Rational[3, 2] Pi, 2 Pi}, {4.71238898038469, 
+        6.283185307179586}]], LineBox[{{9., -12.25}, {9., -12.25}}], 
+      CircleBox[{9.25, -12.25}, 0.25, 
+       NCache[{Rational[1, 2] Pi, Pi}, {1.5707963267948966`, 
+        3.141592653589793}]], LineBox[{{9.25, -12.}, {9.5, -12.}}]}, {
+      CircleBox[{9.5, -11.5}, 0.5, 
+       NCache[{Rational[3, 2] Pi, 2 Pi}, {4.71238898038469, 
+        6.283185307179586}]], LineBox[{{10., -11.5}, {10., -11.5}}], 
+      CircleBox[{10.5, -11.5}, 0.5, 
+       NCache[{Rational[1, 2] Pi, Pi}, {1.5707963267948966`, 
+        3.141592653589793}]]}, {LineBox[{{10.5, -11.}, {10.75, -11.}}], 
+      CircleBox[{10.75, -10.75}, 0.25, 
+       NCache[{Rational[3, 2] Pi, 2 Pi}, {4.71238898038469, 
+        6.283185307179586}]], LineBox[{{11., -10.75}, {11., -10.75}}], 
+      CircleBox[{11.25, -10.75}, 0.25, 
+       NCache[{Rational[1, 2] Pi, Pi}, {1.5707963267948966`, 
+        3.141592653589793}]], LineBox[{{11.25, -10.5}, {11.5, -10.5}}]}, {
+      LineBox[{{11.5, -10.5}, {11.75, -10.5}}], 
+      CircleBox[{11.75, -10.25}, 0.25, 
+       NCache[{Rational[3, 2] Pi, 2 Pi}, {4.71238898038469, 
+        6.283185307179586}]], LineBox[{{12., -10.25}, {12., -10.25}}], 
+      CircleBox[{12.25, -10.25}, 0.25, 
+       NCache[{Rational[1, 2] Pi, Pi}, {1.5707963267948966`, 
+        3.141592653589793}]], LineBox[{{12.25, -10.}, {12.5, -10.}}]}, {
+      LineBox[{{12.5, -10.}, {12.75, -10.}}], 
+      CircleBox[{12.75, -9.75}, 0.25, 
+       NCache[{Rational[3, 2] Pi, 2 Pi}, {4.71238898038469, 
+        6.283185307179586}]], LineBox[{{13., -9.75}, {13., -9.75}}], 
+      CircleBox[{13.25, -9.75}, 0.25, 
+       NCache[{Rational[1, 2] Pi, Pi}, {1.5707963267948966`, 
+        3.141592653589793}]], LineBox[{{13.25, -9.5}, {13.5, -9.5}}]}, 
+     LineBox[{{13.5, -9.5}, {14., -9.5}, {14., -9.5}, {14.5, -9.5}}], {
+      CircleBox[{14.5, -10.}, 0.5, 
+       NCache[{0, Rational[1, 2] Pi}, {0, 1.5707963267948966`}]], 
+      LineBox[{{15., -10.}, {15., -10.}}], 
+      CircleBox[{15.5, -10.}, 0.5, 
+       NCache[{Pi, Rational[3, 2] Pi}, {3.141592653589793, 
+        4.71238898038469}]]}, {
+      CircleBox[{15.5, -11.}, 0.5, 
+       NCache[{0, Rational[1, 2] Pi}, {0, 1.5707963267948966`}]], 
+      LineBox[{{16., -11.}, {16., -11.}}], 
+      CircleBox[{16.5, -11.}, 0.5, 
+       NCache[{Pi, Rational[3, 2] Pi}, {3.141592653589793, 
+        4.71238898038469}]]}, 
+     LineBox[{{16.5, -11.5}, {17., -11.5}, {17., -11.5}, {17.5, -11.5}}], 
+     LineBox[{{17.5, -11.5}, {18., -11.5}, {18., -11.5}, {18.5, -11.5}}], 
+     LineBox[{{18.5, -11.5}, {19., -11.5}, {19., -11.5}, {19.5, -11.5}}], 
+     LineBox[{{19.5, -11.5}, {20., -11.5}, {20., -11.5}, {20.5, -11.5}}], 
+     LineBox[{{20.5, -11.5}, {21., -11.5}, {21., -11.5}, {21.5, -11.5}}]}, {
+     LineBox[{{0.5, -17.5}, {1., -17.5}, {1., -17.5}, {1.5, -17.5}}], 
+     LineBox[{{1.5, -17.5}, {2., -17.5}, {2., -17.5}, {2.5, -17.5}}], 
+     LineBox[{{2.5, -17.5}, {3., -17.5}, {3., -17.5}, {3.5, -17.5}}], 
+     LineBox[{{3.5, -17.5}, {4., -17.5}, {4., -17.5}, {4.5, -17.5}}], 
+     LineBox[{{4.5, -17.5}, {5., -17.5}, {5., -17.5}, {5.5, -17.5}}], {
+      CircleBox[{5.5, -17.}, 0.5, 
+       NCache[{Rational[3, 2] Pi, 2 Pi}, {4.71238898038469, 
+        6.283185307179586}]], LineBox[{{6., -17.}, {6., -17.}}], 
+      CircleBox[{6.5, -17.}, 0.5, 
+       NCache[{Rational[1, 2] Pi, Pi}, {1.5707963267948966`, 
+        3.141592653589793}]]}, {
+      CircleBox[{6.5, -16.}, 0.5, 
+       NCache[{Rational[3, 2] Pi, 2 Pi}, {4.71238898038469, 
+        6.283185307179586}]], LineBox[{{7., -16.}, {7., -16.}}], 
+      CircleBox[{7.5, -16.}, 0.5, 
+       NCache[{Rational[1, 2] Pi, Pi}, {1.5707963267948966`, 
+        3.141592653589793}]]}, {
+      CircleBox[{7.5, -15.}, 0.5, 
+       NCache[{Rational[3, 2] Pi, 2 Pi}, {4.71238898038469, 
+        6.283185307179586}]], LineBox[{{8., -15.}, {8., -15.}}], 
+      CircleBox[{8.5, -15.}, 0.5, 
+       NCache[{Rational[1, 2] Pi, Pi}, {1.5707963267948966`, 
+        3.141592653589793}]]}, {LineBox[{{8.5, -14.5}, {8.75, -14.5}}], 
+      CircleBox[{8.75, -14.25}, 0.25, 
+       NCache[{Rational[3, 2] Pi, 2 Pi}, {4.71238898038469, 
+        6.283185307179586}]], LineBox[{{9., -14.25}, {9., -14.25}}], 
+      CircleBox[{9.25, -14.25}, 0.25, 
+       NCache[{Rational[1, 2] Pi, Pi}, {1.5707963267948966`, 
+        3.141592653589793}]], LineBox[{{9.25, -14.}, {9.5, -14.}}]}, {
+      CircleBox[{9.5, -13.5}, 0.5, 
+       NCache[{Rational[3, 2] Pi, 2 Pi}, {4.71238898038469, 
+        6.283185307179586}]], LineBox[{{10., -13.5}, {10., -13.5}}], 
+      CircleBox[{10.5, -13.5}, 0.5, 
+       NCache[{Rational[1, 2] Pi, Pi}, {1.5707963267948966`, 
+        3.141592653589793}]]}, {LineBox[{{10.5, -13.}, {10.75, -13.}}], 
+      CircleBox[{10.75, -12.75}, 0.25, 
+       NCache[{Rational[3, 2] Pi, 2 Pi}, {4.71238898038469, 
+        6.283185307179586}]], LineBox[{{11., -12.75}, {11., -12.75}}], 
+      CircleBox[{11.25, -12.75}, 0.25, 
+       NCache[{Rational[1, 2] Pi, Pi}, {1.5707963267948966`, 
+        3.141592653589793}]], LineBox[{{11.25, -12.5}, {11.5, -12.5}}]}, {
+      CircleBox[{11.5, -12.}, 0.5, 
+       NCache[{Rational[3, 2] Pi, 2 Pi}, {4.71238898038469, 
+        6.283185307179586}]], LineBox[{{12., -12.}, {12., -12.}}], 
+      CircleBox[{12.5, -12.}, 0.5, 
+       NCache[{Rational[1, 2] Pi, Pi}, {1.5707963267948966`, 
+        3.141592653589793}]]}, 
+     LineBox[{{12.5, -11.5}, {13., -11.5}, {13., -11.5}, {13.5, -11.5}}], {
+      CircleBox[{13.5, -12.}, 0.5, 
+       NCache[{0, Rational[1, 2] Pi}, {0, 1.5707963267948966`}]], 
+      LineBox[{{14., -12.}, {14., -12.}}], 
+      CircleBox[{14.5, -12.}, 0.5, 
+       NCache[{Pi, Rational[3, 2] Pi}, {3.141592653589793, 
+        4.71238898038469}]]}, {
+      CircleBox[{14.5, -13.}, 0.5, 
+       NCache[{0, Rational[1, 2] Pi}, {0, 1.5707963267948966`}]], 
+      LineBox[{{15., -13.}, {15., -13.}}], 
+      CircleBox[{15.5, -13.}, 0.5, 
+       NCache[{Pi, Rational[3, 2] Pi}, {3.141592653589793, 
+        4.71238898038469}]]}, {
+      CircleBox[{15.5, -14.}, 0.5, 
+       NCache[{0, Rational[1, 2] Pi}, {0, 1.5707963267948966`}]], 
+      LineBox[{{16., -14.}, {16., -14.}}], 
+      CircleBox[{16.5, -14.}, 0.5, 
+       NCache[{Pi, Rational[3, 2] Pi}, {3.141592653589793, 
+        4.71238898038469}]]}, {
+      CircleBox[{16.5, -15.}, 0.5, 
+       NCache[{0, Rational[1, 2] Pi}, {0, 1.5707963267948966`}]], 
+      LineBox[{{17., -15.}, {17., -15.}}], 
+      CircleBox[{17.5, -15.}, 0.5, 
+       NCache[{Pi, Rational[3, 2] Pi}, {3.141592653589793, 
+        4.71238898038469}]]}, 
+     LineBox[{{17.5, -15.5}, {18., -15.5}, {18., -15.5}, {18.5, -15.5}}], 
+     LineBox[{{18.5, -15.5}, {19., -15.5}, {19., -15.5}, {19.5, -15.5}}], 
+     LineBox[{{19.5, -15.5}, {20., -15.5}, {20., -15.5}, {20.5, -15.5}}], 
+     LineBox[{{20.5, -15.5}, {21., -15.5}, {21., -15.5}, {21.5, -15.5}}]}, {
+     LineBox[{{0.5, -19.5}, {1., -19.5}, {1., -19.5}, {1.5, -19.5}}], 
+     LineBox[{{1.5, -19.5}, {2., -19.5}, {2., -19.5}, {2.5, -19.5}}], 
+     LineBox[{{2.5, -19.5}, {3., -19.5}, {3., -19.5}, {3.5, -19.5}}], 
+     LineBox[{{3.5, -19.5}, {4., -19.5}, {4., -19.5}, {4.5, -19.5}}], 
+     LineBox[{{4.5, -19.5}, {5., -19.5}, {5., -19.5}, {5.5, -19.5}}], 
+     LineBox[{{5.5, -19.5}, {6., -19.5}, {6., -19.5}, {6.5, -19.5}}], {
+      CircleBox[{6.5, -19.}, 0.5, 
+       NCache[{Rational[3, 2] Pi, 2 Pi}, {4.71238898038469, 
+        6.283185307179586}]], LineBox[{{7., -19.}, {7., -19.}}], 
+      CircleBox[{7.5, -19.}, 0.5, 
+       NCache[{Rational[1, 2] Pi, Pi}, {1.5707963267948966`, 
+        3.141592653589793}]]}, {
+      CircleBox[{7.5, -18.}, 0.5, 
+       NCache[{Rational[3, 2] Pi, 2 Pi}, {4.71238898038469, 
+        6.283185307179586}]], LineBox[{{8., -18.}, {8., -18.}}], 
+      CircleBox[{8.5, -18.}, 0.5, 
+       NCache[{Rational[1, 2] Pi, Pi}, {1.5707963267948966`, 
+        3.141592653589793}]]}, {
+      CircleBox[{8.5, -17.}, 0.5, 
+       NCache[{Rational[3, 2] Pi, 2 Pi}, {4.71238898038469, 
+        6.283185307179586}]], LineBox[{{9., -17.}, {9., -16.5}}], 
+      CircleBox[{9.5, -16.5}, 0.5, 
+       NCache[{Rational[1, 2] Pi, Pi}, {1.5707963267948966`, 
+        3.141592653589793}]]}, {
+      CircleBox[{9.5, -15.5}, 0.5, 
+       NCache[{Rational[3, 2] Pi, 2 Pi}, {4.71238898038469, 
+        6.283185307179586}]], LineBox[{{10., -15.5}, {10., -15.5}}], 
+      CircleBox[{10.5, -15.5}, 0.5, 
+       NCache[{Rational[1, 2] Pi, Pi}, {1.5707963267948966`, 
+        3.141592653589793}]]}, {
+      CircleBox[{10.5, -14.5}, 0.5, 
+       NCache[{Rational[3, 2] Pi, 2 Pi}, {4.71238898038469, 
+        6.283185307179586}]], LineBox[{{11., -14.5}, {11., -14.}}], 
+      CircleBox[{11.5, -14.}, 0.5, 
+       NCache[{Rational[1, 2] Pi, Pi}, {1.5707963267948966`, 
+        3.141592653589793}]]}, 
+     LineBox[{{11.5, -13.5}, {12., -13.5}, {12., -13.5}, {12.5, -13.5}}], {
+      CircleBox[{12.5, -14.}, 0.5, 
+       NCache[{0, Rational[1, 2] Pi}, {0, 1.5707963267948966`}]], 
+      LineBox[{{13., -14.}, {13., -14.}}], 
+      CircleBox[{13.5, -14.}, 0.5, 
+       NCache[{Pi, Rational[3, 2] Pi}, {3.141592653589793, 
+        4.71238898038469}]]}, {
+      CircleBox[{13.5, -15.}, 0.5, 
+       NCache[{0, Rational[1, 2] Pi}, {0, 1.5707963267948966`}]], 
+      LineBox[{{14., -15.}, {14., -15.}}], 
+      CircleBox[{14.5, -15.}, 0.5, 
+       NCache[{Pi, Rational[3, 2] Pi}, {3.141592653589793, 
+        4.71238898038469}]]}, {
+      CircleBox[{14.5, -16.}, 0.5, 
+       NCache[{0, Rational[1, 2] Pi}, {0, 1.5707963267948966`}]], 
+      LineBox[{{15., -16.}, {15., -16.}}], 
+      CircleBox[{15.5, -16.}, 0.5, 
+       NCache[{Pi, Rational[3, 2] Pi}, {3.141592653589793, 
+        4.71238898038469}]]}, {
+      CircleBox[{15.5, -17.}, 0.5, 
+       NCache[{0, Rational[1, 2] Pi}, {0, 1.5707963267948966`}]], 
+      LineBox[{{16., -17.}, {16., -17.}}], 
+      CircleBox[{16.5, -17.}, 0.5, 
+       NCache[{Pi, Rational[3, 2] Pi}, {3.141592653589793, 
+        4.71238898038469}]]}, 
+     LineBox[{{16.5, -17.5}, {17., -17.5}, {17., -17.5}, {17.5, -17.5}}], 
+     LineBox[{{17.5, -17.5}, {18., -17.5}, {18., -17.5}, {18.5, -17.5}}], 
+     LineBox[{{18.5, -17.5}, {19., -17.5}, {19., -17.5}, {19.5, -17.5}}], 
+     LineBox[{{19.5, -17.5}, {20., -17.5}, {20., -17.5}, {20.5, -17.5}}], 
+     LineBox[{{20.5, -17.5}, {21., -17.5}, {21., -17.5}, {21.5, -17.5}}]}, {
+     LineBox[{{0.5, -21.5}, {1., -21.5}, {1., -21.5}, {1.5, -21.5}}], 
+     LineBox[{{1.5, -21.5}, {2., -21.5}, {2., -21.5}, {2.5, -21.5}}], 
+     LineBox[{{2.5, -21.5}, {3., -21.5}, {3., -21.5}, {3.5, -21.5}}], 
+     LineBox[{{3.5, -21.5}, {4., -21.5}, {4., -21.5}, {4.5, -21.5}}], 
+     LineBox[{{4.5, -21.5}, {5., -21.5}, {5., -21.5}, {5.5, -21.5}}], 
+     LineBox[{{5.5, -21.5}, {6., -21.5}, {6., -21.5}, {6.5, -21.5}}], 
+     LineBox[{{6.5, -21.5}, {7., -21.5}, {7., -21.5}, {7.5, -21.5}}], {
+      CircleBox[{7.5, -21.}, 0.5, 
+       NCache[{Rational[3, 2] Pi, 2 Pi}, {4.71238898038469, 
+        6.283185307179586}]], LineBox[{{8., -21.}, {8., -21.}}], 
+      CircleBox[{8.5, -21.}, 0.5, 
+       NCache[{Rational[1, 2] Pi, Pi}, {1.5707963267948966`, 
+        3.141592653589793}]]}, {
+      CircleBox[{8.5, -20.}, 0.5, 
+       NCache[{Rational[3, 2] Pi, 2 Pi}, {4.71238898038469, 
+        6.283185307179586}]], LineBox[{{9., -20.}, {9., -20.}}], 
+      CircleBox[{9.5, -20.}, 0.5, 
+       NCache[{Rational[1, 2] Pi, Pi}, {1.5707963267948966`, 
+        3.141592653589793}]]}, {
+      CircleBox[{9.5, -19.}, 0.5, 
+       NCache[{Rational[3, 2] Pi, 2 Pi}, {4.71238898038469, 
+        6.283185307179586}]], LineBox[{{10., -19.}, {10., -18.}}], 
+      CircleBox[{10.5, -18.}, 0.5, 
+       NCache[{Rational[1, 2] Pi, Pi}, {1.5707963267948966`, 
+        3.141592653589793}]]}, 
+     LineBox[{{10.5, -17.5}, {11., -17.5}, {11., -17.5}, {11.5, -17.5}}], 
+     LineBox[{{11.5, -17.5}, {12., -17.5}, {12., -17.5}, {12.5, -17.5}}], 
+     LineBox[{{12.5, -17.5}, {13., -17.5}, {13., -17.5}, {13.5, -17.5}}], {
+      CircleBox[{13.5, -18.}, 0.5, 
+       NCache[{0, Rational[1, 2] Pi}, {0, 1.5707963267948966`}]], 
+      LineBox[{{14., -18.}, {14., -19.}}], 
+      CircleBox[{14.5, -19.}, 0.5, 
+       NCache[{Pi, Rational[3, 2] Pi}, {3.141592653589793, 
+        4.71238898038469}]]}, {
+      CircleBox[{14.5, -20.}, 0.5, 
+       NCache[{0, Rational[1, 2] Pi}, {0, 1.5707963267948966`}]], 
+      LineBox[{{15., -20.}, {15., -21.}}], 
+      CircleBox[{15.5, -21.}, 0.5, 
+       NCache[{Pi, Rational[3, 2] Pi}, {3.141592653589793, 
+        4.71238898038469}]]}, 
+     LineBox[{{15.5, -21.5}, {16., -21.5}, {16., -21.5}, {16.5, -21.5}}], 
+     LineBox[{{16.5, -21.5}, {17., -21.5}, {17., -21.5}, {17.5, -21.5}}], 
+     LineBox[{{17.5, -21.5}, {18., -21.5}, {18., -21.5}, {18.5, -21.5}}], 
+     LineBox[{{18.5, -21.5}, {19., -21.5}, {19., -21.5}, {19.5, -21.5}}], 
+     LineBox[{{19.5, -21.5}, {20., -21.5}, {20., -21.5}, {20.5, -21.5}}], 
+     LineBox[{{20.5, -21.5}, {21., -21.5}, {21., -21.5}, {21.5, -21.5}}]}, {
+     LineBox[{{0.5, -23.5}, {1., -23.5}, {1., -23.5}, {1.5, -23.5}}], 
+     LineBox[{{1.5, -23.5}, {2., -23.5}, {2., -23.5}, {2.5, -23.5}}], 
+     LineBox[{{2.5, -23.5}, {3., -23.5}, {3., -23.5}, {3.5, -23.5}}], 
+     LineBox[{{3.5, -23.5}, {4., -23.5}, {4., -23.5}, {4.5, -23.5}}], 
+     LineBox[{{4.5, -23.5}, {5., -23.5}, {5., -23.5}, {5.5, -23.5}}], 
+     LineBox[{{5.5, -23.5}, {6., -23.5}, {6., -23.5}, {6.5, -23.5}}], 
+     LineBox[{{6.5, -23.5}, {7., -23.5}, {7., -23.5}, {7.5, -23.5}}], 
+     LineBox[{{7.5, -23.5}, {8., -23.5}, {8., -23.5}, {8.5, -23.5}}], {
+      CircleBox[{8.5, -23.}, 0.5, 
+       NCache[{Rational[3, 2] Pi, 2 Pi}, {4.71238898038469, 
+        6.283185307179586}]], LineBox[{{9., -23.}, {9., -20.}}], 
+      CircleBox[{9.5, -20.}, 0.5, 
+       NCache[{Rational[1, 2] Pi, Pi}, {1.5707963267948966`, 
+        3.141592653589793}]]}, 
+     LineBox[{{9.5, -19.5}, {10., -19.5}, {10., -19.5}, {10.5, -19.5}}], 
+     LineBox[{{10.5, -19.5}, {11., -19.5}, {11., -19.5}, {11.5, -19.5}}], 
+     LineBox[{{11.5, -19.5}, {12., -19.5}, {12., -19.5}, {12.5, -19.5}}], {
+      CircleBox[{12.5, -20.}, 0.5, 
+       NCache[{0, Rational[1, 2] Pi}, {0, 1.5707963267948966`}]], 
+      LineBox[{{13., -20.}, {13., -21.}}], 
+      CircleBox[{13.5, -21.}, 0.5, 
+       NCache[{Pi, Rational[3, 2] Pi}, {3.141592653589793, 
+        4.71238898038469}]]}, {
+      CircleBox[{13.5, -22.}, 0.5, 
+       NCache[{0, Rational[1, 2] Pi}, {0, 1.5707963267948966`}]], 
+      LineBox[{{14., -22.}, {14., -23.}}], 
+      CircleBox[{14.5, -23.}, 0.5, 
+       NCache[{Pi, Rational[3, 2] Pi}, {3.141592653589793, 
+        4.71238898038469}]]}, 
+     LineBox[{{14.5, -23.5}, {15., -23.5}, {15., -23.5}, {15.5, -23.5}}], 
+     LineBox[{{15.5, -23.5}, {16., -23.5}, {16., -23.5}, {16.5, -23.5}}], 
+     LineBox[{{16.5, -23.5}, {17., -23.5}, {17., -23.5}, {17.5, -23.5}}], 
+     LineBox[{{17.5, -23.5}, {18., -23.5}, {18., -23.5}, {18.5, -23.5}}], 
+     LineBox[{{18.5, -23.5}, {19., -23.5}, {19., -23.5}, {19.5, -23.5}}], 
+     LineBox[{{19.5, -23.5}, {20., -23.5}, {20., -23.5}, {20.5, -23.5}}], 
+     LineBox[{{20.5, -23.5}, {21., -23.5}, {21., -23.5}, {21.5, -23.5}}]}, {
+     LineBox[{{0.5, -23.5}, {1., -23.5}, {1., -23.5}, {1.5, -23.5}}], 
+     LineBox[{{1.5, -23.5}, {2., -23.5}, {2., -23.5}, {2.5, -23.5}}], 
+     LineBox[{{2.5, -23.5}, {3., -23.5}, {3., -23.5}, {3.5, -23.5}}], 
+     LineBox[{{3.5, -23.5}, {4., -23.5}, {4., -23.5}, {4.5, -23.5}}], 
+     LineBox[{{4.5, -23.5}, {5., -23.5}, {5., -23.5}, {5.5, -23.5}}], 
+     LineBox[{{5.5, -23.5}, {6., -23.5}, {6., -23.5}, {6.5, -23.5}}], 
+     LineBox[{{6.5, -23.5}, {7., -23.5}, {7., -23.5}, {7.5, -23.5}}], 
+     LineBox[{{7.5, -23.5}, {8., -23.5}, {8., -23.5}, {8.5, -23.5}}], {
+      CircleBox[{8.5, -23.}, 0.5, 
+       NCache[{Rational[3, 2] Pi, 2 Pi}, {4.71238898038469, 
+        6.283185307179586}]], LineBox[{{9., -23.}, {9., -23.}}], 
+      CircleBox[{9.5, -23.}, 0.5, 
+       NCache[{Rational[1, 2] Pi, Pi}, {1.5707963267948966`, 
+        3.141592653589793}]]}, {
+      CircleBox[{9.5, -22.}, 0.5, 
+       NCache[{Rational[3, 2] Pi, 2 Pi}, {4.71238898038469, 
+        6.283185307179586}]], LineBox[{{10., -22.}, {10., -22.}}], 
+      CircleBox[{10.5, -22.}, 0.5, 
+       NCache[{Rational[1, 2] Pi, Pi}, {1.5707963267948966`, 
+        3.141592653589793}]]}, 
+     LineBox[{{10.5, -21.5}, {11., -21.5}, {11., -21.5}, {11.5, -21.5}}], {
+      CircleBox[{11.5, -22.}, 0.5, 
+       NCache[{0, Rational[1, 2] Pi}, {0, 1.5707963267948966`}]], 
+      LineBox[{{12., -22.}, {12., -23.}}], 
+      CircleBox[{12.5, -23.}, 0.5, 
+       NCache[{Pi, Rational[3, 2] Pi}, {3.141592653589793, 
+        4.71238898038469}]]}, {
+      CircleBox[{12.5, -24.}, 0.5, 
+       NCache[{0, Rational[1, 2] Pi}, {0, 1.5707963267948966`}]], 
+      LineBox[{{13., -24.}, {13., -25.}}], 
+      CircleBox[{13.5, -25.}, 0.5, 
+       NCache[{Pi, Rational[3, 2] Pi}, {3.141592653589793, 
+        4.71238898038469}]]}, 
+     LineBox[{{13.5, -25.5}, {14., -25.5}, {14., -25.5}, {14.5, -25.5}}], 
+     LineBox[{{14.5, -25.5}, {15., -25.5}, {15., -25.5}, {15.5, -25.5}}], 
+     LineBox[{{15.5, -25.5}, {16., -25.5}, {16., -25.5}, {16.5, -25.5}}], 
+     LineBox[{{16.5, -25.5}, {17., -25.5}, {17., -25.5}, {17.5, -25.5}}], 
+     LineBox[{{17.5, -25.5}, {18., -25.5}, {18., -25.5}, {18.5, -25.5}}], 
+     LineBox[{{18.5, -25.5}, {19., -25.5}, {19., -25.5}, {19.5, -25.5}}], 
+     LineBox[{{19.5, -25.5}, {20., -25.5}, {20., -25.5}, {20.5, -25.5}}], 
+     LineBox[{{20.5, -25.5}, {21., -25.5}, {21., -25.5}, {21.5, -25.5}}]}, {
+     LineBox[{{0.5, -25.5}, {1., -25.5}, {1., -25.5}, {1.5, -25.5}}], 
+     LineBox[{{1.5, -25.5}, {2., -25.5}, {2., -25.5}, {2.5, -25.5}}], 
+     LineBox[{{2.5, -25.5}, {3., -25.5}, {3., -25.5}, {3.5, -25.5}}], 
+     LineBox[{{3.5, -25.5}, {4., -25.5}, {4., -25.5}, {4.5, -25.5}}], 
+     LineBox[{{4.5, -25.5}, {5., -25.5}, {5., -25.5}, {5.5, -25.5}}], 
+     LineBox[{{5.5, -25.5}, {6., -25.5}, {6., -25.5}, {6.5, -25.5}}], 
+     LineBox[{{6.5, -25.5}, {7., -25.5}, {7., -25.5}, {7.5, -25.5}}], 
+     LineBox[{{7.5, -25.5}, {8., -25.5}, {8., -25.5}, {8.5, -25.5}}], 
+     LineBox[{{8.5, -25.5}, {9., -25.5}, {9., -25.5}, {9.5, -25.5}}], 
+     LineBox[{{9.5, -25.5}, {10., -25.5}, {10., -25.5}, {10.5, -25.5}}], {
+      CircleBox[{10.5, -26.}, 0.5, 
+       NCache[{0, Rational[1, 2] Pi}, {0, 1.5707963267948966`}]], 
+      LineBox[{{11., -26.}, {11., -26.}}], 
+      CircleBox[{11.5, -26.}, 0.5, 
+       NCache[{Pi, Rational[3, 2] Pi}, {3.141592653589793, 
+        4.71238898038469}]]}, {
+      CircleBox[{11.5, -27.}, 0.5, 
+       NCache[{0, Rational[1, 2] Pi}, {0, 1.5707963267948966`}]], 
+      LineBox[{{12., -27.}, {12., -27.}}], 
+      CircleBox[{12.5, -27.}, 0.5, 
+       NCache[{Pi, Rational[3, 2] Pi}, {3.141592653589793, 
+        4.71238898038469}]]}, 
+     LineBox[{{12.5, -27.5}, {13., -27.5}, {13., -27.5}, {13.5, -27.5}}], 
+     LineBox[{{13.5, -27.5}, {14., -27.5}, {14., -27.5}, {14.5, -27.5}}], 
+     LineBox[{{14.5, -27.5}, {15., -27.5}, {15., -27.5}, {15.5, -27.5}}], 
+     LineBox[{{15.5, -27.5}, {16., -27.5}, {16., -27.5}, {16.5, -27.5}}], 
+     LineBox[{{16.5, -27.5}, {17., -27.5}, {17., -27.5}, {17.5, -27.5}}], 
+     LineBox[{{17.5, -27.5}, {18., -27.5}, {18., -27.5}, {18.5, -27.5}}], 
+     LineBox[{{18.5, -27.5}, {19., -27.5}, {19., -27.5}, {19.5, -27.5}}], 
+     LineBox[{{19.5, -27.5}, {20., -27.5}, {20., -27.5}, {20.5, -27.5}}], 
+     LineBox[{{20.5, -27.5}, {21., -27.5}, {21., -27.5}, {21.5, -27.5}}]}, {
+     LineBox[{{0.5, -29.5}, {1., -29.5}, {1., -29.5}, {1.5, -29.5}}], 
+     LineBox[{{1.5, -29.5}, {2., -29.5}, {2., -29.5}, {2.5, -29.5}}], 
+     LineBox[{{2.5, -29.5}, {3., -29.5}, {3., -29.5}, {3.5, -29.5}}], 
+     LineBox[{{3.5, -29.5}, {4., -29.5}, {4., -29.5}, {4.5, -29.5}}], 
+     LineBox[{{4.5, -29.5}, {5., -29.5}, {5., -29.5}, {5.5, -29.5}}], 
+     LineBox[{{5.5, -29.5}, {6., -29.5}, {6., -29.5}, {6.5, -29.5}}], 
+     LineBox[{{6.5, -29.5}, {7., -29.5}, {7., -29.5}, {7.5, -29.5}}], 
+     LineBox[{{7.5, -29.5}, {8., -29.5}, {8., -29.5}, {8.5, -29.5}}], 
+     LineBox[{{8.5, -29.5}, {9., -29.5}, {9., -29.5}, {9.5, -29.5}}], 
+     LineBox[{{9.5, -29.5}, {10., -29.5}, {10., -29.5}, {10.5, -29.5}}], 
+     LineBox[{{10.5, -29.5}, {11., -29.5}, {11., -29.5}, {11.5, -29.5}}], 
+     LineBox[{{11.5, -29.5}, {12., -29.5}, {12., -29.5}, {12.5, -29.5}}], 
+     LineBox[{{12.5, -29.5}, {13., -29.5}, {13., -29.5}, {13.5, -29.5}}], 
+     LineBox[{{13.5, -29.5}, {14., -29.5}, {14., -29.5}, {14.5, -29.5}}], 
+     LineBox[{{14.5, -29.5}, {15., -29.5}, {15., -29.5}, {15.5, -29.5}}], 
+     LineBox[{{15.5, -29.5}, {16., -29.5}, {16., -29.5}, {16.5, -29.5}}], 
+     LineBox[{{16.5, -29.5}, {17., -29.5}, {17., -29.5}, {17.5, -29.5}}], 
+     LineBox[{{17.5, -29.5}, {18., -29.5}, {18., -29.5}, {18.5, -29.5}}], 
+     LineBox[{{18.5, -29.5}, {19., -29.5}, {19., -29.5}, {19.5, -29.5}}], 
+     LineBox[{{19.5, -29.5}, {20., -29.5}, {20., -29.5}, {20.5, -29.5}}], 
+     LineBox[{{20.5, -29.5}, {21., -29.5}, {21., -29.5}, {21.5, -29.5}}]}, {
+     LineBox[{{0.5, -31.5}, {1., -31.5}, {1., -31.5}, {1.5, -31.5}}], 
+     LineBox[{{1.5, -31.5}, {2., -31.5}, {2., -31.5}, {2.5, -31.5}}], 
+     LineBox[{{2.5, -31.5}, {3., -31.5}, {3., -31.5}, {3.5, -31.5}}], 
+     LineBox[{{3.5, -31.5}, {4., -31.5}, {4., -31.5}, {4.5, -31.5}}], 
+     LineBox[{{4.5, -31.5}, {5., -31.5}, {5., -31.5}, {5.5, -31.5}}], 
+     LineBox[{{5.5, -31.5}, {6., -31.5}, {6., -31.5}, {6.5, -31.5}}], 
+     LineBox[{{6.5, -31.5}, {7., -31.5}, {7., -31.5}, {7.5, -31.5}}], 
+     LineBox[{{7.5, -31.5}, {8., -31.5}, {8., -31.5}, {8.5, -31.5}}], 
+     LineBox[{{8.5, -31.5}, {9., -31.5}, {9., -31.5}, {9.5, -31.5}}], 
+     LineBox[{{9.5, -31.5}, {10., -31.5}, {10., -31.5}, {10.5, -31.5}}], 
+     LineBox[{{10.5, -31.5}, {11., -31.5}, {11., -31.5}, {11.5, -31.5}}], 
+     LineBox[{{11.5, -31.5}, {12., -31.5}, {12., -31.5}, {12.5, -31.5}}], 
+     LineBox[{{12.5, -31.5}, {13., -31.5}, {13., -31.5}, {13.5, -31.5}}], 
+     LineBox[{{13.5, -31.5}, {14., -31.5}, {14., -31.5}, {14.5, -31.5}}], 
+     LineBox[{{14.5, -31.5}, {15., -31.5}, {15., -31.5}, {15.5, -31.5}}], 
+     LineBox[{{15.5, -31.5}, {16., -31.5}, {16., -31.5}, {16.5, -31.5}}], 
+     LineBox[{{16.5, -31.5}, {17., -31.5}, {17., -31.5}, {17.5, -31.5}}], 
+     LineBox[{{17.5, -31.5}, {18., -31.5}, {18., -31.5}, {18.5, -31.5}}], 
+     LineBox[{{18.5, -31.5}, {19., -31.5}, {19., -31.5}, {19.5, -31.5}}], 
+     LineBox[{{19.5, -31.5}, {20., -31.5}, {20., -31.5}, {20.5, -31.5}}], 
+     LineBox[{{20.5, -31.5}, {21., -31.5}, {21., -31.5}, {21.5, -31.5}}]}}},
+  AspectRatio->Automatic,
+  PlotRange->All]], "Output",
+ CellChangeTimes->{{3.835805348604536*^9, 3.83580537273216*^9}, {
+   3.835807475052403*^9, 3.835807503239737*^9}, 3.835807537395628*^9},
+ CellLabel->"Out[39]=",ExpressionUUID->"4b4e8fd6-dcc2-4d78-beb3-ddf9c3c0bab5"]
+}, Open  ]]
+},
+WindowSize->{960, 1003},
+WindowMargins->{{0, Automatic}, {Automatic, 37}},
+FrontEndVersion->"12.3 for Linux x86 (64-bit) (July 9, 2021)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"438ecb35-2609-4ff4-a1b9-6eedf06d79ed"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 528, 10, 104, "Text",ExpressionUUID->"49b65821-05f2-4b69-85cf-6a3f25e88751"],
+Cell[CellGroupData[{
+Cell[1111, 34, 2947, 80, 273, "Input",ExpressionUUID->"3f423d23-90ab-44c2-b641-82019e2f4541"],
+Cell[4061, 116, 167833, 3816, 472, "Output",ExpressionUUID->"4b4e8fd6-dcc2-4d78-beb3-ddf9c3c0bab5"]
+}, Open  ]]
+}
+]
+*)
+

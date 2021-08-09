@@ -1,0 +1,739 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     36305,        731]
+NotebookOptionsPosition[     35515,        708]
+NotebookOutlinePosition[     36002,        726]
+CellTagsIndexPosition[     35959,        723]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Time Tracker", "Title",
+ CellChangeTimes->{{3.7817048550201273`*^9, 
+  3.7817048563137026`*^9}},ExpressionUUID->"23489883-d956-4687-80ac-\
+ab26c3699e20"],
+
+Cell["\<\
+Track time spent by date and category
+Add time by setting increment and pressing category button
+Save and load data to personal cloud
+Burn time bank for personal rewards\
+\>", "Text",
+ CellChangeTimes->{{3.830014630819344*^9, 
+  3.8300147431092997`*^9}},ExpressionUUID->"89b31bcc-f04a-471e-ae05-\
+6a766ca4f961"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DynamicModule", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"categories", "=", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<re\>\"", ",", "\"\<da\>\"", ",", "\"\<ct\>\"", ",", 
+        "\"\<ed\>\""}], "}"}]}], ",", "\[IndentingNewLine]", "times", ",", 
+     "buttons", ",", " ", 
+     RowBox[{"increment", "=", "1"}], ",", " ", 
+     RowBox[{"bank", "=", "0"}], ",", " ", "history", ",", " ", 
+     RowBox[{"today", "=", "Today"}], ",", " ", "size", ",", " ", "totals", 
+     ",", " ", 
+     RowBox[{"charts", "=", 
+      RowBox[{"Table", "[", 
+       RowBox[{"None", ",", "3"}], "]"}]}], ",", " ", "controls"}], "}"}], 
+   ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"size", "=", 
+     RowBox[{"Length", "[", "categories", "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"times", "=", 
+     RowBox[{"Table", "[", 
+      RowBox[{"0", ",", "size"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"history", "=", 
+     RowBox[{"<|", 
+      RowBox[{"today", "\[Rule]", 
+       RowBox[{"Table", "[", 
+        RowBox[{"0", ",", "size"}], "]"}]}], "|>"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"totals", "=", 
+     RowBox[{"<|", 
+      RowBox[{"today", "\[Rule]", 
+       RowBox[{"Table", "[", 
+        RowBox[{"0", ",", "size"}], "]"}]}], "|>"}]}], ";", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"(*", " ", 
+     RowBox[{
+     "Buttons", " ", "for", " ", "adding", " ", "time", " ", "to", " ", 
+      "banks", " ", "and", " ", "history"}], " ", "*)"}], 
+    "\[IndentingNewLine]", 
+    RowBox[{"buttons", "=", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Button", "[", 
+        RowBox[{
+         RowBox[{"ToString", "[", 
+          RowBox[{"categories", "[", 
+           RowBox[{"[", "#", "]"}], "]"}], "]"}], ",", 
+         RowBox[{
+          RowBox[{"today", "=", "Today"}], ";", 
+          RowBox[{
+           RowBox[{"times", "[", 
+            RowBox[{"[", "#", "]"}], "]"}], "+=", "increment"}], ";", 
+          RowBox[{"bank", "+=", "increment"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"KeyMemberQ", "[", 
+             RowBox[{"history", ",", "today"}], "]"}], ",", 
+            "\[IndentingNewLine]", " ", "\[IndentingNewLine]", 
+            RowBox[{"(*", " ", 
+             RowBox[{
+             "add", " ", "time", " ", "to", " ", "current", " ", "day", " ", 
+              "entry"}], " ", "*)"}], "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"history", "[", "today", "]"}], "+=", 
+              RowBox[{"Table", "[", 
+               RowBox[{
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{"i", "\[Equal]", "#"}], ",", "increment", ",", 
+                  "0"}], "]"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"i", ",", "size"}], "}"}]}], "]"}]}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"totals", "[", "today", "]"}], "+=", 
+              RowBox[{"Table", "[", 
+               RowBox[{
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{"i", "\[Equal]", "#"}], ",", "increment", ",", 
+                  "0"}], "]"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"i", ",", "size"}], "}"}]}], "]"}]}]}], ",", 
+            "\[IndentingNewLine]", "\[IndentingNewLine]", 
+            RowBox[{"(*", " ", 
+             RowBox[{"new", " ", "day", " ", "entry"}], " ", "*)"}], 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"history", ",", 
+               RowBox[{"today", "\[Rule]", 
+                RowBox[{"Table", "[", 
+                 RowBox[{
+                  RowBox[{"If", "[", 
+                   RowBox[{
+                    RowBox[{"i", "\[Equal]", "#"}], ",", "increment", ",", 
+                    "0"}], "]"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"i", ",", "size"}], "}"}]}], "]"}]}]}], "]"}], ";",
+              "\[IndentingNewLine]", 
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"totals", ",", 
+               RowBox[{"today", "\[Rule]", 
+                RowBox[{"Table", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"Last", "[", "totals", "]"}], "[", 
+                    RowBox[{"[", "i", "]"}], "]"}], "+", 
+                   RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"i", "\[Equal]", "#"}], ",", "increment", ",", 
+                    "0"}], "]"}]}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"i", ",", "size"}], "}"}]}], "]"}]}]}], "]"}]}]}], 
+           "]"}]}], ",", "\[IndentingNewLine]", "\[IndentingNewLine]", " ", 
+         RowBox[{"ImageSize", "\[Rule]", "61"}]}], "]"}], 
+       "\[IndentingNewLine]", "&"}], "/@", 
+      RowBox[{"Range", "[", "size", "]"}]}]}], ";", "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", 
+    RowBox[{"(*", " ", 
+     RowBox[{
+     "total", " ", "times", " ", "by", " ", "category", " ", "chart"}], " ", 
+     "*)"}], "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"charts", "[", 
+      RowBox[{"[", "1", "]"}], "]"}], "=", 
+     RowBox[{"Dynamic", "[", 
+      RowBox[{"BarChart", "[", 
+       RowBox[{"times", ",", "\[IndentingNewLine]", 
+        RowBox[{"ChartLabels", "\[Rule]", "buttons"}], ",", " ", 
+        RowBox[{"ChartStyle", "\[Rule]", "\"\<DarkRainbow\>\""}], ",", " ", 
+        RowBox[{"ImageSize", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"600", ",", "400"}], "}"}]}], ",", " ", 
+        RowBox[{"BarSpacing", "\[Rule]", "None"}]}], "]"}], "]"}]}], ";", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"(*", " ", 
+     RowBox[{"overall", " ", "cumulative", " ", "time", " ", "chart"}], " ", 
+     "*)"}], "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"charts", "[", 
+      RowBox[{"[", "2", "]"}], "]"}], "=", 
+     RowBox[{"Dynamic", "[", 
+      RowBox[{"BarChart", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Total", "[", "times", "]"}], ",", " ", "bank"}], "}"}], 
+        ",", " ", 
+        RowBox[{"ChartLabels", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"\"\<Total\>\"", ",", " ", "\"\<Bank\>\""}], "}"}]}], ",", 
+        " ", 
+        RowBox[{"ChartStyle", "\[Rule]", "\"\<DarkRainbow\>\""}], ",", " ", 
+        RowBox[{"ImageSize", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"200", ",", "219"}], "}"}]}]}], "]"}], "]"}]}], ";", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"(*", " ", 
+     RowBox[{
+     "history", " ", "of", " ", "total", " ", "time", " ", "by", " ", 
+      "category"}], " ", "*)"}], "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"charts", "[", 
+      RowBox[{"[", "3", "]"}], "]"}], "=", 
+     RowBox[{"Dynamic", "[", 
+      RowBox[{"DateListPlot", "[", 
+       RowBox[{
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"#", ",", 
+              RowBox[{
+               RowBox[{"totals", "[", "#", "]"}], "[", 
+               RowBox[{"[", "i", "]"}], "]"}]}], "}"}], "&"}], "/@", 
+           RowBox[{"Keys", "[", "totals", "]"}]}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "size"}], "}"}]}], "]"}], ",", " ", 
+        RowBox[{"ImageSize", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"700", ",", "380"}], "}"}]}], ",", " ", 
+        RowBox[{"PlotStyle", "\[Rule]", "\"\<DarkRainbow\>\""}], ",", " ", 
+        RowBox[{"PlotLegends", "\[Rule]", "categories"}], ",", " ", 
+        RowBox[{"AxesLabel", "\[Rule]", "Automatic"}]}], "]"}], "]"}]}], ";", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"(*", " ", 
+     RowBox[{
+     "control", " ", "panel", " ", "for", " ", "adding", " ", "time", " ", 
+      "and", " ", "data", " ", "storage"}], " ", "*)"}], 
+    "\[IndentingNewLine]", 
+    RowBox[{"controls", "=", 
+     RowBox[{"Panel", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Column", "[", 
+        RowBox[{"{", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Row", "[", 
+           RowBox[{"Flatten", "[", 
+            RowBox[{"{", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{
+               RowBox[{
+                RowBox[{"Button", "[", 
+                 RowBox[{"#", ",", " ", 
+                  RowBox[{"increment", "=", "#"}], ",", " ", 
+                  RowBox[{"ImageSize", "\[Rule]", "35"}]}], "]"}], "&"}], "/@", 
+               RowBox[{"{", 
+                RowBox[{".25", ",", ".5", ",", "1", ",", "2"}], "}"}]}], ",", 
+              
+              RowBox[{"InputField", "[", 
+               RowBox[{
+                RowBox[{"Dynamic", "[", "increment", "]"}], ",", " ", 
+                "Number", ",", 
+                RowBox[{"FieldSize", "\[Rule]", "2"}]}], "]"}]}], "}"}], 
+            "]"}], "]"}], ",", "\[IndentingNewLine]", "\"\<\\n\>\"", ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Row", "[", 
+           RowBox[{"{", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"Button", "[", 
+              RowBox[{"\"\<Save\>\"", ",", 
+               RowBox[{"CloudPut", "[", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{
+                  "times", ",", "bank", ",", "history", ",", " ", "totals"}], 
+                  "}"}], ",", "\"\<save\>\""}], "]"}], ",", " ", 
+               RowBox[{"ImageSize", "\[Rule]", "60"}]}], "]"}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"Button", "[", 
+              RowBox[{"\"\<Load\>\"", ",", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{
+                 "times", ",", "bank", ",", "history", ",", " ", "totals"}], 
+                 "}"}], "=", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"CloudGet", "[", "\"\<save\>\"", "]"}], "[", 
+                   RowBox[{"[", "#", "]"}], "]"}], "&"}], "/@", 
+                 RowBox[{"Range", "[", "4", "]"}]}]}], ",", " ", 
+               RowBox[{"ImageSize", "\[Rule]", "60"}]}], "]"}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"Button", "[", 
+              RowBox[{"\"\<Burn\>\"", ",", " ", 
+               RowBox[{"bank", "-=", "increment"}], ",", " ", 
+               RowBox[{"ImageSize", "\[Rule]", "60"}]}], "]"}]}], "}"}], 
+           "]"}]}], "}"}], "]"}], ",", "\[IndentingNewLine]", " ", 
+       RowBox[{"ImageSize", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"200", ",", "100"}], "}"}]}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"Column", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Row", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"charts", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], ",", 
+          RowBox[{"Column", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"charts", "[", 
+              RowBox[{"[", "2", "]"}], "]"}], ",", "controls"}], "}"}], 
+           "]"}]}], "}"}], "]"}], ",", 
+       RowBox[{"charts", "[", 
+        RowBox[{"[", "3", "]"}], "]"}]}], "}"}], "]"}]}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "]"}]], "Code",
+ CellChangeTimes->{{3.781445161407174*^9, 3.781445220791003*^9}, {
+   3.7814452547304273`*^9, 3.781445299822178*^9}, {3.781445334478571*^9, 
+   3.781445362562027*^9}, {3.7814453979886727`*^9, 3.7814454408844943`*^9}, {
+   3.7814454967258463`*^9, 3.7814455881969695`*^9}, {3.781445622417269*^9, 
+   3.781445627275566*^9}, {3.7814459343719993`*^9, 3.7814460735825167`*^9}, {
+   3.7814461541133385`*^9, 3.7814461733434258`*^9}, {3.7814462661196337`*^9, 
+   3.781446313796505*^9}, {3.78144643826471*^9, 3.7814465540234613`*^9}, {
+   3.7814466489065504`*^9, 3.7814467209441614`*^9}, {3.781446751229356*^9, 
+   3.781446752713372*^9}, {3.7814468313989286`*^9, 3.7814468805833054`*^9}, {
+   3.7814469208789377`*^9, 3.781446962614046*^9}, {3.7814471452637486`*^9, 
+   3.781447227979585*^9}, {3.7814473147414055`*^9, 3.7814473402044516`*^9}, {
+   3.781447380539153*^9, 3.7814474343482895`*^9}, {3.7814653830486083`*^9, 
+   3.78146539710001*^9}, {3.781465457436302*^9, 3.7814654935424824`*^9}, {
+   3.7814673867661595`*^9, 3.7814673881773834`*^9}, {3.7814674214224386`*^9, 
+   3.781467436437523*^9}, {3.781467646953446*^9, 3.781467751832575*^9}, 
+   3.7814678532702837`*^9, {3.7814679264920235`*^9, 3.781467955283826*^9}, {
+   3.781468016524592*^9, 3.7814681111308346`*^9}, {3.7814681555634623`*^9, 
+   3.7814681712955*^9}, {3.781468281598983*^9, 3.781468284051181*^9}, 
+   3.781468324960884*^9, {3.7814683683321867`*^9, 3.781468456066577*^9}, {
+   3.781468519778763*^9, 3.781468541453774*^9}, {3.781468645182887*^9, 
+   3.7814686816023917`*^9}, {3.7814687283265295`*^9, 3.781468860937131*^9}, {
+   3.7814688921419406`*^9, 3.7814689191005554`*^9}, {3.7814689665802093`*^9, 
+   3.781469017213332*^9}, {3.7814690614671164`*^9, 3.7814691027580853`*^9}, {
+   3.781469153795373*^9, 3.7814692138429537`*^9}, {3.7814692455771337`*^9, 
+   3.7814692576291156`*^9}, {3.781469341129026*^9, 3.7814693419582715`*^9}, {
+   3.7814694257541933`*^9, 3.781469508615587*^9}, {3.781692689866333*^9, 
+   3.7816927873267813`*^9}, 3.7816928395357094`*^9, {3.781692889486099*^9, 
+   3.781692923812335*^9}, {3.781693136943805*^9, 3.781693137939478*^9}, {
+   3.7816935003920116`*^9, 3.781693502993038*^9}, {3.7816936594011936`*^9, 
+   3.7816936698878546`*^9}, {3.781693721486117*^9, 3.781693739402049*^9}, {
+   3.7816937803182893`*^9, 3.7816938430731306`*^9}, {3.781693894899694*^9, 
+   3.7816939331951056`*^9}, {3.7817038330632453`*^9, 
+   3.7817038588689384`*^9}, {3.7817039452332067`*^9, 3.781703991057596*^9}, {
+   3.7817040511341157`*^9, 3.781704116348678*^9}, {3.7817042073246694`*^9, 
+   3.781704237738078*^9}, {3.7817042743707123`*^9, 3.7817042772165227`*^9}, {
+   3.781704335534088*^9, 3.781704345121829*^9}, {3.781704492663842*^9, 
+   3.7817045136855345`*^9}, {3.7817045507612615`*^9, 3.781704577688713*^9}, {
+   3.781704614052848*^9, 3.781704657542068*^9}, {3.781704908983369*^9, 
+   3.78170502525502*^9}, {3.781705063435807*^9, 3.7817051033806095`*^9}, {
+   3.781705136517502*^9, 3.7817051850301476`*^9}, {3.781705222738365*^9, 
+   3.781705256628848*^9}, {3.781705312525084*^9, 3.7817053574027042`*^9}, {
+   3.7817055200017185`*^9, 3.7817055380165653`*^9}, {3.781705765629287*^9, 
+   3.7817058212875156`*^9}, {3.781705883670638*^9, 3.7817059462733846`*^9}, {
+   3.781712118782961*^9, 3.7817121454712553`*^9}, {3.781712190615426*^9, 
+   3.7817123630847654`*^9}, {3.7817124039993258`*^9, 
+   3.7817125367397175`*^9}, {3.7817125812301035`*^9, 
+   3.7817125843860645`*^9}, {3.781712626698666*^9, 3.7817128206229563`*^9}, {
+   3.7817128840351267`*^9, 3.781712947969121*^9}, {3.7817129788109884`*^9, 
+   3.7817130439485903`*^9}, {3.7817130828818007`*^9, 
+   3.7817130871374035`*^9}, {3.781713171696623*^9, 3.7817131724753675`*^9}, {
+   3.7817132136898313`*^9, 3.781713290625552*^9}, {3.781713332245883*^9, 
+   3.7817133388857*^9}, {3.7817136071695633`*^9, 3.781713642999794*^9}, {
+   3.78171371348464*^9, 3.7817137585688257`*^9}, {3.781713813375823*^9, 
+   3.781713818985981*^9}, {3.781713868140831*^9, 3.7817139340381823`*^9}, {
+   3.781713978694512*^9, 3.7817140164900975`*^9}, {3.7817140554832864`*^9, 
+   3.7817140581184206`*^9}, {3.781714111327939*^9, 3.781714147862938*^9}, {
+   3.7817142739934416`*^9, 3.7817142764146495`*^9}, {3.781714375688034*^9, 
+   3.781714421324041*^9}, {3.7817144524268236`*^9, 3.7817144618547277`*^9}, {
+   3.781714594623109*^9, 3.781714652843984*^9}, {3.7817147226592293`*^9, 
+   3.7817147591362453`*^9}, {3.781714802678938*^9, 3.7817148423489075`*^9}, {
+   3.7817148783290854`*^9, 3.781714919668508*^9}, {3.781714965468459*^9, 
+   3.78171496641115*^9}, {3.7817150286976895`*^9, 3.781715106273203*^9}, {
+   3.7817151512734203`*^9, 3.781715154846246*^9}, 3.7817151892082667`*^9, {
+   3.7817152418169823`*^9, 3.781715376869614*^9}, {3.7817154231044245`*^9, 
+   3.7817154284266768`*^9}, 3.7817155069518833`*^9, {3.781715576850918*^9, 
+   3.7817155851851788`*^9}, {3.7817156197158375`*^9, 3.781715620937436*^9}, {
+   3.7817156553851213`*^9, 3.7817156744418583`*^9}, {3.781715725496085*^9, 
+   3.781715793464758*^9}, {3.7817158527442846`*^9, 3.781715868482112*^9}, {
+   3.781715949166606*^9, 3.7817160294012485`*^9}, {3.781716170381935*^9, 
+   3.7817162326344833`*^9}, {3.7817163057954483`*^9, 
+   3.7817164281232605`*^9}, {3.781716519334296*^9, 3.7817165660039663`*^9}, {
+   3.781716625888297*^9, 3.781716626016259*^9}, {3.7817167311267204`*^9, 
+   3.7817167476882873`*^9}, {3.781717146733187*^9, 3.7817171736953297`*^9}, {
+   3.7818061371920576`*^9, 3.7818061698954954`*^9}, {3.7818062327336364`*^9, 
+   3.7818062454109707`*^9}, {3.781806285926298*^9, 3.781806468175724*^9}, {
+   3.7818066231416454`*^9, 3.7818066706685605`*^9}, {3.781806848490638*^9, 
+   3.7818068842224464`*^9}, {3.7819811836417603`*^9, 
+   3.7819812083686094`*^9}, {3.782233325687291*^9, 3.7822333276576424`*^9}, {
+   3.782233522280836*^9, 3.7822335576601205`*^9}, {3.7822339002269435`*^9, 
+   3.7822339051356893`*^9}, {3.7822340632577014`*^9, 
+   3.7822340792951813`*^9}, {3.7822342910064735`*^9, 
+   3.7822343185548983`*^9}, {3.7822346649207287`*^9, 
+   3.7822347073636827`*^9}, {3.782234832707551*^9, 3.7822348388091106`*^9}, {
+   3.7822349471598706`*^9, 3.782234948152543*^9}, {3.7822349901316867`*^9, 
+   3.7822349908164577`*^9}, {3.7823086216937776`*^9, 3.782308629902068*^9}, {
+   3.7823086931222*^9, 3.782308746689518*^9}, {3.782308796558061*^9, 
+   3.7823089003837905`*^9}, {3.7823089604809504`*^9, 3.782309108414124*^9}, {
+   3.782309159842148*^9, 3.7823091730137987`*^9}, {3.782309216954297*^9, 
+   3.782309223916999*^9}, {3.782309326788042*^9, 3.7823093616635303`*^9}, {
+   3.7823093923274107`*^9, 3.782309404719319*^9}, {3.7823094541719956`*^9, 
+   3.782309484904852*^9}, {3.782309515227848*^9, 3.782309516100555*^9}, {
+   3.7824156568765182`*^9, 3.7824156773818254`*^9}, {3.7824157211805277`*^9, 
+   3.782415764350439*^9}, {3.7824159134747653`*^9, 3.7824159208763494`*^9}, {
+   3.7824159822803073`*^9, 3.782416000303425*^9}, {3.782416138156431*^9, 
+   3.782416233871191*^9}, {3.7824163685952225`*^9, 3.7824163734186444`*^9}, {
+   3.782416509062372*^9, 3.7824165147675095`*^9}, {3.782416563160714*^9, 
+   3.7824166157275567`*^9}, {3.7824166697379284`*^9, 3.782416700614852*^9}, {
+   3.7824167363511868`*^9, 3.7824167701041737`*^9}, {3.782416828829003*^9, 
+   3.7824172331264167`*^9}, {3.7824172638054056`*^9, 
+   3.7824173327708936`*^9}, {3.782417364266613*^9, 3.782417438731309*^9}, {
+   3.782417521178399*^9, 3.7824175866420345`*^9}, {3.782417620379021*^9, 
+   3.7824176288422585`*^9}, {3.7824176796636724`*^9, 
+   3.7824177065918818`*^9}, {3.7824177538554573`*^9, 
+   3.7824179987205343`*^9}, {3.7824180551941023`*^9, 
+   3.7824180978801713`*^9}, {3.782422790928708*^9, 3.7824228006978607`*^9}, {
+   3.7824229070869913`*^9, 3.7824229262498865`*^9}, {3.7826611950353594`*^9, 
+   3.782661203010878*^9}, {3.782661290036313*^9, 3.7826612981841993`*^9}, 
+   3.782661392852514*^9, {3.782661427025062*^9, 3.782661429743846*^9}, {
+   3.7826615392596645`*^9, 3.782661595717942*^9}, {3.7826616789199395`*^9, 
+   3.7826616928856993`*^9}, {3.7826617518001714`*^9, 3.782661847536961*^9}, 
+   3.782661923685891*^9, {3.8159501272905273`*^9, 3.8159501295749993`*^9}, {
+   3.8160126213107967`*^9, 3.816012625557615*^9}, {3.8160127034244404`*^9, 
+   3.8160127068125057`*^9}, {3.8160127400617924`*^9, 
+   3.8160127739691296`*^9}, {3.8160128229771547`*^9, 
+   3.8160128390046916`*^9}, {3.816012918245741*^9, 3.816012955066987*^9}, {
+   3.8160130261301723`*^9, 3.816013173007245*^9}, {3.816013207234767*^9, 
+   3.816013207280245*^9}, {3.8287144256086197`*^9, 3.828714467263274*^9}, {
+   3.828714526763118*^9, 3.828714586841172*^9}, {3.828714647744244*^9, 
+   3.82871468431246*^9}, {3.8300132887330236`*^9, 3.830013291636816*^9}, 
+   3.8300134134715137`*^9, {3.830013446242673*^9, 3.8300134580641317`*^9}, {
+   3.8300143671459703`*^9, 3.830014374823866*^9}, 3.830014415926033*^9},
+ CellLabel->"In[5]:=",ExpressionUUID->"d64494c7-b7ad-42f1-b036-02d18f776636"],
+
+Cell[BoxData[
+ DynamicModuleBox[{$CellContext`categories$$ = {
+  "re", "da", "ct", "ed"}, $CellContext`times$$ = {0, 0, 0, 
+  0}, $CellContext`buttons$$ = {
+   Button["re", $CellContext`today$$ = Today; AddTo[
+      Part[$CellContext`times$$, 1], $CellContext`increment$$]; 
+    AddTo[$CellContext`bank$$, $CellContext`increment$$]; If[
+      KeyMemberQ[$CellContext`history$$, $CellContext`today$$], AddTo[
+        $CellContext`history$$[$CellContext`today$$], 
+        Table[
+         If[$CellContext`i == 1, $CellContext`increment$$, 
+          0], {$CellContext`i, $CellContext`size$$}]]; AddTo[
+        $CellContext`totals$$[$CellContext`today$$], 
+        Table[
+         If[$CellContext`i == 1, $CellContext`increment$$, 
+          0], {$CellContext`i, $CellContext`size$$}]], 
+      AppendTo[$CellContext`history$$, $CellContext`today$$ -> Table[
+          
+          If[$CellContext`i == 1, $CellContext`increment$$, 
+           0], {$CellContext`i, $CellContext`size$$}]]; 
+      AppendTo[$CellContext`totals$$, $CellContext`today$$ -> Table[Part[
+            Last[$CellContext`totals$$], $CellContext`i] + 
+          If[$CellContext`i == 1, $CellContext`increment$$, 
+            0], {$CellContext`i, $CellContext`size$$}]]], ImageSize -> 61], 
+   Button["da", $CellContext`today$$ = Today; AddTo[
+      Part[$CellContext`times$$, 2], $CellContext`increment$$]; 
+    AddTo[$CellContext`bank$$, $CellContext`increment$$]; If[
+      KeyMemberQ[$CellContext`history$$, $CellContext`today$$], AddTo[
+        $CellContext`history$$[$CellContext`today$$], 
+        Table[
+         If[$CellContext`i == 2, $CellContext`increment$$, 
+          0], {$CellContext`i, $CellContext`size$$}]]; AddTo[
+        $CellContext`totals$$[$CellContext`today$$], 
+        Table[
+         If[$CellContext`i == 2, $CellContext`increment$$, 
+          0], {$CellContext`i, $CellContext`size$$}]], 
+      AppendTo[$CellContext`history$$, $CellContext`today$$ -> Table[
+          
+          If[$CellContext`i == 2, $CellContext`increment$$, 
+           0], {$CellContext`i, $CellContext`size$$}]]; 
+      AppendTo[$CellContext`totals$$, $CellContext`today$$ -> Table[Part[
+            Last[$CellContext`totals$$], $CellContext`i] + 
+          If[$CellContext`i == 2, $CellContext`increment$$, 
+            0], {$CellContext`i, $CellContext`size$$}]]], ImageSize -> 61], 
+   Button["ct", $CellContext`today$$ = Today; AddTo[
+      Part[$CellContext`times$$, 3], $CellContext`increment$$]; 
+    AddTo[$CellContext`bank$$, $CellContext`increment$$]; If[
+      KeyMemberQ[$CellContext`history$$, $CellContext`today$$], AddTo[
+        $CellContext`history$$[$CellContext`today$$], 
+        Table[
+         If[$CellContext`i == 3, $CellContext`increment$$, 
+          0], {$CellContext`i, $CellContext`size$$}]]; AddTo[
+        $CellContext`totals$$[$CellContext`today$$], 
+        Table[
+         If[$CellContext`i == 3, $CellContext`increment$$, 
+          0], {$CellContext`i, $CellContext`size$$}]], 
+      AppendTo[$CellContext`history$$, $CellContext`today$$ -> Table[
+          
+          If[$CellContext`i == 3, $CellContext`increment$$, 
+           0], {$CellContext`i, $CellContext`size$$}]]; 
+      AppendTo[$CellContext`totals$$, $CellContext`today$$ -> Table[Part[
+            Last[$CellContext`totals$$], $CellContext`i] + 
+          If[$CellContext`i == 3, $CellContext`increment$$, 
+            0], {$CellContext`i, $CellContext`size$$}]]], ImageSize -> 61], 
+   Button["ed", $CellContext`today$$ = Today; AddTo[
+      Part[$CellContext`times$$, 4], $CellContext`increment$$]; 
+    AddTo[$CellContext`bank$$, $CellContext`increment$$]; If[
+      KeyMemberQ[$CellContext`history$$, $CellContext`today$$], AddTo[
+        $CellContext`history$$[$CellContext`today$$], 
+        Table[
+         If[$CellContext`i == 4, $CellContext`increment$$, 
+          0], {$CellContext`i, $CellContext`size$$}]]; AddTo[
+        $CellContext`totals$$[$CellContext`today$$], 
+        Table[
+         If[$CellContext`i == 4, $CellContext`increment$$, 
+          0], {$CellContext`i, $CellContext`size$$}]], 
+      AppendTo[$CellContext`history$$, $CellContext`today$$ -> Table[
+          
+          If[$CellContext`i == 4, $CellContext`increment$$, 
+           0], {$CellContext`i, $CellContext`size$$}]]; 
+      AppendTo[$CellContext`totals$$, $CellContext`today$$ -> Table[Part[
+            Last[$CellContext`totals$$], $CellContext`i] + 
+          If[$CellContext`i == 4, $CellContext`increment$$, 
+            0], {$CellContext`i, $CellContext`size$$}]]], ImageSize -> 
+    61]}, $CellContext`increment$$ = 1, $CellContext`bank$$ = 
+  0, $CellContext`history$$ = Association[
+  DateObject[{2021, 5, 14}, "Day", "Gregorian", -4.] -> {0, 0, 0, 
+    0}], $CellContext`today$$ = 
+  DateObject[{2021, 5, 14}, "Day", "Gregorian", -4.], $CellContext`size$$ = 
+  4, $CellContext`totals$$ = Association[
+  DateObject[{2021, 5, 14}, "Day", "Gregorian", -4.] -> {0, 0, 0, 
+    0}], $CellContext`charts$$ = {
+   Dynamic[
+    BarChart[$CellContext`times$$, ChartLabels -> $CellContext`buttons$$, 
+     ChartStyle -> "DarkRainbow", ImageSize -> {600, 400}, BarSpacing -> 
+     None]], 
+   Dynamic[
+    BarChart[{
+      Total[$CellContext`times$$], $CellContext`bank$$}, 
+     ChartLabels -> {"Total", "Bank"}, ChartStyle -> "DarkRainbow", 
+     ImageSize -> {200, 219}]], 
+   Dynamic[
+    DateListPlot[
+     Table[
+      Map[{#, 
+        Part[
+         $CellContext`totals$$[#], $CellContext`i]}& , 
+       Keys[$CellContext`totals$$]], {$CellContext`i, $CellContext`size$$}], 
+     ImageSize -> {700, 380}, PlotStyle -> "DarkRainbow", 
+     PlotLegends -> $CellContext`categories$$, AxesLabel -> 
+     Automatic]]}, $CellContext`controls$$ = Panel[
+   Column[{
+     Row[{
+       Button[0.25, $CellContext`increment$$ = 0.25, ImageSize -> 35], 
+       Button[0.5, $CellContext`increment$$ = 0.5, ImageSize -> 35], 
+       Button[1, $CellContext`increment$$ = 1, ImageSize -> 35], 
+       Button[2, $CellContext`increment$$ = 2, ImageSize -> 35], 
+       InputField[
+        Dynamic[$CellContext`increment$$], Number, FieldSize -> 2]}], "\n", 
+     Row[{
+       Button["Save", 
+        CloudPut[{$CellContext`times$$, $CellContext`bank$$, \
+$CellContext`history$$, $CellContext`totals$$}, "save"], ImageSize -> 60], 
+       Button[
+       "Load", {$CellContext`times$$, $CellContext`bank$$, \
+$CellContext`history$$, $CellContext`totals$$} = Map[Part[
+           CloudGet["save"], #]& , 
+          Range[4]], ImageSize -> 60], 
+       Button["Burn", 
+        SubtractFrom[$CellContext`bank$$, $CellContext`increment$$], 
+        ImageSize -> 60]}]}], ImageSize -> {200, 100}]}, 
+  TagBox[GridBox[{
+     {
+      TemplateBox[{
+        DynamicBox[
+         ToBoxes[
+          
+          BarChart[$CellContext`times$$, 
+           ChartLabels -> $CellContext`buttons$$, ChartStyle -> "DarkRainbow",
+            ImageSize -> {600, 400}, BarSpacing -> None], StandardForm]], 
+        TagBox[
+         GridBox[{{
+            DynamicBox[
+             ToBoxes[
+              BarChart[{
+                Total[$CellContext`times$$], $CellContext`bank$$}, 
+               ChartLabels -> {"Total", "Bank"}, ChartStyle -> "DarkRainbow", 
+               ImageSize -> {200, 219}], StandardForm]]}, {
+            PanelBox[
+             TagBox[
+              GridBox[{{
+                 TemplateBox[{
+                   ButtonBox[
+                   "0.25`", 
+                    ButtonFunction :> ($CellContext`increment$$ = 0.25), 
+                    ImageSize -> 35, Appearance -> Automatic, Evaluator -> 
+                    Automatic, Method -> "Preemptive"], 
+                   ButtonBox[
+                   "0.5`", ButtonFunction :> ($CellContext`increment$$ = 0.5),
+                     ImageSize -> 35, Appearance -> Automatic, Evaluator -> 
+                    Automatic, Method -> "Preemptive"], 
+                   ButtonBox[
+                   "1", ButtonFunction :> ($CellContext`increment$$ = 1), 
+                    ImageSize -> 35, Appearance -> Automatic, Evaluator -> 
+                    Automatic, Method -> "Preemptive"], 
+                   ButtonBox[
+                   "2", ButtonFunction :> ($CellContext`increment$$ = 2), 
+                    ImageSize -> 35, Appearance -> Automatic, Evaluator -> 
+                    Automatic, Method -> "Preemptive"], 
+                   InputFieldBox[
+                    Dynamic[$CellContext`increment$$], Number, FieldSize -> 
+                    2]}, "RowDefault"]}, {"\"\\n\""}, {
+                 TemplateBox[{
+                   ButtonBox[
+                   "\"Save\"", ButtonFunction :> 
+                    CloudPut[{$CellContext`times$$, $CellContext`bank$$, \
+$CellContext`history$$, $CellContext`totals$$}, "save"], ImageSize -> 60, 
+                    Appearance -> Automatic, Evaluator -> Automatic, Method -> 
+                    "Preemptive"], 
+                   ButtonBox[
+                   "\"Load\"", 
+                    ButtonFunction :> ({$CellContext`times$$, \
+$CellContext`bank$$, $CellContext`history$$, $CellContext`totals$$} = Map[Part[
+                    CloudGet["save"], #]& , 
+                    Range[4]]), ImageSize -> 60, Appearance -> Automatic, 
+                    Evaluator -> Automatic, Method -> "Preemptive"], 
+                   ButtonBox[
+                   "\"Burn\"", ButtonFunction :> 
+                    SubtractFrom[$CellContext`bank$$, \
+$CellContext`increment$$], ImageSize -> 60, Appearance -> Automatic, 
+                    Evaluator -> Automatic, Method -> "Preemptive"]}, 
+                  "RowDefault"]}}, 
+               GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
+               "Column", 
+               GridBoxItemSize -> {
+                "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], 
+              "Column"], ImageSize -> {200, 100}]}}, 
+          GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
+          "Column", 
+          GridBoxItemSize -> {
+           "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"]},
+       "RowDefault"]},
+     {
+      DynamicBox[ToBoxes[
+        DateListPlot[
+         Table[
+          Map[{#, 
+            Part[
+             $CellContext`totals$$[#], $CellContext`i]}& , 
+           
+           Keys[$CellContext`totals$$]], {$CellContext`i, \
+$CellContext`size$$}], ImageSize -> {700, 380}, PlotStyle -> "DarkRainbow", 
+         PlotLegends -> $CellContext`categories$$, AxesLabel -> Automatic], 
+        StandardForm],
+       ImageSizeCache->{762., {188., 192.}}]}
+    },
+    DefaultBaseStyle->"Column",
+    GridBoxAlignment->{"Columns" -> {{Left}}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+   "Column"],
+  DynamicModuleValues:>{}]], "Output",
+ CellChangeTimes->{
+  3.781713819665757*^9, {3.781713905042715*^9, 3.7817139343040943`*^9}, {
+   3.7817139816055574`*^9, 3.781714016942947*^9}, 3.7817140591220894`*^9, {
+   3.781714142676642*^9, 3.7817141486416826`*^9}, 3.781714277457304*^9, {
+   3.7817143824937983`*^9, 3.781714422227744*^9}, 3.7817144626284714`*^9, {
+   3.781714595637783*^9, 3.7817146203676524`*^9}, 3.7817147618373547`*^9, 
+   3.781714845271946*^9, {3.7817148878109713`*^9, 3.781714920687172*^9}, 
+   3.781715029627384*^9, {3.7817150976490374`*^9, 3.781715115490176*^9}, {
+   3.7817152663149347`*^9, 3.7817153149069695`*^9}, {3.781715508193474*^9, 
+   3.781715528123927*^9}, 3.7817155861668577`*^9, 3.7817156222010202`*^9, 
+   3.781715675104639*^9, {3.7817157361975718`*^9, 3.7817157835270214`*^9}, {
+   3.7817158564500656`*^9, 3.781715869266855*^9}, {3.7817160040445786`*^9, 
+   3.781716031650509*^9}, 3.7817161799917765`*^9, 3.7817162134747767`*^9, {
+   3.781716315870138*^9, 3.7817163351737976`*^9}, {3.78171652799745*^9, 
+   3.781716556157199*^9}, {3.781716627156875*^9, 3.781716637663424*^9}, 
+   3.781716692625367*^9, 3.7817167378625097`*^9, {3.7817169948190937`*^9, 
+   3.7817170123173447`*^9}, {3.781717161321393*^9, 3.7817171885074625`*^9}, 
+   3.7818064700361085`*^9, 3.781806636153133*^9, 3.7818066711167574`*^9, 
+   3.7818068925807123`*^9, {3.7819811886311436`*^9, 3.7819812089164305`*^9}, 
+   3.782233329223649*^9, 3.782234994581217*^9, 3.7823088373036118`*^9, 
+   3.7823089008786244`*^9, 3.7823091126397285`*^9, {3.782309160616892*^9, 
+   3.782309173730565*^9}, 3.782309406591702*^9, {3.782309498909229*^9, 
+   3.7823095240936084`*^9}, 3.7824156789643097`*^9, {3.78241573993341*^9, 
+   3.7824157662398214`*^9}, 3.7824159223378725`*^9, 3.7824160026026745`*^9, 
+   3.782416143989529*^9, {3.7824162193269377`*^9, 3.7824162347639003`*^9}, 
+   3.7824168302065563`*^9, {3.7824173037943544`*^9, 3.782417334256412*^9}, 
+   3.782417373604642*^9, {3.7824174085091763`*^9, 3.7824174393421097`*^9}, 
+   3.7824176306976547`*^9, 3.7824176812851515`*^9, {3.7824177546681995`*^9, 
+   3.782417805000762*^9}, 3.782417842462539*^9, {3.782417881550781*^9, 
+   3.782417999288349*^9}, {3.7824180561927757`*^9, 3.7824180983650284`*^9}, 
+   3.7824229274790907`*^9, 3.7826612042438235`*^9, 3.782661299459199*^9, 
+   3.7826613943017845`*^9, 3.7826614305135965`*^9, {3.7826615712944403`*^9, 
+   3.7826615963097477`*^9}, 3.782661695868553*^9, {3.7826618030881186`*^9, 
+   3.782661835189331*^9}, {3.7826619109189253`*^9, 3.78266192459142*^9}, 
+   3.7966698115562196`*^9, 3.8049008356140842`*^9, 3.815950137924879*^9, {
+   3.816012765941373*^9, 3.816012774512309*^9}, {3.8160128235800557`*^9, 
+   3.8160128393373976`*^9}, {3.816012918992327*^9, 3.816012944039193*^9}, 
+   3.8160129795342917`*^9, {3.8160130439185915`*^9, 3.8160130734519343`*^9}, {
+   3.816013126368506*^9, 3.8160131733456836`*^9}, 3.8160132076553173`*^9, 
+   3.8168766035628257`*^9, 3.8259012674054823`*^9, 3.828714590625505*^9, {
+   3.8287146485407124`*^9, 3.828714684839617*^9}, {3.830013333212899*^9, 
+   3.830013333738367*^9}, 3.8300134376055117`*^9, 3.8300134725618153`*^9, {
+   3.830014379499332*^9, 3.8300143799845877`*^9}, 3.830014448555749*^9, 
+   3.830014483491699*^9, 3.8300145989968767`*^9},
+ CellLabel->"Out[5]=",ExpressionUUID->"f1bffea9-f7e9-4c6a-a2eb-c4d3ce4d9657"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{960, 1003},
+WindowMargins->{{Automatic, 0}, {Automatic, 37}},
+TaggingRules->{
+ "WelcomeScreenSettings" -> {"FEStarting" -> True}, "TryRealOnly" -> False},
+FrontEndVersion->"12.2 for Linux x86 (64-bit) (December 12, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"92740d22-3a06-4956-ba5f-95a9efd36dee"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 159, 3, 98, "Title",ExpressionUUID->"23489883-d956-4687-80ac-ab26c3699e20"],
+Cell[742, 27, 321, 8, 104, "Text",ExpressionUUID->"89b31bcc-f04a-471e-ae05-6a766ca4f961"],
+Cell[CellGroupData[{
+Cell[1088, 39, 20332, 398, 993, "Code",ExpressionUUID->"d64494c7-b7ad-42f1-b036-02d18f776636"],
+Cell[21423, 439, 14064, 265, 805, "Output",ExpressionUUID->"f1bffea9-f7e9-4c6a-a2eb-c4d3ce4d9657"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

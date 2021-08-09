@@ -1,0 +1,118 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5406,        110]
+NotebookOptionsPosition[      4835,         92]
+NotebookOutlinePosition[      5230,        108]
+CellTagsIndexPosition[      5187,        105]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Universality in Multiway Systems", "Title",
+ CellChangeTimes->{{3.8353590318190823`*^9, 3.835359039113208*^9}, {
+  3.835363453609598*^9, 
+  3.8353634592732277`*^9}},ExpressionUUID->"74387394-d2e1-4ecf-ac0b-\
+edada69dd6bd"],
+
+Cell["\<\
+\tInstead of viewing a multiway system as a single tractable computation like \
+you might for singleway systems, it seems more descriptive to study how it \
+evolves holistically based on its causal graph. I believe that a universal \
+multiway system is one whose causal graph can be sliced in some way to \
+correspond to any other causal graph. Based on our understanding of Wolfram \
+physics models, this idea may seem so obvious it\[CloseCurlyQuote]s silly - \
+it\[CloseCurlyQuote]s much like saying that a universal system is one which \
+behaves like the universe. However, I think this might be the most accurate \
+definition, as well as a broadly applicable and powerful idea. 
+\tAnything that we can experience as humans embedded in the universe must \
+correspond to some slice through its causal graph. So, it follows that any \
+computational system we study can be viewed this way as well, though the \
+slice is probably at a higher layer of emulation on top of the basic \
+universal structure. With this definition of universality, that means that a \
+system is universal if it\[CloseCurlyQuote]s a slice of the universe which \
+contains enough information to completely describe itself.
+\tThe key insight of this idea is that studying different types of systems is \
+really studying the universe from different angles and at different levels of \
+abstraction. A well-defined computational system is then one coherent slice \
+from the causal graph of the universe, while a field like economics is in \
+effect trying to piece together many separate or loosely connected slices. \
+So, whether or not this is a useful definition comes down to the question of \
+if it\[CloseCurlyQuote]s possible for a piece of the universe to emulate \
+itself, which intuitively seems likely. There\[CloseCurlyQuote]s questions \
+about if it\[CloseCurlyQuote]s feasible to find these corresponding causal \
+slices, how to look for them, and how to prove full universality.
+\tOne interesting question from this idea is about the type of system that \
+could fully describe the universe. Wolfram physics models use multiway \
+hypergraphs, but is this the only possibility, or even the one which emulates \
+the universe at the lowest possible level? Is using one rule the best way to \
+describe the universe, or would simulating rulial space on top of branchial \
+space (along with spacelike and timelike space) show the behavior of the \
+universe at a lower level of emulation? What\[CloseCurlyQuote]s the \
+relationship between which of these spaces are included in a system and how \
+much computation or how many levels of abstraction it takes to emulate \
+different kinds of systems? Is branchlike space a necessary piece of the base \
+description for a multiway universal system, or can it fully emerge from a \
+singleway system?
+\tThere are many questions to ask about this description of universality as \
+well as universality in general, and my thoughts about this are still jumbled \
+and unrefined, but I\[CloseCurlyQuote]m hoping for some feedback on whether \
+or not this is a useful or even coherent idea. In any case, I\
+\[CloseCurlyQuote]d very much like to do a full investigation of the \
+phenomenon of universality and/or multiway systems in general if I can get \
+the chance.\
+\>", "Text",
+ CellChangeTimes->CompressedData["
+1:eJxTTMoPSmViYGCQAmIQveB88cvYyW8cJ1UmfwHRc7++/Ami797drxsHpMuy
+X5mA6FVPMkxB9DfHMBsQLfdpgzOIfiEo5A+ivwoagWmmmxdCQTTPyZPJIHrb
+p7NZIPrRvnV5IPplfW0ZiJ53SbEWRG85kN4MopsYDNvB6r6XTQTRx5bfA9Ms
+3GtngOitDwI3g+is0ot7QHTBkusHQfTtmIwzILp98zcwXfRX/jqIXid4+i7Y
+vZWzH4Loc8ecf4BoofIy5nggzcG8UAFEt4tLqoLoKsatYHoCa5c2iH6k9d4Y
+RGsbp1qA6F13HKxBtNu9kw4guo2l1QdEOwWqBYL1x7QkgOjSvd4dIDpkUmIP
+iN4+6+UiEP1s86dNIHqFF892sP2snjtB9OYLUw6BaIsDK0+AaIVt28+D6Pwi
+4bsgGgAyTN1P
+  "],ExpressionUUID->"b6a4c4a9-dc4d-4491-9981-54af32b71373"],
+
+Cell["- Ben Jacobsohn", "Subsubsection",
+ CellChangeTimes->{{3.83536305445571*^9, 
+  3.835363088560631*^9}},ExpressionUUID->"8cf3da6b-66e8-43e3-a535-\
+e9fbed8ae455"]
+}, Open  ]]
+},
+WindowSize->{960, 981},
+WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+FrontEndVersion->"12.3 for Microsoft Windows (64-bit) (May 11, 2021)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"2f751410-b5f4-43e9-a1c3-96fe3ca316bf"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 228, 4, 98, "Title",ExpressionUUID->"74387394-d2e1-4ecf-ac0b-edada69dd6bd"],
+Cell[811, 28, 3840, 56, 610, "Text",ExpressionUUID->"b6a4c4a9-dc4d-4491-9981-54af32b71373"],
+Cell[4654, 86, 165, 3, 45, "Subsubsection",ExpressionUUID->"8cf3da6b-66e8-43e3-a535-e9fbed8ae455"]
+}, Open  ]]
+}
+]
+*)
+

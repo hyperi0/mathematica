@@ -1,0 +1,278 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     11177,        270]
+NotebookOptionsPosition[      8851,        225]
+NotebookOutlinePosition[      9245,        241]
+CellTagsIndexPosition[      9202,        238]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Planning", "Title",
+ CellChangeTimes->{{3.83442313647637*^9, 
+  3.834423158610836*^9}},ExpressionUUID->"3ae1ef9b-1601-44d2-af15-\
+391eecd9b8ae"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Compare threshold for complexity between regular and multiway automata\
+\>", "Item",
+ CellChangeTimes->{
+  3.834423200093775*^9, {3.834423284565816*^9, 3.834423300174562*^9}, {
+   3.834574300031508*^9, 
+   3.8345743000315742`*^9}},ExpressionUUID->"057d2789-c768-43f5-a052-\
+e98ad67f4160"],
+
+Cell["\<\
+Could be 2 color 0 nearest neighbor? Would be very slow for complexity to \
+develop and could be hard to interpret\
+\>", "Subitem",
+ CellChangeTimes->{
+  3.834423200093775*^9, {3.834423284565816*^9, 3.834423300174562*^9}, {
+   3.834574302646463*^9, 
+   3.8345743645839987`*^9}},ExpressionUUID->"706b487b-0c22-428a-9f56-\
+a578b8bc5912"]
+}, Open  ]],
+
+Cell["\<\
+Find if rules can combine to form different classes of behavior then the \
+individuals\
+\>", "Item",
+ CellChangeTimes->{
+  3.834423200093775*^9, {3.834423284565816*^9, 
+   3.834423335583997*^9}},ExpressionUUID->"a731fbd2-d68c-4960-bd4e-\
+8c26361a9236"],
+
+Cell["\<\
+Test rules with pieces removed to find minimal complex behavior for 2 color \
+nearest neighbor CA\[CloseCurlyQuote]s\
+\>", "Item",
+ CellChangeTimes->{
+  3.834423200093775*^9, {3.834423284565816*^9, 3.8344233612605743`*^9}, {
+   3.834423419857245*^9, 3.8344234279216337`*^9}, {3.834423656720708*^9, 
+   3.834423659344816*^9}, {3.8345743729203167`*^9, 
+   3.834574381248337*^9}},ExpressionUUID->"8d4a6744-06ac-49ef-9a9e-\
+171d28635002"],
+
+Cell["\<\
+Construct automata plots from different paths through the multiway system, \
+especially to the same end condition\
+\>", "Item",
+ CellChangeTimes->{
+  3.834423200093775*^9, {3.834423284565816*^9, 3.8344233612605743`*^9}, {
+   3.834423419857245*^9, 3.8344234279216337`*^9}, {3.834423656720708*^9, 
+   3.8344236983302517`*^9}, 
+   3.834574384344623*^9},ExpressionUUID->"de9a3d86-52f6-4118-9f41-\
+2acdd1e54c0f"],
+
+Cell["\<\
+Define measurement for degree of partial confluence based on merging \
+proportions\
+\>", "Item",
+ CellChangeTimes->{{3.8344234116059427`*^9, 3.8344234501708193`*^9}, {
+  3.834574413166788*^9, 3.834574413166834*^9}, {3.834575053947542*^9, 
+  3.83457505457135*^9}},ExpressionUUID->"364675e7-eada-45ed-b792-\
+cfc38e2b19bf"],
+
+Cell["Look for confluence in different kinds of single automata", "Item",
+ CellChangeTimes->{
+  3.834423200093775*^9, {3.834423284565816*^9, 
+   3.834423409658415*^9}},ExpressionUUID->"63f87d74-8ea5-4926-9111-\
+5160e905f511"],
+
+Cell["Look for confluence in different combinations of automata", "Item",
+ CellChangeTimes->{{3.8344234116059427`*^9, 
+  3.834423430667194*^9}},ExpressionUUID->"790f2010-4fdc-4d26-ab79-\
+823a0b248541"],
+
+Cell[CellGroupData[{
+
+Cell["Investigate causality and confluence", "Item",
+ CellChangeTimes->{{3.8344234116059427`*^9, 3.834423476954912*^9}, {
+  3.834424160592827*^9, 3.8344241635490522`*^9}, {3.834574554136113*^9, 
+  3.834574554136204*^9}, {3.834575022898872*^9, 
+  3.834575034962697*^9}},ExpressionUUID->"e73c3834-afa6-4618-a2fa-\
+e7a71d3b9a4b"],
+
+Cell["\<\
+https://www.wolframphysics.org/bulletins/2020/11/confluence-and-causal-\
+invariance/\
+\>", "Subitem",
+ CellChangeTimes->{{3.8344234116059427`*^9, 3.834423476954912*^9}, {
+   3.834424160592827*^9, 3.8344241635490522`*^9}, {3.834574554136113*^9, 
+   3.834574554136204*^9}, 
+   3.834575022898872*^9},ExpressionUUID->"06734ec7-6188-4286-8c6b-\
+b00bb332bd2f"],
+
+Cell["Difference between confluence and causality: ", "Subitem",
+ CellChangeTimes->{{3.8344234116059427`*^9, 3.834423476954912*^9}, {
+   3.834424160592827*^9, 3.8344241635490522`*^9}, {3.834574555854135*^9, 
+   3.8345745674002542`*^9}, 
+   3.83457502158629*^9},ExpressionUUID->"fb1cfa1d-3d85-4d59-93a0-\
+3357c0533f25"],
+
+Cell["\<\
+Confluence: Can reach the same end state starting from any states\
+\>", "Subitem",
+ CellChangeTimes->{{3.8344234116059427`*^9, 3.834423476954912*^9}, {
+  3.834424160592827*^9, 3.8344241635490522`*^9}, {3.834574555854135*^9, 
+  3.83457457989478*^9}, {3.8345746133928423`*^9, 3.834574613392905*^9}, {
+  3.834574720770094*^9, 
+  3.834574734002226*^9}},ExpressionUUID->"2d9a0058-40cc-49e6-893d-\
+9cd704d8c1a5"],
+
+Cell["\<\
+Causal invariance: branches have same causal structure regardless of \
+expressions\
+\>", "Subitem",
+ CellChangeTimes->{{3.8344234116059427`*^9, 3.834423476954912*^9}, {
+  3.834424160592827*^9, 3.8344241635490522`*^9}, {3.834574555854135*^9, 
+  3.83457457989478*^9}, {3.834574614919808*^9, 3.834574635327813*^9}, {
+  3.834574751412768*^9, 
+  3.83457475141284*^9}},ExpressionUUID->"1f73bc98-5648-408c-80e7-\
+c2ab12c5edd4"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+\[OpenCurlyDoubleQuote]Note that the \[OpenCurlyDoubleQuote]CausalInvariantQ\
+\[CloseCurlyDoubleQuote] property of MultiwaySystem checks for confluence \
+despite its name:\[CloseCurlyDoubleQuote]\
+\>", "Subitem",
+ CellChangeTimes->{{3.8344234116059427`*^9, 3.834423476954912*^9}, {
+  3.834424160592827*^9, 3.8344241635490522`*^9}, {3.834574555854135*^9, 
+  3.83457457989478*^9}, {3.834574614919808*^9, 3.834574635327813*^9}, {
+  3.834574752842979*^9, 3.83457475695492*^9}, {3.8345748739840717`*^9, 
+  3.834574873984138*^9}, {3.83457496009933*^9, 
+  3.834574960099408*^9}},ExpressionUUID->"a51787ab-b0e0-42b0-bd42-\
+737f2b669dca"],
+
+Cell["Is this true for non-terminating models?", "Subsubitem",
+ CellChangeTimes->{{3.8344234116059427`*^9, 3.834423476954912*^9}, {
+  3.834424160592827*^9, 3.8344241635490522`*^9}, {3.834574555854135*^9, 
+  3.83457457989478*^9}, {3.834574614919808*^9, 3.834574635327813*^9}, {
+  3.834574752842979*^9, 3.83457475695492*^9}, {3.8345748739840717`*^9, 
+  3.834574873984138*^9}, {3.834574961976707*^9, 
+  3.834574985649335*^9}},ExpressionUUID->"674082f0-7c72-4966-aa98-\
+e63372bd69d7"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Superconfluence", "Subitem",
+ CellChangeTimes->{{3.8344234116059427`*^9, 3.834423476954912*^9}, {
+  3.834424160592827*^9, 3.8344241635490522`*^9}, {3.834574555854135*^9, 
+  3.83457457989478*^9}, {3.834574614919808*^9, 3.834574635327813*^9}, {
+  3.834574752842979*^9, 3.83457475695492*^9}, {3.8345748750466433`*^9, 
+  3.83457487936021*^9}},ExpressionUUID->"eb8b7e8c-2f62-4914-b885-\
+c2854f559c79"],
+
+Cell["\<\
+It will be interesting to investigate other similar properties. For example, \
+one can investigate a stronger version of confluence:
+
+    Consider any infinite singleway evolution of a system.
+    Consider another finite partial singleway evolution.
+    If any such finite evolution can be continued in such a way as to reach \
+one of the states from the infinite evolution, we define the system as \
+\[OpenCurlyDoubleQuote]super\[CloseCurlyDoubleQuote]-confluent (#478).\
+\>", "Subsubitem",
+ CellChangeTimes->{{3.8344234116059427`*^9, 3.834423476954912*^9}, {
+  3.834424160592827*^9, 3.8344241635490522`*^9}, {3.834574555854135*^9, 
+  3.83457457989478*^9}, {3.834574614919808*^9, 3.834574635327813*^9}, {
+  3.834574752842979*^9, 3.83457475695492*^9}, {3.8345748750466433`*^9, 
+  3.834574882316887*^9}, {3.834575098796688*^9, 
+  3.834575104185977*^9}},ExpressionUUID->"b08488cf-d6b6-43a5-99b6-\
+3eba1e1a960c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Differences with this investigation:", "Subitem",
+ CellChangeTimes->{{3.8344234116059427`*^9, 3.834423476954912*^9}, {
+  3.834424160592827*^9, 3.8344241635490522`*^9}, {3.834574555854135*^9, 
+  3.83457457989478*^9}, {3.834574614919808*^9, 3.834574635327813*^9}, {
+  3.834574752842979*^9, 3.83457475695492*^9}, {3.8345748750466433`*^9, 
+  3.834574882316887*^9}, {3.834575098796688*^9, 
+  3.8345751139908752`*^9}},ExpressionUUID->"5cf6ba4d-0a3e-4ec3-97e9-\
+51c839e3956c"],
+
+Cell["Any complete CA rule applied multiway will not halt", "Subsubitem",
+ CellChangeTimes->{{3.8344234116059427`*^9, 3.834423476954912*^9}, {
+  3.834424160592827*^9, 3.8344241635490522`*^9}, {3.834574555854135*^9, 
+  3.83457457989478*^9}, {3.834574614919808*^9, 3.834574635327813*^9}, {
+  3.834574752842979*^9, 3.83457475695492*^9}, {3.8345748750466433`*^9, 
+  3.834574882316887*^9}, {3.834575098796688*^9, 3.83457511462121*^9}, {
+  3.834575155222435*^9, 3.834575174022828*^9}, {3.8345761860480833`*^9, 
+  3.834576190039576*^9}},ExpressionUUID->"40f23474-b766-46d7-8e60-\
+5696028dcf39"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{960, 1003},
+WindowMargins->{{Automatic, 0}, {Automatic, 37}},
+FrontEndVersion->"12.2 for Linux x86 (64-bit) (December 12, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"3000451d-f9d3-47d1-affe-e598aaf69c1d"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 150, 3, 98, "Title",ExpressionUUID->"3ae1ef9b-1601-44d2-af15-391eecd9b8ae"],
+Cell[CellGroupData[{
+Cell[755, 29, 298, 7, 32, "Item",ExpressionUUID->"057d2789-c768-43f5-a052-e98ad67f4160"],
+Cell[1056, 38, 345, 8, 26, "Subitem",ExpressionUUID->"706b487b-0c22-428a-9f56-a578b8bc5912"]
+}, Open  ]],
+Cell[1416, 49, 262, 7, 32, "Item",ExpressionUUID->"a731fbd2-d68c-4960-bd4e-8c26361a9236"],
+Cell[1681, 58, 444, 9, 32, "Item",ExpressionUUID->"8d4a6744-06ac-49ef-9a9e-171d28635002"],
+Cell[2128, 69, 417, 9, 32, "Item",ExpressionUUID->"de9a3d86-52f6-4118-9f41-2acdd1e54c0f"],
+Cell[2548, 80, 330, 7, 32, "Item",ExpressionUUID->"364675e7-eada-45ed-b792-cfc38e2b19bf"],
+Cell[2881, 89, 225, 4, 32, "Item",ExpressionUUID->"63f87d74-8ea5-4926-9111-5160e905f511"],
+Cell[3109, 95, 201, 3, 32, "Item",ExpressionUUID->"790f2010-4fdc-4d26-ab79-823a0b248541"],
+Cell[CellGroupData[{
+Cell[3335, 102, 326, 5, 32, "Item",ExpressionUUID->"e73c3834-afa6-4618-a2fa-e7a71d3b9a4b"],
+Cell[3664, 109, 364, 8, 26, "Subitem",ExpressionUUID->"06734ec7-6188-4286-8c6b-b00bb332bd2f"],
+Cell[4031, 119, 318, 5, 26, "Subitem",ExpressionUUID->"fb1cfa1d-3d85-4d59-93a0-3357c0533f25"],
+Cell[4352, 126, 416, 8, 26, "Subitem",ExpressionUUID->"2d9a0058-40cc-49e6-893d-9cd704d8c1a5"],
+Cell[4771, 136, 430, 9, 26, "Subitem",ExpressionUUID->"1f73bc98-5648-408c-80e7-c2ab12c5edd4"],
+Cell[CellGroupData[{
+Cell[5226, 149, 639, 11, 26, "Subitem",ExpressionUUID->"a51787ab-b0e0-42b0-bd42-737f2b669dca"],
+Cell[5868, 162, 480, 7, 25, "Subsubitem",ExpressionUUID->"674082f0-7c72-4966-aa98-e63372bd69d7"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6385, 174, 402, 6, 26, "Subitem",ExpressionUUID->"eb8b7e8c-2f62-4914-b885-c2854f559c79"],
+Cell[6790, 182, 919, 16, 115, "Subsubitem",ExpressionUUID->"b08488cf-d6b6-43a5-99b6-3eba1e1a960c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7746, 203, 475, 7, 26, "Subitem",ExpressionUUID->"5cf6ba4d-0a3e-4ec3-97e9-51c839e3956c"],
+Cell[8224, 212, 587, 8, 25, "Subsubitem",ExpressionUUID->"40f23474-b766-46d7-8e60-5696028dcf39"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
