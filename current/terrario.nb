@@ -3,10 +3,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[         0,          0]
-NotebookDataLength[     36208,        873]
-NotebookOptionsPosition[     31225,        777]
-NotebookOutlinePosition[     31638,        794]
-CellTagsIndexPosition[     31595,        791]
+NotebookDataLength[     37205,        895]
+NotebookOptionsPosition[     32028,        797]
+NotebookOutlinePosition[     32436,        814]
+CellTagsIndexPosition[     32393,        811]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -722,10 +722,7 @@ Cell[BoxData[{
    3.82914193815736*^9}, {3.829142053836417*^9, 3.8291420854099827`*^9}, {
    3.829142171622332*^9, 3.829142178419137*^9}, {3.8291422967197647`*^9, 
    3.8291423529184093`*^9}},
- CellLabel->
-  "In[177]:=",ExpressionUUID->"1c3a8e6a-9c5b-48a2-a5ec-a263e1cc5003"],
-
-Cell[CellGroupData[{
+ CellLabel->"In[1]:=",ExpressionUUID->"1c3a8e6a-9c5b-48a2-a5ec-a263e1cc5003"],
 
 Cell[BoxData[{
  RowBox[{
@@ -766,11 +763,34 @@ kMp5Zq+328zpePSDAXcXveh7YvNNyo+/sE+w5y38eGOzfY5u3M3d5U8G3F2j
         "Droplines" -> {
          "freeformCursorMode" -> True, 
           "placement" -> {"x" -> "All", "y" -> "None"}}}}, "DefaultPlotStyle" -> 
-    Automatic}]], "Output",
- CellChangeTimes->{{3.829142264557487*^9, 3.8291423034803457`*^9}, {
-  3.829142357700286*^9, 3.8291423599771442`*^9}},
+    Automatic}]], "Input",
+ CellChangeTimes->{3.8475471751457157`*^9},
  CellLabel->
-  "Out[189]=",ExpressionUUID->"3bf23cd2-01ca-47ad-a70c-2c331f918119"]
+  "Out[189]=",ExpressionUUID->"3bf23cd2-01ca-47ad-a70c-2c331f918119"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"dna", " ", "=", 
+  RowBox[{"IntegerDigits", "[", " ", 
+   RowBox[{
+    RowBox[{"RandomInteger", "[", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "255"}], "}"}], "]"}], ",", "2"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.847547076430785*^9, 3.847547086461409*^9}, {
+  3.847547146495798*^9, 3.847547147583886*^9}, {3.8475472257948313`*^9, 
+  3.847547228834488*^9}, {3.847547315125338*^9, 3.847547355230719*^9}, {
+  3.8475474059618673`*^9, 3.8475474092085333`*^9}},
+ CellLabel->"In[12]:=",ExpressionUUID->"1a0048ee-a2e0-4c2f-a5f5-24773164c4d9"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "0", ",", "1", ",", "1", ",", "1", ",", "1", ",", "0", ",", "1"}],
+   "}"}]], "Output",
+ CellChangeTimes->{{3.847547340286256*^9, 3.847547355756776*^9}, 
+   3.8475474096578197`*^9},
+ CellLabel->"Out[12]=",ExpressionUUID->"197ecae8-48fc-4aa6-b331-f3f1c4682748"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
@@ -778,7 +798,7 @@ kMp5Zq+328zpePSDAXcXveh7YvNNyo+/sE+w5y38eGOzfY5u3M3d5U8G3F2j
 WindowSize->{960, 1003},
 WindowMargins->{{Automatic, 0}, {Automatic, 37}},
 Magnification->1.,
-FrontEndVersion->"12.2 for Linux x86 (64-bit) (December 12, 2020)",
+FrontEndVersion->"12.3 for Linux x86 (64-bit) (July 9, 2021)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"bb60296a-b1f3-402e-9c44-3f8dce80ee32"
 ]
@@ -861,10 +881,12 @@ Cell[25754, 632, 198, 3, 32, "Item",ExpressionUUID->"9f4a9d82-b978-4826-9aaf-0ff
 Cell[CellGroupData[{
 Cell[25989, 640, 156, 3, 67, "Section",ExpressionUUID->"2f341102-1c88-46a2-b218-b0c02c46b688"],
 Cell[26148, 645, 212, 4, 30, "Input",ExpressionUUID->"e3809813-8fe1-4e39-b55b-58162ff0a7c8"],
-Cell[26363, 651, 2922, 74, 173, "Code",ExpressionUUID->"1c3a8e6a-9c5b-48a2-a5ec-a263e1cc5003"],
+Cell[26363, 651, 2917, 73, 173, "Code",ExpressionUUID->"1c3a8e6a-9c5b-48a2-a5ec-a263e1cc5003"],
+Cell[29283, 726, 462, 10, 53, "Input",ExpressionUUID->"b656c895-e618-403b-aa95-a619b62b47e5"],
+Cell[29748, 738, 1334, 30, 372, InheritFromParent,ExpressionUUID->"3bf23cd2-01ca-47ad-a70c-2c331f918119"],
 Cell[CellGroupData[{
-Cell[29310, 729, 462, 10, 53, "Input",ExpressionUUID->"b656c895-e618-403b-aa95-a619b62b47e5"],
-Cell[29775, 741, 1410, 31, 376, "Output",ExpressionUUID->"3bf23cd2-01ca-47ad-a70c-2c331f918119"]
+Cell[31107, 772, 566, 11, 30, "Input",ExpressionUUID->"1a0048ee-a2e0-4c2f-a5f5-24773164c4d9"],
+Cell[31676, 785, 312, 7, 57, "Output",ExpressionUUID->"197ecae8-48fc-4aa6-b331-f3f1c4682748"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
