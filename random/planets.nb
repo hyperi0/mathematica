@@ -1,0 +1,281 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     10407,        273]
+NotebookOptionsPosition[      9715,        252]
+NotebookOutlinePosition[     10104,        268]
+CellTagsIndexPosition[     10061,        265]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"planets", "=", 
+  RowBox[{"EntityList", "[", "\"\<Planet\>\"", "]"}]}]], "Input",
+ CellChangeTimes->{{3.8637998059662333`*^9, 3.86379980885324*^9}, {
+  3.863799869830309*^9, 3.863799870413059*^9}},
+ CellLabel->"In[3]:=",ExpressionUUID->"f04d9ed7-184d-44b4-941c-63f3df816fbf"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   TemplateBox[{"\"Mercury\"", 
+     RowBox[{"Entity", "[", 
+       RowBox[{"\"Planet\"", ",", "\"Mercury\""}], "]"}], 
+     "\"Entity[\\\"Planet\\\", \\\"Mercury\\\"]\"", "\"planet\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"Venus\"", 
+     RowBox[{"Entity", "[", 
+       RowBox[{"\"Planet\"", ",", "\"Venus\""}], "]"}], 
+     "\"Entity[\\\"Planet\\\", \\\"Venus\\\"]\"", "\"planet\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"Earth\"", 
+     RowBox[{"Entity", "[", 
+       RowBox[{"\"Planet\"", ",", "\"Earth\""}], "]"}], 
+     "\"Entity[\\\"Planet\\\", \\\"Earth\\\"]\"", "\"planet\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"Mars\"", 
+     RowBox[{"Entity", "[", 
+       RowBox[{"\"Planet\"", ",", "\"Mars\""}], "]"}], 
+     "\"Entity[\\\"Planet\\\", \\\"Mars\\\"]\"", "\"planet\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"Jupiter\"", 
+     RowBox[{"Entity", "[", 
+       RowBox[{"\"Planet\"", ",", "\"Jupiter\""}], "]"}], 
+     "\"Entity[\\\"Planet\\\", \\\"Jupiter\\\"]\"", "\"planet\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"Saturn\"", 
+     RowBox[{"Entity", "[", 
+       RowBox[{"\"Planet\"", ",", "\"Saturn\""}], "]"}], 
+     "\"Entity[\\\"Planet\\\", \\\"Saturn\\\"]\"", "\"planet\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"Uranus\"", 
+     RowBox[{"Entity", "[", 
+       RowBox[{"\"Planet\"", ",", "\"Uranus\""}], "]"}], 
+     "\"Entity[\\\"Planet\\\", \\\"Uranus\\\"]\"", "\"planet\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"Neptune\"", 
+     RowBox[{"Entity", "[", 
+       RowBox[{"\"Planet\"", ",", "\"Neptune\""}], "]"}], 
+     "\"Entity[\\\"Planet\\\", \\\"Neptune\\\"]\"", "\"planet\""},
+    "Entity"]}], "}"}]], "Output",
+ CellChangeTimes->{3.8637998101545687`*^9, 3.863799870752872*^9},
+ CellLabel->"Out[3]=",ExpressionUUID->"5fa7b6a1-fd4c-4dd4-9c32-d7d545632f2d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"planetInfo", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"#", "[", 
+      RowBox[{"EntityProperty", "[", 
+       RowBox[{"\"\<Planet\>\"", ",", " ", "\"\<Name\>\""}], "]"}], "]"}], "->", 
+     RowBox[{"<|", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"\"\<Diameter\>\"", "->", 
+        RowBox[{"#", "[", 
+         RowBox[{"EntityProperty", "[", 
+          RowBox[{"\"\<Planet\>\"", ",", " ", "\"\<Diameter\>\""}], "]"}], 
+         "]"}]}], ",", "\[IndentingNewLine]", 
+       RowBox[{"\"\<Distance\>\"", "->", 
+        RowBox[{"#", "[", 
+         RowBox[{"EntityProperty", "[", 
+          RowBox[{"\"\<Planet\>\"", ",", " ", "\"\<DistanceFromSun\>\""}], 
+          "]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+       RowBox[{"\"\<Period\>\"", "->", 
+        RowBox[{"#", "[", 
+         RowBox[{"EntityProperty", "[", 
+          RowBox[{"\"\<Planet\>\"", ",", " ", "\"\<OrbitPeriod\>\""}], "]"}], 
+         "]"}]}]}], "\[IndentingNewLine]", "|>"}]}], "&"}], "/@", 
+   "planets"}]}]], "Input",
+ CellChangeTimes->{{3.863800097599215*^9, 3.863800164661934*^9}, {
+  3.8638002291105833`*^9, 3.863800262470365*^9}, {3.863800303038814*^9, 
+  3.863800318485976*^9}, {3.863800352984468*^9, 3.863800387926957*^9}, {
+  3.8638004745276127`*^9, 3.863800484655305*^9}},
+ CellLabel->"In[14]:=",ExpressionUUID->"97427943-a4ba-479d-a4ae-5b818a687acd"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"\<\"Mercury\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"Diameter\"\>", "\[Rule]", 
+       TemplateBox[{
+        "4879.4`3.086306430527941", "\"km\"", "kilometers", "\"Kilometers\""},
+        
+        "Quantity"]}], ",", 
+      RowBox[{"\<\"Distance\"\>", "\[Rule]", 
+       TemplateBox[{
+        "0.4435175928198405`", "\"au\"", "astronomical units", 
+         "\"AstronomicalUnit\""},
+        "Quantity"]}], ",", 
+      RowBox[{"\<\"Period\"\>", "\[Rule]", 
+       TemplateBox[{
+        "87.9692571749999999962`7.", "\"days\"", "days", "\"Days\""},
+        "Quantity"]}]}], "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"Venus\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"Diameter\"\>", "\[Rule]", 
+       TemplateBox[{
+        "12103.6`3.480854571349304", "\"km\"", "kilometers", "\"Kilometers\""},
+        "Quantity"]}], ",", 
+      RowBox[{"\<\"Distance\"\>", "\[Rule]", 
+       TemplateBox[{
+        "0.7270423158767836`", "\"au\"", "astronomical units", 
+         "\"AstronomicalUnit\""},
+        "Quantity"]}], ",", 
+      RowBox[{"\<\"Period\"\>", "\[Rule]", 
+       TemplateBox[{
+        "224.7007992150000000002`8.", "\"days\"", "days", "\"Days\""},
+        "Quantity"]}]}], "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"Earth\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"Diameter\"\>", "\[Rule]", 
+       TemplateBox[{
+        "12742.0175333333332091569`7.503178180323586", "\"km\"", "kilometers",
+          "\"Kilometers\""},
+        "Quantity"]}], ",", 
+      RowBox[{"\<\"Distance\"\>", "\[Rule]", 
+       TemplateBox[{
+        "1.0151480271346056`", "\"au\"", "astronomical units", 
+         "\"AstronomicalUnit\""},
+        "Quantity"]}], ",", 
+      RowBox[{"\<\"Period\"\>", "\[Rule]", 
+       TemplateBox[{
+        "365.2563553499999999961`8.", "\"days\"", "days", "\"Days\""},
+        "Quantity"]}]}], "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"Mars\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"Diameter\"\>", "\[Rule]", 
+       TemplateBox[{
+        "6779.0533333333330228925`4.3082903053785016", "\"km\"", "kilometers",
+          "\"Kilometers\""},
+        "Quantity"]}], ",", 
+      RowBox[{"\<\"Distance\"\>", "\[Rule]", 
+       TemplateBox[{
+        "1.3822841946374467`", "\"au\"", "astronomical units", 
+         "\"AstronomicalUnit\""},
+        "Quantity"]}], ",", 
+      RowBox[{"\<\"Period\"\>", "\[Rule]", 
+       TemplateBox[{
+        "1.8808476`8.", "\"a\"", "Julian years", "\"JulianYears\""},
+        "Quantity"]}]}], "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"Jupiter\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"Diameter\"\>", "\[Rule]", 
+       TemplateBox[{
+        "139892.`4.091435216875118", "\"km\"", "kilometers", "\"Kilometers\""},
+        "Quantity"]}], ",", 
+      RowBox[{"\<\"Distance\"\>", "\[Rule]", 
+       TemplateBox[{
+        "4.965564725468771`", "\"au\"", "astronomical units", 
+         "\"AstronomicalUnit\""},
+        "Quantity"]}], ",", 
+      RowBox[{"\<\"Period\"\>", "\[Rule]", 
+       TemplateBox[{
+        "11.862615`8.", "\"a\"", "Julian years", "\"JulianYears\""},
+        "Quantity"]}]}], "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"Saturn\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"Diameter\"\>", "\[Rule]", 
+       TemplateBox[{
+        "116600.`4.012340888090886", "\"km\"", "kilometers", "\"Kilometers\""},
+        "Quantity"]}], ",", 
+      RowBox[{"\<\"Distance\"\>", "\[Rule]", 
+       TemplateBox[{
+        "9.884839582022728`", "\"au\"", "astronomical units", 
+         "\"AstronomicalUnit\""},
+        "Quantity"]}], ",", 
+      RowBox[{"\<\"Period\"\>", "\[Rule]", 
+       TemplateBox[{
+        "29.447498`8.", "\"a\"", "Julian years", "\"JulianYears\""},
+        "Quantity"]}]}], "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"Uranus\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"Diameter\"\>", "\[Rule]", 
+       TemplateBox[{
+        "50727.3333333333358168602`3.650884370321851", "\"km\"", "kilometers",
+          "\"Kilometers\""},
+        "Quantity"]}], ",", 
+      RowBox[{"\<\"Distance\"\>", "\[Rule]", 
+       TemplateBox[{
+        "19.700047538833115`", "\"au\"", "astronomical units", 
+         "\"AstronomicalUnit\""},
+        "Quantity"]}], ",", 
+      RowBox[{"\<\"Period\"\>", "\[Rule]", 
+       TemplateBox[{
+        "84.016846`8.", "\"a\"", "Julian years", "\"JulianYears\""},
+        "Quantity"]}]}], "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"Neptune\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"Diameter\"\>", "\[Rule]", 
+       TemplateBox[{
+        "49246.`3.083132384796474", "\"km\"", "kilometers", "\"Kilometers\""},
+        
+        "Quantity"]}], ",", 
+      RowBox[{"\<\"Distance\"\>", "\[Rule]", 
+       TemplateBox[{
+        "29.916963780306844`", "\"au\"", "astronomical units", 
+         "\"AstronomicalUnit\""},
+        "Quantity"]}], ",", 
+      RowBox[{"\<\"Period\"\>", "\[Rule]", 
+       TemplateBox[{
+        "164.79132`8.", "\"a\"", "Julian years", "\"JulianYears\""},
+        "Quantity"]}]}], "\[RightAssociation]"}]}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.86380032203823*^9, {3.863800368921934*^9, 3.863800391764328*^9}, 
+   3.86380048699265*^9},
+ CellLabel->"Out[14]=",ExpressionUUID->"47ae1f4e-0cc0-428a-b01b-fa8e900f28a5"]
+}, Open  ]]
+},
+WindowSize->{960, 1003},
+WindowMargins->{{Automatic, 0}, {Automatic, 37}},
+FrontEndVersion->"12.3 for Linux x86 (64-bit) (July 9, 2021)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"de347a69-784f-47e6-887b-41d6722cc2b3"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 299, 5, 30, "Input",ExpressionUUID->"f04d9ed7-184d-44b4-941c-63f3df816fbf"],
+Cell[882, 29, 1834, 44, 46, "Output",ExpressionUUID->"5fa7b6a1-fd4c-4dd4-9c32-d7d545632f2d"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2753, 78, 1378, 30, 119, "Input",ExpressionUUID->"97427943-a4ba-479d-a4ae-5b818a687acd"],
+Cell[4134, 110, 5565, 139, 259, "Output",ExpressionUUID->"47ae1f4e-0cc0-428a-b01b-fa8e900f28a5"]
+}, Open  ]]
+}
+]
+*)
+

@@ -10,44 +10,29 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     36305,        731]
-NotebookOptionsPosition[     35515,        708]
-NotebookOutlinePosition[     36002,        726]
-CellTagsIndexPosition[     35959,        723]
+NotebookDataLength[     40245,        795]
+NotebookOptionsPosition[     39678,        776]
+NotebookOutlinePosition[     40160,        794]
+CellTagsIndexPosition[     40117,        791]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 
 Cell[CellGroupData[{
-Cell["Time Tracker", "Title",
- CellChangeTimes->{{3.7817048550201273`*^9, 
-  3.7817048563137026`*^9}},ExpressionUUID->"23489883-d956-4687-80ac-\
-ab26c3699e20"],
-
-Cell["\<\
-Track time spent by date and category
-Add time by setting increment and pressing category button
-Save and load data to personal cloud
-Burn time bank for personal rewards\
-\>", "Text",
- CellChangeTimes->{{3.830014630819344*^9, 
-  3.8300147431092997`*^9}},ExpressionUUID->"89b31bcc-f04a-471e-ae05-\
-6a766ca4f961"],
-
-Cell[CellGroupData[{
-
 Cell[BoxData[
  RowBox[{"DynamicModule", "[", 
   RowBox[{
-   RowBox[{"{", 
+   RowBox[{"{", "\n", 
     RowBox[{
      RowBox[{"categories", "=", 
       RowBox[{"{", 
        RowBox[{
-       "\"\<re\>\"", ",", "\"\<da\>\"", ",", "\"\<ct\>\"", ",", 
-        "\"\<ed\>\""}], "}"}]}], ",", "\[IndentingNewLine]", "times", ",", 
-     "buttons", ",", " ", 
+       "\"\<Work\>\"", ",", " ", "\"\<Reading\>\"", ",", " ", 
+        "\"\<Learning\>\"", ",", " ", "\"\<Making\>\"", ",", " ", 
+        "\"\<Coding\>\"", ",", " ", "\"\<Fitness\>\"", ",", " ", 
+        "\"\<Chores\>\""}], "}"}]}], ",", "\[IndentingNewLine]", "times", ",",
+      "buttons", ",", " ", 
      RowBox[{"increment", "=", "1"}], ",", " ", 
      RowBox[{"bank", "=", "0"}], ",", " ", "history", ",", " ", 
      RowBox[{"today", "=", "Today"}], ",", " ", "size", ",", " ", "totals", 
@@ -224,7 +209,21 @@ Cell[BoxData[
            RowBox[{"i", ",", "size"}], "}"}]}], "]"}], ",", " ", 
         RowBox[{"ImageSize", "\[Rule]", 
          RowBox[{"{", 
-          RowBox[{"700", ",", "380"}], "}"}]}], ",", " ", 
+          RowBox[{"700", ",", "380"}], "}"}]}], ",", " ", "\n", "\t", 
+        RowBox[{"PlotRange", "->", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"DateObject", "[", 
+              RowBox[{"{", 
+               RowBox[{"2020", ",", "12", ",", "1"}], "}"}], "]"}], ",", 
+             RowBox[{"DateObject", "[", 
+              RowBox[{"{", 
+               RowBox[{"2021", ",", "1", ",", "1"}], "}"}], "]"}]}], "}"}], 
+           ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "100"}], "}"}]}], "}"}]}], ",", 
         RowBox[{"PlotStyle", "\[Rule]", "\"\<DarkRainbow\>\""}], ",", " ", 
         RowBox[{"PlotLegends", "\[Rule]", "categories"}], ",", " ", 
         RowBox[{"AxesLabel", "\[Rule]", "Automatic"}]}], "]"}], "]"}]}], ";", 
@@ -434,14 +433,19 @@ Cell[BoxData[
    3.828714526763118*^9, 3.828714586841172*^9}, {3.828714647744244*^9, 
    3.82871468431246*^9}, {3.8300132887330236`*^9, 3.830013291636816*^9}, 
    3.8300134134715137`*^9, {3.830013446242673*^9, 3.8300134580641317`*^9}, {
-   3.8300143671459703`*^9, 3.830014374823866*^9}, 3.830014415926033*^9},
- CellLabel->"In[5]:=",ExpressionUUID->"d64494c7-b7ad-42f1-b036-02d18f776636"],
+   3.8300143671459703`*^9, 3.830014374823866*^9}, 3.830014415926033*^9, {
+   3.8475462143978977`*^9, 3.847546222564849*^9}, {3.847546254667507*^9, 
+   3.847546321559556*^9}, {3.847546680264615*^9, 3.847546713816176*^9}, {
+   3.847549249854022*^9, 3.847549295215886*^9}, 3.847549334248726*^9, {
+   3.84754945265234*^9, 3.8475495017270927`*^9}},
+ CellLabel->"In[2]:=",ExpressionUUID->"d64494c7-b7ad-42f1-b036-02d18f776636"],
 
 Cell[BoxData[
  DynamicModuleBox[{$CellContext`categories$$ = {
-  "re", "da", "ct", "ed"}, $CellContext`times$$ = {0, 0, 0, 
+  "Work", "Reading", "Learning", "Making", "Coding", "Fitness", 
+   "Chores"}, $CellContext`times$$ = {0, 0, 1, 0, 0, 0, 
   0}, $CellContext`buttons$$ = {
-   Button["re", $CellContext`today$$ = Today; AddTo[
+   Button["Work", $CellContext`today$$ = Today; AddTo[
       Part[$CellContext`times$$, 1], $CellContext`increment$$]; 
     AddTo[$CellContext`bank$$, $CellContext`increment$$]; If[
       KeyMemberQ[$CellContext`history$$, $CellContext`today$$], AddTo[
@@ -461,7 +465,7 @@ Cell[BoxData[
             Last[$CellContext`totals$$], $CellContext`i] + 
           If[$CellContext`i == 1, $CellContext`increment$$, 
             0], {$CellContext`i, $CellContext`size$$}]]], ImageSize -> 61], 
-   Button["da", $CellContext`today$$ = Today; AddTo[
+   Button["Reading", $CellContext`today$$ = Today; AddTo[
       Part[$CellContext`times$$, 2], $CellContext`increment$$]; 
     AddTo[$CellContext`bank$$, $CellContext`increment$$]; If[
       KeyMemberQ[$CellContext`history$$, $CellContext`today$$], AddTo[
@@ -474,14 +478,13 @@ Cell[BoxData[
          If[$CellContext`i == 2, $CellContext`increment$$, 
           0], {$CellContext`i, $CellContext`size$$}]], 
       AppendTo[$CellContext`history$$, $CellContext`today$$ -> Table[
-          
           If[$CellContext`i == 2, $CellContext`increment$$, 
            0], {$CellContext`i, $CellContext`size$$}]]; 
       AppendTo[$CellContext`totals$$, $CellContext`today$$ -> Table[Part[
             Last[$CellContext`totals$$], $CellContext`i] + 
           If[$CellContext`i == 2, $CellContext`increment$$, 
             0], {$CellContext`i, $CellContext`size$$}]]], ImageSize -> 61], 
-   Button["ct", $CellContext`today$$ = Today; AddTo[
+   Button["Learning", $CellContext`today$$ = Today; AddTo[
       Part[$CellContext`times$$, 3], $CellContext`increment$$]; 
     AddTo[$CellContext`bank$$, $CellContext`increment$$]; If[
       KeyMemberQ[$CellContext`history$$, $CellContext`today$$], AddTo[
@@ -501,7 +504,7 @@ Cell[BoxData[
             Last[$CellContext`totals$$], $CellContext`i] + 
           If[$CellContext`i == 3, $CellContext`increment$$, 
             0], {$CellContext`i, $CellContext`size$$}]]], ImageSize -> 61], 
-   Button["ed", $CellContext`today$$ = Today; AddTo[
+   Button["Making", $CellContext`today$$ = Today; AddTo[
       Part[$CellContext`times$$, 4], $CellContext`increment$$]; 
     AddTo[$CellContext`bank$$, $CellContext`increment$$]; If[
       KeyMemberQ[$CellContext`history$$, $CellContext`today$$], AddTo[
@@ -520,14 +523,74 @@ Cell[BoxData[
       AppendTo[$CellContext`totals$$, $CellContext`today$$ -> Table[Part[
             Last[$CellContext`totals$$], $CellContext`i] + 
           If[$CellContext`i == 4, $CellContext`increment$$, 
+            0], {$CellContext`i, $CellContext`size$$}]]], ImageSize -> 61], 
+   Button["Coding", $CellContext`today$$ = Today; AddTo[
+      Part[$CellContext`times$$, 5], $CellContext`increment$$]; 
+    AddTo[$CellContext`bank$$, $CellContext`increment$$]; If[
+      KeyMemberQ[$CellContext`history$$, $CellContext`today$$], AddTo[
+        $CellContext`history$$[$CellContext`today$$], 
+        Table[
+         If[$CellContext`i == 5, $CellContext`increment$$, 
+          0], {$CellContext`i, $CellContext`size$$}]]; AddTo[
+        $CellContext`totals$$[$CellContext`today$$], 
+        Table[
+         If[$CellContext`i == 5, $CellContext`increment$$, 
+          0], {$CellContext`i, $CellContext`size$$}]], 
+      AppendTo[$CellContext`history$$, $CellContext`today$$ -> Table[
+          
+          If[$CellContext`i == 5, $CellContext`increment$$, 
+           0], {$CellContext`i, $CellContext`size$$}]]; 
+      AppendTo[$CellContext`totals$$, $CellContext`today$$ -> Table[Part[
+            Last[$CellContext`totals$$], $CellContext`i] + 
+          If[$CellContext`i == 5, $CellContext`increment$$, 
+            0], {$CellContext`i, $CellContext`size$$}]]], ImageSize -> 61], 
+   Button["Fitness", $CellContext`today$$ = Today; AddTo[
+      Part[$CellContext`times$$, 6], $CellContext`increment$$]; 
+    AddTo[$CellContext`bank$$, $CellContext`increment$$]; If[
+      KeyMemberQ[$CellContext`history$$, $CellContext`today$$], AddTo[
+        $CellContext`history$$[$CellContext`today$$], 
+        Table[
+         If[$CellContext`i == 6, $CellContext`increment$$, 
+          0], {$CellContext`i, $CellContext`size$$}]]; AddTo[
+        $CellContext`totals$$[$CellContext`today$$], 
+        Table[
+         If[$CellContext`i == 6, $CellContext`increment$$, 
+          0], {$CellContext`i, $CellContext`size$$}]], 
+      AppendTo[$CellContext`history$$, $CellContext`today$$ -> Table[
+          
+          If[$CellContext`i == 6, $CellContext`increment$$, 
+           0], {$CellContext`i, $CellContext`size$$}]]; 
+      AppendTo[$CellContext`totals$$, $CellContext`today$$ -> Table[Part[
+            Last[$CellContext`totals$$], $CellContext`i] + 
+          If[$CellContext`i == 6, $CellContext`increment$$, 
+            0], {$CellContext`i, $CellContext`size$$}]]], ImageSize -> 61], 
+   Button["Chores", $CellContext`today$$ = Today; AddTo[
+      Part[$CellContext`times$$, 7], $CellContext`increment$$]; 
+    AddTo[$CellContext`bank$$, $CellContext`increment$$]; If[
+      KeyMemberQ[$CellContext`history$$, $CellContext`today$$], AddTo[
+        $CellContext`history$$[$CellContext`today$$], 
+        Table[
+         If[$CellContext`i == 7, $CellContext`increment$$, 
+          0], {$CellContext`i, $CellContext`size$$}]]; AddTo[
+        $CellContext`totals$$[$CellContext`today$$], 
+        Table[
+         If[$CellContext`i == 7, $CellContext`increment$$, 
+          0], {$CellContext`i, $CellContext`size$$}]], 
+      AppendTo[$CellContext`history$$, $CellContext`today$$ -> Table[
+          
+          If[$CellContext`i == 7, $CellContext`increment$$, 
+           0], {$CellContext`i, $CellContext`size$$}]]; 
+      AppendTo[$CellContext`totals$$, $CellContext`today$$ -> Table[Part[
+            Last[$CellContext`totals$$], $CellContext`i] + 
+          If[$CellContext`i == 7, $CellContext`increment$$, 
             0], {$CellContext`i, $CellContext`size$$}]]], ImageSize -> 
     61]}, $CellContext`increment$$ = 1, $CellContext`bank$$ = 
-  0, $CellContext`history$$ = Association[
-  DateObject[{2021, 5, 14}, "Day", "Gregorian", -4.] -> {0, 0, 0, 
+  1, $CellContext`history$$ = Association[
+  DateObject[{2021, 12, 3}, "Day", "Gregorian", -5.] -> {0, 0, 1, 0, 0, 0, 
     0}], $CellContext`today$$ = 
-  DateObject[{2021, 5, 14}, "Day", "Gregorian", -4.], $CellContext`size$$ = 
-  4, $CellContext`totals$$ = Association[
-  DateObject[{2021, 5, 14}, "Day", "Gregorian", -4.] -> {0, 0, 0, 
+  DateObject[{2021, 12, 3}, "Day", "Gregorian", -5.], $CellContext`size$$ = 
+  7, $CellContext`totals$$ = Association[
+  DateObject[{2021, 12, 3}, "Day", "Gregorian", -5.] -> {0, 0, 1, 0, 0, 0, 
     0}], $CellContext`charts$$ = {
    Dynamic[
     BarChart[$CellContext`times$$, ChartLabels -> $CellContext`buttons$$, 
@@ -545,7 +608,9 @@ Cell[BoxData[
         Part[
          $CellContext`totals$$[#], $CellContext`i]}& , 
        Keys[$CellContext`totals$$]], {$CellContext`i, $CellContext`size$$}], 
-     ImageSize -> {700, 380}, PlotStyle -> "DarkRainbow", 
+     ImageSize -> {700, 380}, PlotRange -> {{
+        DateObject[{2020, 12, 1}], 
+        DateObject[{2021, 1, 1}]}, {0, 100}}, PlotStyle -> "DarkRainbow", 
      PlotLegends -> $CellContext`categories$$, AxesLabel -> 
      Automatic]]}, $CellContext`controls$$ = Panel[
    Column[{
@@ -648,10 +713,12 @@ $CellContext`increment$$], ImageSize -> 60, Appearance -> Automatic,
              $CellContext`totals$$[#], $CellContext`i]}& , 
            
            Keys[$CellContext`totals$$]], {$CellContext`i, \
-$CellContext`size$$}], ImageSize -> {700, 380}, PlotStyle -> "DarkRainbow", 
+$CellContext`size$$}], ImageSize -> {700, 380}, PlotRange -> {{
+            DateObject[{2020, 12, 1}], 
+            DateObject[{2021, 1, 1}]}, {0, 100}}, PlotStyle -> "DarkRainbow", 
          PlotLegends -> $CellContext`categories$$, AxesLabel -> Automatic], 
         StandardForm],
-       ImageSizeCache->{762., {188., 192.}}]}
+       ImageSizeCache->{803., {188., 192.}}]}
     },
     DefaultBaseStyle->"Column",
     GridBoxAlignment->{"Columns" -> {{Left}}},
@@ -701,16 +768,17 @@ $CellContext`size$$}], ImageSize -> {700, 380}, PlotStyle -> "DarkRainbow",
    3.8287146485407124`*^9, 3.828714684839617*^9}, {3.830013333212899*^9, 
    3.830013333738367*^9}, 3.8300134376055117`*^9, 3.8300134725618153`*^9, {
    3.830014379499332*^9, 3.8300143799845877`*^9}, 3.830014448555749*^9, 
-   3.830014483491699*^9, 3.8300145989968767`*^9},
- CellLabel->"Out[5]=",ExpressionUUID->"f1bffea9-f7e9-4c6a-a2eb-c4d3ce4d9657"]
-}, Open  ]]
-}, Open  ]]
+   3.830014483491699*^9, 3.8300145989968767`*^9, {3.84754632435455*^9, 
+   3.847546325054031*^9}, {3.847546716090179*^9, 3.847546716794973*^9}, {
+   3.847549503669673*^9, 3.847549504470969*^9}},
+ CellLabel->"Out[2]=",ExpressionUUID->"305bb015-c4d5-44c7-944f-37383ade45cf"]
+}, {2}]]
 },
 WindowSize->{960, 1003},
 WindowMargins->{{Automatic, 0}, {Automatic, 37}},
 TaggingRules->{
  "WelcomeScreenSettings" -> {"FEStarting" -> True}, "TryRealOnly" -> False},
-FrontEndVersion->"12.2 for Linux x86 (64-bit) (December 12, 2020)",
+FrontEndVersion->"12.3 for Linux x86 (64-bit) (July 9, 2021)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"92740d22-3a06-4956-ba5f-95a9efd36dee"
 ]
@@ -726,13 +794,9 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 159, 3, 98, "Title",ExpressionUUID->"23489883-d956-4687-80ac-ab26c3699e20"],
-Cell[742, 27, 321, 8, 104, "Text",ExpressionUUID->"89b31bcc-f04a-471e-ae05-6a766ca4f961"],
-Cell[CellGroupData[{
-Cell[1088, 39, 20332, 398, 993, "Code",ExpressionUUID->"d64494c7-b7ad-42f1-b036-02d18f776636"],
-Cell[21423, 439, 14064, 265, 805, "Output",ExpressionUUID->"f1bffea9-f7e9-4c6a-a2eb-c4d3ce4d9657"]
-}, Open  ]]
-}, Open  ]]
+Cell[580, 22, 21274, 418, 1033, "Code",ExpressionUUID->"d64494c7-b7ad-42f1-b036-02d18f776636"],
+Cell[21857, 442, 17808, 331, 805, "Output",ExpressionUUID->"305bb015-c4d5-44c7-944f-37383ade45cf"]
+}, {2}]]
 }
 ]
 *)
